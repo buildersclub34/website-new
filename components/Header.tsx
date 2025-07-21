@@ -50,10 +50,10 @@ export default function Header() {
   const navItems = [
     { name: 'Home', link: '/' },
     { name: 'The Builders Circle', link: '/circle' },
-    { name: 'Discovery Calls', link: 'https://thebuildersclub.me/discoverycalls/' },
-    { name: 'Fundraising', link: 'https://thebuildersclub.me/fundraising/' },
+    { name: 'Discovery Calls', link: '/discovery-calls' },
+    { name: 'Fundraising', link: '/fundraising' },
     { name: 'Events', link: 'https://thebuildersclub.me/events/' },
-    { name: 'Content', link: 'https://thebuildersclub.me/content/' }
+    { name: 'Content', link: '/content' }
   ];
 
   return (
@@ -65,6 +65,13 @@ export default function Header() {
             ? 'backdrop-blur-md bg-black/90 shadow-lg border-b border-yellow-500/20 py-2' 
             : 'backdrop-blur-md bg-black/90 py-3'
         }`}
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 1000
+        }}
       >
         <div className="container mx-auto px-4 2xl:px-6 relative z-50">
           <nav className="hidden lg:flex items-center justify-between w-full">
@@ -102,13 +109,21 @@ export default function Header() {
             </div>
             
             {/* CTA Button */}
-            <div className="flex-shrink-0">
+            <div className="flex-shrink-0 relative z-50">
               <a 
                 href="https://nas.io/tbc" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="neopop-btn neopop-primary text-lg"
+                className="neopop-btn neopop-primary text-lg relative z-50"
                 aria-label="Join The Club"
+                style={{
+                  position: 'relative',
+                  zIndex: 1001,
+                  textDecoration: 'none',
+                  display: 'inline-block',
+                  textAlign: 'center',
+                  whiteSpace: 'nowrap'
+                }}
               >
                 Join The Club
               </a>
@@ -134,8 +149,16 @@ export default function Header() {
                 href="https://nas.io/tbc" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="neopop-btn neopop-primary text-sm sm:text-base mr-3"
+                className="neopop-btn neopop-primary text-sm sm:text-base mr-3 relative z-50"
                 aria-label="Join"
+                style={{
+                  position: 'relative',
+                  zIndex: 1001,
+                  textDecoration: 'none',
+                  display: 'inline-block',
+                  textAlign: 'center',
+                  whiteSpace: 'nowrap'
+                }}
               >
                 Join
               </a>
@@ -179,8 +202,16 @@ export default function Header() {
               href="https://nas.io/tbc" 
               target="_blank"
               rel="noopener noreferrer"
-              className="neopop-btn neopop-primary text-lg w-full text-center mt-2"
+              className="neopop-btn neopop-primary text-lg w-full text-center mt-2 relative z-50"
               onClick={() => setIsMenuOpen(false)}
+              style={{
+                position: 'relative',
+                zIndex: 1001,
+                textDecoration: 'none',
+                display: 'inline-block',
+                textAlign: 'center',
+                whiteSpace: 'nowrap'
+              }}
             >
               Join The Club
             </a>
