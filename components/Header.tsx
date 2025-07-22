@@ -58,9 +58,13 @@ export default function Header() {
 
   return (
     <>
+      {/* Test element to verify header is rendering */}
+      <div className="fixed top-0 left-0 w-full bg-red-500 text-white text-center py-2 z-50">
+        HEADER TEST - VISIBLE IF HEADER IS RENDERING
+      </div>
       <header 
         ref={headerRef}
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        className={`fixed top-8 left-0 w-full z-50 transition-all duration-300 ${
           isScrolled 
             ? 'backdrop-blur-md bg-black/90 shadow-lg border-b border-yellow-500/20 py-2' 
             : 'backdrop-blur-md bg-black/90 py-3'
@@ -69,7 +73,6 @@ export default function Header() {
           position: 'fixed',
           top: 0,
           left: 0,
-          right: 0,
           zIndex: 1000
         }}
       >

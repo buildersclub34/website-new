@@ -2,8 +2,9 @@
 
 import { Rocket } from 'lucide-react';
 import Image from 'next/image';
+import ClientLayout from '../ClientLayout';
 
-export default function DiscoveryCalls() {
+function DiscoveryCalls() {
   const steps = [
     {
       number: '01',
@@ -162,3 +163,11 @@ export default function DiscoveryCalls() {
     </div>
   );
 }
+
+// Use a type assertion to add the getLayout property to the page component
+const PageWithLayout = DiscoveryCalls as any;
+PageWithLayout.getLayout = function getLayout(page: React.ReactNode) {
+  return <ClientLayout>{page}</ClientLayout>;
+};
+
+export default PageWithLayout;

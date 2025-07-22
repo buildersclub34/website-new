@@ -29,6 +29,7 @@ const securityHeaders = [
 const nextConfig = {
   reactStrictMode: true,
   output: 'export',
+  transpilePackages: ['gsap'],
   
   // Image optimization for static export
   images: {

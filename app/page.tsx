@@ -7,7 +7,7 @@ import InvestmentPartners from '@/components/InvestmentPartners';
 import PartnerInitiatives from '@/components/PartnerInitiatives';
 import OfficialPartners from '@/components/OfficialPartners';
 
-export default function Home() {
+function Home() {
   return (
     <div className="min-h-screen bg-black">
       <main>
@@ -23,3 +23,15 @@ export default function Home() {
     </div>
   );
 }
+
+// Use a type assertion to add the getLayout property to the page component
+const PageWithLayout = Home as any;
+PageWithLayout.getLayout = function getLayout(page: React.ReactNode) {
+  return (
+    <div className="flex flex-col min-h-screen">
+      {page}
+    </div>
+  );
+};
+
+export default PageWithLayout;

@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { Mic, Users, MessageSquare, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import ClientLayout from '../ClientLayout';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -100,7 +101,7 @@ const ProfileCard = ({ name, role, company }: ProfileCardProps) => (
   </motion.div>
 );
 
-export default function ContentPage() {
+function ContentPage() {
   return (
     <div className="bg-black text-white min-h-screen pt-24 pb-16">
       <div className="container mx-auto px-4">
@@ -257,6 +258,14 @@ export default function ContentPage() {
     </div>
   );
 }
+
+// Use a type assertion to add the getLayout property to the page component
+const PageWithLayout = ContentPage as any;
+PageWithLayout.getLayout = function getLayout(page: React.ReactNode) {
+  return <ClientLayout>{page}</ClientLayout>;
+};
+
+export default PageWithLayout;
 
 // Small Play icon component for the podcast card
 const Play = ({ className }) => (

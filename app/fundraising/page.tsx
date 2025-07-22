@@ -1,7 +1,10 @@
+'use client';
+
 import styles from './page.module.css';
 import Link from 'next/link';
+import ClientLayout from '../ClientLayout';
 
-export default function FundraisingPage() {
+function FundraisingPage() {
   return (
     <div className="bg-black text-white min-h-screen">
       {/* Hero Section */}
@@ -110,3 +113,11 @@ export default function FundraisingPage() {
     </div>
   );
 }
+
+// Use a type assertion to add the getLayout property to the page component
+const PageWithLayout = FundraisingPage as any;
+PageWithLayout.getLayout = function getLayout(page: React.ReactNode) {
+  return <ClientLayout>{page}</ClientLayout>;
+};
+
+export default PageWithLayout;

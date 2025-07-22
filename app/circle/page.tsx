@@ -5,8 +5,9 @@ import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { Rocket, Users, Star, Check, ArrowRight } from 'lucide-react';
 import { SectionHeader } from '@/components/ui/SectionHeader';
+import ClientLayout from '../ClientLayout';
 
-export default function BuildersCircle() {
+function BuildersCircle() {
   const features = [
     {
       title: 'network',
@@ -410,3 +411,11 @@ export default function BuildersCircle() {
     </div>
   );
 }
+
+// Use a type assertion to add the getLayout property to the page component
+const PageWithLayout = BuildersCircle as any;
+PageWithLayout.getLayout = function getLayout(page: React.ReactNode) {
+  return <ClientLayout>{page}</ClientLayout>;
+};
+
+export default PageWithLayout;

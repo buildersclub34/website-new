@@ -2,14 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SectionHeader } from './ui/SectionHeader';
-
-// Register GSAP plugins
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger);
-}
 
 const testimonials = [
   {
@@ -67,70 +60,72 @@ export default function Testimonials() {
   const containerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
+  // Temporarily disabled GSAP animations
+  // useEffect(() => {
+  //   if (typeof window === 'undefined') return;
 
-    // Animation for the testimonials container
-    gsap.fromTo(
-      containerRef.current,
-      { y: 50, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none none',
-        },
-      }
-    );
+  //   // Animation for the testimonials container
+  //   gsap.fromTo(
+  //     containerRef.current,
+  //     { y: 50, opacity: 0 },
+  //     {
+  //       y: 0,
+  //       opacity: 1,
+  //       duration: 0.8,
+  //       ease: 'power3.out',
+  //       scrollTrigger: {
+  //         trigger: containerRef.current,
+  //         start: 'top 80%',
+  //         toggleActions: 'play none none none',
+  //       },
+  //     }
+  //   );
 
-    // Animation for tab content
-    const contentElements = contentRef.current?.querySelectorAll('.testimonial-content');
-    if (contentElements && contentElements.length > 0) {
-      gsap.fromTo(
-        contentElements,
-        { y: 30, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.6,
-          stagger: 0.1,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: 'top 70%',
-            toggleActions: 'play none none none',
-          },
-        }
-      );
-    }
-  }, []);
+  //   // Animation for tab content
+  //   const contentElements = contentRef.current?.querySelectorAll('.testimonial-content');
+  //   if (contentElements && contentElements.length > 0) {
+  //     gsap.fromTo(
+  //       contentElements,
+  //       { y: 30, opacity: 0 },
+  //       {
+  //         y: 0,
+  //         opacity: 1,
+  //         duration: 0.6,
+  //         stagger: 0.1,
+  //         ease: 'power3.out',
+  //         scrollTrigger: {
+  //           trigger: containerRef.current,
+  //           start: 'top 70%',
+  //           toggleActions: 'play none none none',
+  //         },
+  //       }
+  //     );
+  //   }
+  // }, []);
 
-  useEffect(() => {
-    // Animate tab change
-    const contentElements = contentRef.current?.querySelectorAll('.testimonial-content');
-    if (contentElements && contentElements.length > 0) {
-      gsap.to(contentElements, {
-        y: 20,
-        opacity: 0,
-        duration: 0.3,
-        onComplete: () => {
-          if (contentElements.length > 0) {
-            gsap.to(contentElements, {
-              y: 0,
-              opacity: 1,
-              duration: 0.4,
-              stagger: 0.1,
-              ease: 'power3.out'
-            });
-          }
-        }
-      });
-    }
-  }, [activeTab]);
+  // Temporarily disabled GSAP tab change animation
+  // useEffect(() => {
+  //   // Animate tab change
+  //   const contentElements = contentRef.current?.querySelectorAll('.testimonial-content');
+  //   if (contentElements && contentElements.length > 0) {
+  //     gsap.to(contentElements, {
+  //       y: 20,
+  //       opacity: 0,
+  //       duration: 0.3,
+  //       onComplete: () => {
+  //         if (contentElements.length > 0) {
+  //           gsap.to(contentElements, {
+  //             y: 0,
+  //             opacity: 1,
+  //             duration: 0.4,
+  //             stagger: 0.1,
+  //             ease: 'power3.out'
+  //           });
+  //         }
+  //       }
+  //     });
+  //   }
+  // }, [activeTab]);
 
   return (
     <section 
