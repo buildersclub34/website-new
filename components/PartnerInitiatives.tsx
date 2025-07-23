@@ -3,6 +3,7 @@
 import React, { useState, useMemo, useCallback } from 'react';
 import { ArrowRight, Calendar, MapPin, Users, Clock } from 'lucide-react';
 import { SectionHeader } from './ui/SectionHeader';
+import NeoPopButton from '@/components/ui/NeoPopButton';
 import Image from 'next/image';
 
 const initiatives = [
@@ -148,20 +149,20 @@ export default function PartnerInitiatives() {
         {/* Filters */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">
           {categories.map((category) => (
-            <button
+            <NeoPopButton
               key={category}
               onClick={() => {
                 setActiveFilter(category);
                 setVisibleItems(6);
               }}
-              className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                activeFilter === category
-                  ? 'bg-yellow-500 text-black hover:bg-yellow-400'
-                  : 'bg-white/5 text-white/80 hover:bg-white/10 hover:text-white'
+              variant={activeFilter === category ? 'primary' : 'secondary'}
+              size="default"
+              className={`px-6 py-2 text-sm font-medium ${
+                activeFilter === category ? 'bg-yellow-500 text-black' : 'bg-white/5 text-white/80'
               }`}
             >
               {category}
-            </button>
+            </NeoPopButton>
           ))}
         </div>
 
@@ -218,10 +219,14 @@ export default function PartnerInitiatives() {
                     {initiative.duration}
                   </div>
                 </div>
-                <button className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 rounded-lg hover:bg-yellow-500/20 transition-all duration-300 group-hover:border-yellow-400">
+                <NeoPopButton
+                  variant="secondary"
+                  size="default"
+                  className="w-full justify-center gap-2 group"
+                >
                   Learn More
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </button>
+                </NeoPopButton>
               </div>
             </div>
           ))}
@@ -229,13 +234,15 @@ export default function PartnerInitiatives() {
 
         {visibleItems < filteredInitiatives.length && (
           <div className="text-center">
-            <button
+            <NeoPopButton
               onClick={loadMore}
-              className="px-8 py-3 bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 rounded-full hover:bg-yellow-500/20 transition-all duration-300 hover:border-yellow-400 flex items-center mx-auto"
+              variant="secondary"
+              size="default"
+              className="mx-auto group"
             >
               Load More
               <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-            </button>
+            </NeoPopButton>
           </div>
         )}
       </div>

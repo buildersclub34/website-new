@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Send, Rocket, Star, Zap, Globe, BrainCircuit, Award, Target, Lightbulb } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import NeoPopButton from './ui/NeoPopButton';
 import { Card, CardContent } from '@/components/ui/card';
-import { SectionHeader } from './ui/SectionHeader';
+import SectionHeader from './SectionHeader';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -47,7 +47,8 @@ export default function Contact() {
         <div className="max-w-7xl mx-auto">
           <SectionHeader
             badgeText="Get in Touch"
-            title="Ready to Build the"
+            title="Ready to Build the Future?"
+            gradientText="Future?"
             highlightedText="Future Together?"
             description="Join the next generation of unicorn builders. We're looking for extraordinary entrepreneurs who are ready to revolutionize industries and create lasting impact."
             icon={<Rocket className="w-5 h-5" />}
@@ -221,14 +222,16 @@ export default function Contact() {
                         ></textarea>
                     </div>
 
-                        <button
+                        <NeoPopButton
                           type="submit"
-                          className="w-full py-6 px-6 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black text-lg font-bold rounded-2xl shadow-2xl shadow-yellow-500/20 hover:shadow-yellow-500/40 transform hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-3 group"
+                          variant="primary"
+                          size="lg"
+                          className="w-full py-6 text-lg font-bold rounded-2xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-2xl hover:shadow-yellow-500/30 flex items-center justify-center space-x-3 group"
                         >
-                          <Send className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1" />
-                          <span className="transition-all duration-300 group-hover:tracking-wider">Submit Application</span>
-                          <Rocket className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1" />
-                        </button>
+                          <span>Apply Now</span>
+                          <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                        </NeoPopButton>
+
                   </form>
 
                     <div className="mt-8 text-center">

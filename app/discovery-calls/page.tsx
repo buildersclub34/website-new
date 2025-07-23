@@ -3,6 +3,8 @@
 import { Rocket } from 'lucide-react';
 import Image from 'next/image';
 import ClientLayout from '../ClientLayout';
+import NeoPopButton from '../../components/ui/NeoPopButton';
+import SectionHeader from '../../components/SectionHeader';
 
 function DiscoveryCalls() {
   const steps = [
@@ -52,25 +54,28 @@ function DiscoveryCalls() {
       <section className="relative py-24 md:py-32 overflow-hidden">
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5 -z-10"></div>
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center px-6 py-3 bg-yellow-500/10 border border-yellow-500/30 rounded-full text-yellow-400 text-sm font-medium mb-6 backdrop-blur-sm">
-              <Rocket className="w-5 h-5 mr-2" />
-              A TBC INITIATIVE
-            </div>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              <span className="text-yellow-400">DISCOVERY</span> CALLS
-            </h1>
-            <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Give demo of your product to your target audience and others who are interested in knowing more about the product.
-            </p>
-            <a 
-              href="https://wa.link/fioj4n" 
+          <div className="max-w-4xl mx-auto">
+            <SectionHeader
+              title={
+                <>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">DISCOVERY</span> CALLS
+                </>
+              }
+              badgeText="A TBC INITIATIVE"
+              subtitle="Give demo of your product to your target audience and others who are interested in knowing more about the product."
+              className="text-center mb-8"
+              titleClassName="text-4xl md:text-6xl font-bold"
+            />
+            <NeoPopButton
+              as="link"
+              href="https://wa.link/fioj4n"
               target="_blank"
               rel="noopener noreferrer"
-              className="neopop-btn neopop-primary text-lg inline-block"
+              variant="primary"
+              size="lg"
             >
               Book a call with the team
-            </a>
+            </NeoPopButton>
           </div>
         </div>
       </section>
@@ -80,9 +85,12 @@ function DiscoveryCalls() {
         <div className="absolute inset-0 bg-gradient-to-br from-black via-black to-gray-900/80 -z-10"></div>
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-              How it <span className="text-yellow-400">Works</span>
-            </h2>
+            <SectionHeader
+              title="How it Works"
+              gradientText="Works"
+              className="text-center mb-12"
+              titleClassName="text-3xl md:text-4xl font-bold"
+            />
             
             <div className="space-y-12">
               {steps.map((step, index) => (
@@ -104,10 +112,14 @@ function DiscoveryCalls() {
       {/* Testimonials Section */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-            <span className="text-yellow-400">TESTIMONIALS</span>
-          </h2>
-          
+          <div className="max-w-5xl mx-auto">
+            <SectionHeader
+              title="Success Stories"
+              gradientText="Success"
+              className="text-center mb-12"
+              titleClassName="text-3xl md:text-4xl font-bold"
+            />
+          </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
               <a 
@@ -150,14 +162,16 @@ function DiscoveryCalls() {
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
             Join our network of builders and get your product in front of the right audience.
           </p>
-          <a 
-            href="https://wa.link/fioj4n" 
+          <NeoPopButton
+            as="link"
+            href="https://wa.link/fioj4n"
             target="_blank"
             rel="noopener noreferrer"
-            className="neopop-btn neopop-primary text-lg inline-block"
+            variant="primary"
+            size="lg"
           >
             Book a Discovery Call
-          </a>
+          </NeoPopButton>
         </div>
       </section>
     </div>

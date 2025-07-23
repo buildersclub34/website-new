@@ -2,6 +2,8 @@
 
 import { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
+import NeoPopButton from './ui/NeoPopButton';
+import SectionHeader from './SectionHeader';
 
 // Counter Component with Animation
 interface AnimatedCounterProps {
@@ -269,41 +271,40 @@ export default function Hero() {
         <div className="container mx-auto px-4 relative z-10 flex flex-col items-center justify-center h-full">
         <div className="w-full max-w-6xl mx-auto text-center flex flex-col items-center mt-48">
           {/* Main Heading */}
-          <div className="relative z-10 text-center w-full">
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight whitespace-nowrap">
-              <span className="text-white">Enablers In Your </span>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] via-[#FFC000] to-[#FFA500]">
-                Business Journey!
-              </span>
-            </h1>
-          </div>
-
-          {/* Description */}
-          <p className="text-lg md:text-xl text-white/80 mt-4 mb-8 max-w-3xl mx-auto leading-relaxed font-medium">
-            Join a global network of ambitious founders and turn your vision into reality with the right support system.
-          </p>
+          <SectionHeader
+            title="Enablers In Your Business Journey!"
+            gradientText="Business Journey!"
+            subtitle="Join a global network of ambitious founders and turn your vision into reality with the right support system."
+            className="mb-8"
+            titleClassName="text-3xl md:text-5xl lg:text-6xl whitespace-nowrap"
+          />
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row justify-center gap-6 mb-12 z-10 w-full">
-            <a 
-              href="https://nas.io/tbc" 
+            <NeoPopButton
+              as="link"
+              href="https://nas.io/tbc"
               target="_blank"
               rel="noopener noreferrer"
-              className="neopop-btn neopop-primary text-lg"
+              variant="primary"
+              size="lg"
             >
               Join the Club
-            </a>
-            <a 
-              href="https://www.youtube.com/@thebuildersclub" 
+            </NeoPopButton>
+            <NeoPopButton
+              as="link"
+              href="https://www.youtube.com/@thebuildersclub"
               target="_blank"
               rel="noopener noreferrer"
-              className="neopop-btn neopop-secondary text-lg flex items-center gap-2"
+              variant="secondary"
+              size="lg"
+              className="flex items-center gap-2"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
               </svg>
               Watch on YouTube
-            </a>
+            </NeoPopButton>
           </div>
 
           {/* Social Icons */}

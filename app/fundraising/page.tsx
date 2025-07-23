@@ -1,41 +1,52 @@
 'use client';
 
-import styles from './page.module.css';
-import Link from 'next/link';
 import ClientLayout from '../ClientLayout';
+import NeoPopButton from '../../components/ui/NeoPopButton';
+import SectionHeader from '../../components/SectionHeader';
 
 function FundraisingPage() {
   return (
     <div className="bg-black text-white min-h-screen">
       {/* Hero Section */}
-      <section className="py-20 px-4 text-center">
-        <h1 className="text-4xl md:text-6xl font-bold mb-6">FUNDRAISING SUPPORT</h1>
-        <h2 className="text-2xl md:text-4xl font-bold text-yellow-400 mb-6">LOOKING TO RAISE FUNDS?</h2>
-        <p className="text-lg md:text-xl max-w-3xl mx-auto mb-8">
-          We help you raise your next funding round through our co-investor network of 300+ VCs, angel networks, and accelerators.
-        </p>
-        
-        <div className={styles.buttonContainer}>
-          <Link 
-            href="https://tally.so/r/n9JBXX" 
-            className={`${styles.neopopButton} ${styles.neopopPrimary} ${styles.mainCta}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            APPLY NOW
-          </Link>
-          <Link 
-            href="/discovery-calls" 
-            className={`${styles.neopopButton} ${styles.neopopSecondary} ${styles.mainCta}`}
-          >
-            BOOK A DISCOVERY CALL
-          </Link>
+      <section className="py-20 px-4">
+        <div className="text-center">
+          <SectionHeader
+            title="FUNDRAISING SUPPORT"
+            subtitle="We help you raise your next funding round through our co-investor network of 300+ VCs, angel networks, and accelerators."
+            className="mb-8"
+            titleClassName="text-4xl md:text-6xl font-bold"
+          />
+          <h2 className="text-2xl md:text-4xl font-bold text-yellow-400 mb-8">LOOKING TO RAISE FUNDS?</h2>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mt-8">
+            <NeoPopButton 
+              as="link"
+              href="https://tally.so/r/n9JBXX" 
+              variant="primary"
+              size="lg"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              APPLY NOW
+            </NeoPopButton>
+            <NeoPopButton 
+              as="link"
+              href="/discovery-calls" 
+              variant="secondary"
+              size="lg"
+            >
+              BOOK A DISCOVERY CALL
+            </NeoPopButton>
+          </div>
         </div>
       </section>
 
       {/* Features Section */}
       <section className="py-16 px-4 max-w-6xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Support system for your fundraising journey</h2>
+        <SectionHeader
+          title="Support system for your fundraising journey"
+          className="text-center mb-12"
+          titleClassName="text-3xl md:text-4xl font-bold"
+        />
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {[
@@ -72,14 +83,15 @@ function FundraisingPage() {
         </div>
 
         <div className="text-center mt-12">
-          <Link 
-            href="https://tally.so/r/n9JBXX" 
-            className={`${styles.neopopButton} ${styles.neopopPrimary} ${styles.mainCta} inline-block`}
-            target="_blank"
-            rel="noopener noreferrer"
+          <NeoPopButton 
+            as="link"
+            href="/discovery-calls" 
+            variant="primary"
+            size="lg"
+            className="inline-block"
           >
-            REGISTER IF YOU ARE RAISING YOUR NEXT ROUND
-          </Link>
+            BOOK A DISCOVERY CALL
+          </NeoPopButton>
         </div>
       </section>
 
@@ -99,14 +111,17 @@ function FundraisingPage() {
           </div>
 
           <div className="text-center">
-            <Link 
-              href="https://forms.gle/z3mMhV819uChX7dr6" 
-              className={`${styles.neopopButton} ${styles.neopopSecondary} ${styles.mainCta} inline-block`}
+            <NeoPopButton 
+              as="link"
+              href="https://tally.so/r/n9JBXX" 
+              variant="secondary"
+              size="lg"
+              className="inline-block"
               target="_blank"
               rel="noopener noreferrer"
             >
-              REGISTER AS INVESTOR
-            </Link>
+              APPLY NOW
+            </NeoPopButton>
           </div>
         </div>
       </section>

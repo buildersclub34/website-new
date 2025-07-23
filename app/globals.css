@@ -6,13 +6,14 @@
 
 :root {
   /* NeoPop Theme Variables */
-  --neopop-primary: 51, 100%, 50%; /* #FFD700 */
-  --neopop-primary-hover: 45, 100%, 45%; /* #E6B800 */
-  --neopop-accent: 45, 100%, 50%; /* #FFC000 */
-  --neopop-secondary: 0, 0%, 100%; /* #FFFFFF */
-  --neopop-dark: 0, 0%, 7%; /* #121212 */
-  --neopop-light: 0, 0%, 100%; /* #FFFFFF */
-  --neopop-border: 45, 100%, 50%; /* #FFC000 */
+  --neopop-primary: 45, 100%, 50%; /* #FFC000 - Darker gold */
+  --neopop-primary-hover: 51, 100%, 50%; /* #FFD700 - Brighter gold on hover */
+  --neopop-accent: 45, 100%, 45%; /* #D4AF37 - Metallic gold */
+  --neopop-secondary: 0, 0%, 0%; /* #000000 - Black */
+  --neopop-dark: 0, 0%, 7%; /* #121212 - Dark background */
+  --neopop-light: 0, 0%, 100%; /* #FFFFFF - White */
+  --neopop-border: 45, 100%, 40%; /* #8B8000 - Dark gold border */
+  --neopop-gold: 51, 100%, 50%; /* #FFD700 - Pure gold */
   
   --foreground-rgb: var(--neopop-light);
   --background-start-rgb: var(--neopop-dark);
@@ -364,54 +365,77 @@ body {
   background: rgba(var(--neopop-primary), 0.5);
 }
 
-/* NeoPop Button Styles */
+/* NeoPop Button Base Styles */
 .neopop-btn {
+  /* Reset button styles */
+  all: unset;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  
+  /* Base styling */
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 0.75rem 1.5rem;
-  font-weight: 600;
+  font-weight: 800;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 2px;
   border: 2px solid;
   border-radius: 4px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  transform-style: preserve-3d;
-  overflow: hidden;
+  transition: all 0.15s ease;
+  will-change: transform, box-shadow;
+  z-index: 1;
+  overflow: visible;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.neopop-btn:active {
-  transform: translateY(2px);
+/* Button States */
+.neopop-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
 }
 
-.neopop-primary {
-  background-color: rgb(var(--neopop-primary));
-  color: rgb(var(--neopop-secondary));
-  border-color: rgb(var(--neopop-primary));
-  box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.2);
+/* Focus state */
+.neopop-btn:focus-visible {
+  outline: 2px solid #FFD700;
+  outline-offset: 2px;
 }
 
-.neopop-primary:hover {
-  background-color: rgba(var(--neopop-primary), 0.9);
-  transform: translateY(-2px);
-  box-shadow: 6px 6px 0 0 rgba(0, 0, 0, 0.2);
+/* Remove any conflicting styles from other components */
+button.neopop-btn,
+a.neopop-btn,
+button[class*="neopop-"],
+a[class*="neopop-"] {
+  background-color: inherit;
+  color: inherit;
+  border-color: inherit;
+  box-shadow: none;
+  transform: none;
+  margin: 0;
+  font: inherit;
 }
 
-.neopop-secondary {
-  background-color: transparent;
-  color: rgb(var(--neopop-primary));
-  border-color: rgb(var(--neopop-primary));
-  box-shadow: 4px 4px 0 0 rgba(255, 215, 0, 0.2);
+/* Ensure consistent box-sizing */
+.neopop-btn,
+.neopop-btn *,
+.neopop-btn *::before,
+.neopop-btn *::after {
+  box-sizing: border-box;
 }
 
-.neopop-secondary:hover {
-  background-color: rgba(255, 215, 0, 0.1);
-  transform: translateY(-2px);
-  box-shadow: 6px 6px 0 0 rgba(255, 215, 0, 0.3);
+/* Fix for Safari button styling */
+@supports (-webkit-touch-callout: none) {
+  .neopop-btn {
+    -webkit-appearance: none;
+  }
 }
 
 /* Custom Button Styles */

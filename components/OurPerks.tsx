@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import SectionHeader from './SectionHeader';
 
 export default function OurPerks() {
   const perks = [
@@ -76,17 +77,15 @@ export default function OurPerks() {
   return (
     <section className="py-20 bg-black">
       <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto text-center mb-16">
-          <div className="text-yellow-400 text-sm font-medium mb-4 tracking-widest">EXCLUSIVE PERKS</div>
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
-            $100K worth of credits<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] via-[#FFC000] to-[#FFA500]">
-              from handpicked brands
-            </span>
-          </h2>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-            Access to handpicked perks from D2C, SaaS, lifestyle & experience brands.
-          </p>
+        <div className="max-w-4xl mx-auto text-center">
+          <SectionHeader
+            title="$100K worth of credits from handpicked brands"
+            gradientText="handpicked brands"
+            badgeText="EXCLUSIVE PERKS"
+            subtitle="Access to handpicked perks from D2C, SaaS, lifestyle & experience brands."
+            className="mb-12"
+            titleClassName="text-4xl md:text-5xl"
+          />
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">

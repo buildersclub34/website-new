@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useCallback } from 'react';
 import Image from 'next/image';
-import { SectionHeader } from './ui/SectionHeader';
+import SectionHeader from './SectionHeader';
 
 const usePassiveScroll = (ref: React.RefObject<HTMLDivElement | null>, callback: () => void) => {
   useEffect(() => {
@@ -136,9 +136,9 @@ export default function Testimonials() {
     <section className="py-16 bg-black">
       <div className="container mx-auto px-4">
         <SectionHeader
-          title="What Our Clients"
-          highlightedText="Say"
-          description="Hear from our satisfied clients about their experience working with us."
+          title="What Our Clients Say"
+          gradientText="Say"
+          subtitle="Hear from our satisfied clients about their experience working with us."
         />
 
         <div 

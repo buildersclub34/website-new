@@ -4,7 +4,8 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { Rocket, Users, Star, Check, ArrowRight } from 'lucide-react';
-import { SectionHeader } from '@/components/ui/SectionHeader';
+import SectionHeader from '../../components/SectionHeader';
+import NeoPopButton from '../../components/ui/NeoPopButton';
 import ClientLayout from '../ClientLayout';
 
 function BuildersCircle() {
@@ -128,20 +129,24 @@ function BuildersCircle() {
                 An offline network of funded and growth stage founders dedicated to scaling their business enabled by advisors, partners and investors.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-6">
-                <a 
-                  href="https://nas.io/tbc" 
+                <NeoPopButton
+                  as="link"
+                  href="https://nas.io/tbc"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="neopop-btn neopop-primary text-lg"
+                  variant="primary"
+                  size="lg"
                 >
                   Register for Trial Session
-                </a>
-                <a 
-                  href="#" 
-                  className="neopop-btn neopop-secondary text-lg flex items-center gap-2"
+                </NeoPopButton>
+                <NeoPopButton
+                  as="button"
+                  variant="secondary"
+                  size="lg"
+                  className="flex items-center gap-2"
                 >
                   List of advisors
-                </a>
+                </NeoPopButton>
               </div>
             </div>
           </div>
@@ -189,8 +194,10 @@ function BuildersCircle() {
             
             <div className="flex justify-center mb-12">
               <div className="inline-flex p-1 bg-gray-800 rounded-full">
-                <button 
+                <NeoPopButton 
                   onClick={() => setActiveTab('growth')}
+                  variant="primary"
+                  size="lg"
                   className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                     activeTab === 'growth' 
                       ? 'bg-yellow-500 text-black' 
@@ -198,9 +205,11 @@ function BuildersCircle() {
                   }`}
                 >
                   Growth Circle
-                </button>
-                <button 
+                </NeoPopButton>
+                <NeoPopButton 
                   onClick={() => setActiveTab('elite')}
+                  variant="primary"
+                  size="lg"
                   className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                     activeTab === 'elite' 
                       ? 'bg-yellow-500 text-black' 
@@ -208,7 +217,7 @@ function BuildersCircle() {
                   }`}
                 >
                   Elite Circle
-                </button>
+                </NeoPopButton>
               </div>
             </div>
             
@@ -254,10 +263,16 @@ function BuildersCircle() {
                     </ul>
                   </div>
                 </div>
-                <Button className="w-full neopop-btn neopop-primary group">
-                  Join Growth Circle
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
+                <NeoPopButton 
+                  variant="primary"
+                  size="lg"
+                  fullWidth
+                  className="group"
+                >
+                  <span className="group-hover:translate-x-1 transition-transform">
+                    Join Growth Circle →
+                  </span>
+                </NeoPopButton>
               </div>
               
               {/* Elite Circle */}
@@ -302,10 +317,16 @@ function BuildersCircle() {
                     </ul>
                   </div>
                 </div>
-                <Button className="w-full neopop-btn neopop-primary group">
-                  Join Elite Circle
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
+                <NeoPopButton 
+                  variant="primary"
+                  size="lg"
+                  fullWidth
+                  className="group"
+                >
+                  <span className="group-hover:translate-x-1 transition-transform">
+                    Join Elite Circle →
+                  </span>
+                </NeoPopButton>
                 
                 <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-yellow-500/10 rounded-full filter blur-3xl"></div>
               </div>
@@ -392,10 +413,14 @@ function BuildersCircle() {
             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
               Join our growing community with active chapters in Bangalore, Delhi, Mumbai, and Pune
             </p>
-            <Button className="neopop-btn neopop-primary group">
+            <NeoPopButton 
+              variant="primary"
+              size="lg"
+              className="group"
+            >
               REGISTER NOW
               <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
+            </NeoPopButton>
             
             <div className="mt-12 flex flex-wrap justify-center gap-8">
               {['Bangalore', 'Delhi', 'Mumbai', 'Pune'].map((city, index) => (

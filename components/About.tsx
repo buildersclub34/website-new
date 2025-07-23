@@ -1,6 +1,8 @@
 import { Zap, Target, Handshake, Calendar, Network } from 'lucide-react';
 import React from 'react';
 import Image from 'next/image';
+import NeoPopButton from './ui/NeoPopButton';
+import SectionHeader from './SectionHeader';
 
 export default function About() {
   const initiatives = [
@@ -50,12 +52,12 @@ export default function About() {
         {/* Why Join CTA Section */}
         <div className="relative bg-gradient-to-r from-[#FFD700]/5 to-[#FFA500]/5 rounded-2xl p-10 md:p-16 mb-24 overflow-hidden border border-white/10">
           <div className="relative z-10 max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-5">
-              Why Join <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] via-[#FFC000] to-[#FFA500]">The Builders Club?</span>
-            </h2>
-            <p className="text-lg md:text-xl text-white/80 mb-10 max-w-3xl mx-auto leading-relaxed">
-              We are one of the largest startup founder communities globally, helping startups in their growth journey with Community, Content and Capital.
-            </p>
+            <SectionHeader 
+              title="Why Join The Builders Club?"
+              gradientText="The Builders Club?"
+              subtitle="We are one of the largest startup founder communities globally, helping startups in their growth journey with Community, Content and Capital."
+              className="mb-10"
+            />
             
             {/* Video Container */}
             <div className="relative rounded-xl overflow-hidden mb-8 group">
@@ -106,14 +108,17 @@ export default function About() {
               <p className="mt-3 text-sm text-white/80">Watch our community in action</p>
             </div>
             
-            <a 
-              href="https://nas.io/tbc" 
+            <NeoPopButton
+              as="link"
+              href="https://nas.io/tbc"
               target="_blank"
               rel="noopener noreferrer"
-              className="neopop-btn neopop-primary text-lg mx-auto mt-6"
+              variant="primary"
+              size="lg"
+              className="mx-auto mt-6"
             >
               Join the Community
-            </a>
+            </NeoPopButton>
           </div>
         </div>
 

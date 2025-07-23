@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Mic, Users, MessageSquare, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import ClientLayout from '../ClientLayout';
+import SectionHeader from '../../components/SectionHeader';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -109,14 +110,15 @@ function ContentPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="mb-16"
         >
-          <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent mb-4">
-            Explore Our Content
-          </h1>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Discover podcasts, builder profiles, and testimonials from our community of innovative founders and creators.
-          </p>
+          <SectionHeader
+            title="Explore Our Content"
+            subtitle="Discover podcasts, builder profiles, and testimonials from our community of innovative founders and creators."
+            className="text-center"
+            titleClassName="text-4xl md:text-6xl font-bold"
+            gradientText="Explore"
+          />
         </motion.div>
 
         {/* Content Grid */}

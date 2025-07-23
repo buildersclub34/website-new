@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import Image from 'next/image';
+import SectionHeader from './SectionHeader';
 
 const brands = [
   {
@@ -94,18 +95,25 @@ export default function BrandsSection() {
   return (
     <section className="relative py-16 bg-black overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
-            Brands We&apos;ve <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] via-[#FFC000] to-[#FFA500]">Worked With</span>
-          </h2>
-          <p className="text-xl text-white/80 max-w-3xl mx-auto">
-            Trusted by leading companies and innovative startups worldwide
-          </p>
-        </div>
+        <SectionHeader 
+          title="Brands We've Worked With"
+          gradientText="Worked With"
+        />
+        <p className="text-xl text-white/80 max-w-3xl mx-auto">
+          Trusted by leading companies and innovative startups worldwide
+        </p>
+      </div>
 
+      <div 
+        ref={containerRef}
+        className="relative w-full overflow-hidden"
+      >
         <div 
-          ref={containerRef}
-          className="relative w-full overflow-hidden"
+          ref={scrollerRef}
+          className="flex items-center gap-12 w-max whitespace-nowrap relative w-full overflow-hidden"
+          style={{
+            animation: 'scroll 30s linear infinite',
+          }}
         >
           <div 
             ref={scrollerRef}

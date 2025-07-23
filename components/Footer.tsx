@@ -1,8 +1,10 @@
 'use client';
 
-import { Mail } from 'lucide-react';
+import { Mail, ArrowUp } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import NeoPopButton from '@/components/ui/NeoPopButton';
 import { useEffect, useState } from 'react';
 
 export default function Footer() {
@@ -176,19 +178,16 @@ export default function Footer() {
             
             {/* Back to top button */}
             <div className="mt-8 flex justify-center">
-              <button 
+              <NeoPopButton
                 onClick={scrollToTop}
-                className="flex items-center text-sm text-yellow-400 hover:text-yellow-300 transition-colors duration-300 group"
+                variant="secondary"
+                size="default"
+                className="group"
                 aria-label="Back to top"
               >
                 <span className="mr-2">Back to top</span>
-                <div className="w-8 h-8 rounded-full border-2 border-yellow-500/30 flex items-center justify-center group-hover:bg-yellow-500/10 transition-colors duration-300">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-up">
-                    <path d="m5 12 7-7 7 7"/>
-                    <path d="M12 19V5"/>
-                  </svg>
-                </div>
-              </button>
+                <ArrowUp className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform" />
+              </NeoPopButton>
             </div>
           </div>
         </div>

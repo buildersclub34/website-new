@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Menu, X, Zap } from 'lucide-react';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import NeoPopButton from './ui/NeoPopButton';
 
 export default function Header() {
   const pathname = usePathname();
@@ -114,23 +115,19 @@ export default function Header() {
             
             {/* CTA Button */}
             <div className="flex-shrink-0 relative z-50">
-              <a 
-                href="https://nas.io/tbc" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="neopop-btn neopop-primary text-lg relative z-50"
-                aria-label="Join The Club"
-                style={{
-                  position: 'relative',
-                  zIndex: 1001,
-                  textDecoration: 'none',
-                  display: 'inline-block',
-                  textAlign: 'center',
-                  whiteSpace: 'nowrap'
-                }}
-              >
-                Join The Club
-              </a>
+              <div className="relative z-50">
+                <NeoPopButton
+                  as="link"
+                  href="https://nas.io/tbc"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="primary"
+                  size="lg"
+                  aria-label="Join The Club"
+                >
+                  Join The Club
+                </NeoPopButton>
+              </div>
             </div>
           </nav>
 
@@ -148,23 +145,19 @@ export default function Header() {
               />
             </a>
             <div className="flex items-center">
-              <a 
-                href="https://nas.io/tbc" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="neopop-btn neopop-primary text-sm sm:text-base mr-3 relative z-50"
-                aria-label="Join"
-                style={{
-                  position: 'relative',
-                  zIndex: 1001,
-                  textDecoration: 'none',
-                  display: 'inline-block',
-                  textAlign: 'center',
-                  whiteSpace: 'nowrap'
-                }}
-              >
-                Join
-              </a>
+              <div className="relative z-50 mr-3">
+                <NeoPopButton
+                  as="link"
+                  href="https://nas.io/tbc"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="primary"
+                  size="default"
+                  aria-label="Join"
+                >
+                  Join
+                </NeoPopButton>
+              </div>
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="p-2 rounded-lg hover:bg-white/10 transition-all duration-200 active:scale-95 text-white"
@@ -201,23 +194,20 @@ export default function Header() {
                 {item.name}
               </a>
             ))}
-            <a 
-              href="https://nas.io/tbc" 
-              target="_blank"
-              rel="noopener noreferrer"
-              className="neopop-btn neopop-primary text-lg w-full text-center mt-2 relative z-50"
-              onClick={() => setIsMenuOpen(false)}
-              style={{
-                position: 'relative',
-                zIndex: 1001,
-                textDecoration: 'none',
-                display: 'inline-block',
-                textAlign: 'center',
-                whiteSpace: 'nowrap'
-              }}
-            >
-              Join The Club
-            </a>
+            <div className="w-full mt-2 relative z-50">
+              <NeoPopButton
+                as="button"
+                variant="primary"
+                size="lg"
+                fullWidth
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  // Add any additional click handlers here
+                }}
+              >
+                Join The Club
+              </NeoPopButton>
+            </div>
           </nav>
         </div>
       </header>
