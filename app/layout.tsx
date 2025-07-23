@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Building the future through strategic investments and partnerships.',
   keywords: 'venture capital, investment, startup, entrepreneurship, builders club',
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://buildersclub.me'),
+  manifest: '/manifest.json',
   openGraph: {
     title: 'Builders Club - Venture Capital & Investment',
     description: 'Building the future through strategic investments and partnerships.',
@@ -29,8 +30,6 @@ export const metadata: Metadata = {
     description: 'Building the future through strategic investments and partnerships.',
     images: ['/og-image.jpg'],
   },
-  themeColor: '#000000',
-  viewport: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes',
 };
 
 export default function RootLayout({

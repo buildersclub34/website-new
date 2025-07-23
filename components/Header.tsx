@@ -80,13 +80,14 @@ export default function Header() {
           <nav className="hidden lg:flex items-center justify-between w-full">
             {/* Logo */}
             <div className="flex-shrink-0 relative w-40 h-14">
-              <a href="/" className="block w-full h-full">
+              <a href="/" className="block relative w-full h-full">
                 <Image 
                   src="/images/builders-club-logo.png" 
                   alt="The Builders Club" 
                   fill
                   sizes="160px"
                   className="object-contain"
+                  style={{ position: 'absolute' }}
                   priority
                 />
               </a>
@@ -101,11 +102,11 @@ export default function Header() {
                     href={item.link}
                     target={item.link.startsWith('http') ? '_blank' : '_self'}
                     rel={item.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    className={`relative text-sm xl:text-base ${pathname === item.link || (item.link !== '/' && pathname.startsWith(item.link)) ? 'text-primary' : 'text-white hover:text-primary'} transition-all duration-300 font-medium px-4 py-2 group`}
+                    className={`relative text-sm xl:text-base ${pathname && (pathname === item.link || (item.link !== '/' && pathname.startsWith(item.link))) ? 'text-primary' : 'text-white hover:text-primary'} transition-all duration-300 font-medium px-4 py-2 group`}
                     aria-label={item.name}
                   >
                     {item.name}
-                    <span className={`absolute bottom-1 ${pathname === item.link || (item.link !== '/' && pathname.startsWith(item.link)) ? 'w-[calc(100%-1.5rem)] left-3' : 'left-1/2 w-0 group-hover:w-[calc(100%-1.5rem)] group-hover:left-3'} h-0.5 bg-primary transition-all duration-300`}></span>
+                    <span className={`absolute bottom-1 ${pathname && (pathname === item.link || (item.link !== '/' && pathname.startsWith(item.link))) ? 'w-[calc(100%-1.5rem)] left-3' : 'left-1/2 w-0 group-hover:w-[calc(100%-1.5rem)] group-hover:left-3'} h-0.5 bg-primary transition-all duration-300`}></span>
                   </a>
                 ))}
               </div>
@@ -135,17 +136,16 @@ export default function Header() {
 
           {/* Mobile Menu Button */}
           <div className="flex items-center justify-between w-full lg:hidden">
-            <a href="/" className="block h-12 w-auto">
-              <div className="relative w-40 h-12">
-                <Image 
-                  src="/images/builders-club-logo.png" 
-                  alt="The Builders Club" 
-                  fill
-                  sizes="160px"
-                  className="object-contain"
-                  priority
-                />
-              </div>
+            <a href="/" className="block relative h-12 w-40">
+              <Image 
+                src="/images/builders-club-logo.png" 
+                alt="The Builders Club" 
+                fill
+                sizes="160px"
+                className="object-contain"
+                style={{ position: 'absolute' }}
+                priority
+              />
             </a>
             <div className="flex items-center">
               <a 

@@ -38,12 +38,12 @@ const isGoldBox = (index: number, rowLength: number) => {
 };
 
 export default function InvestmentPartners() {
-  // For mobile (2 columns), we'll use 2 columns, for others we'll use 5
+  // Row lengths for the gold box pattern
   const rowLengths = {
-    base: 2,     // 2 columns on mobile
-    sm: 3,       // 3 columns on small screens
-    md: 5,       // 5 columns on medium screens
-    lg: 5        // 5 columns on large screens
+    base: 3,     // 3 columns on mobile
+    sm: 4,       // 4 columns on small screens
+    md: 6,       // 6 columns on medium screens
+    lg: 8        // 8 columns on large screens
   };
 
   return (
@@ -60,7 +60,7 @@ export default function InvestmentPartners() {
           </p>
         </div>
         
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-0.5 md:gap-1">
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-0.5">
           {partnerLogos.map((partner, index) => {
             const isGold = isGoldBox(index, rowLengths.base);
             const bgColor = isGold ? 'bg-gradient-to-br from-[#FFD700] to-[#FFA500]' : 'bg-black';
@@ -69,11 +69,11 @@ export default function InvestmentPartners() {
             return (
               <div 
                 key={partner.id}
-                className={`${bgColor} ${borderColor} border-2 md:border-4 p-2 md:p-4 flex items-center justify-center 
-                  transition-all duration-300 hover:scale-105 hover:shadow-neon-gold hover:z-10 relative`}
+                className={`${bgColor} ${borderColor} border md:border-2 p-1 md:p-2 flex items-center justify-center 
+                  transition-all duration-200 hover:scale-105 hover:shadow-neon-gold hover:z-10 relative`}
                 style={{
                   aspectRatio: '1/1',
-                  boxShadow: isGold ? '0 0 15px rgba(255, 215, 0, 0.3)' : 'none'
+                  boxShadow: isGold ? '0 0 10px rgba(255, 215, 0, 0.2)' : 'none'
                 }}
               >
                 <div className="relative w-full h-full flex items-center justify-center">
@@ -81,18 +81,18 @@ export default function InvestmentPartners() {
                     src={partner.src}
                     alt={partner.alt}
                     fill
-                    className={`object-contain p-2 ${isGold ? 'invert-0' : 'invert'}`}
-                    sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 20vw"
+                    className={`object-contain p-1 ${isGold ? 'invert-0' : 'invert'}`}
+                    sizes="(max-width: 640px) 33vw, (max-width: 768px) 25vw, 16vw"
                     loading="lazy"
                   />
                 </div>
                 {/* Subtle corner accents */}
                 {isGold && (
                   <>
-                    <div className="absolute top-0 left-0 w-2 h-2 bg-black"></div>
-                    <div className="absolute top-0 right-0 w-2 h-2 bg-black"></div>
-                    <div className="absolute bottom-0 left-0 w-2 h-2 bg-black"></div>
-                    <div className="absolute bottom-0 right-0 w-2 h-2 bg-black"></div>
+                    <div className="absolute top-0 left-0 w-1.5 h-1.5 bg-black"></div>
+                    <div className="absolute top-0 right-0 w-1.5 h-1.5 bg-black"></div>
+                    <div className="absolute bottom-0 left-0 w-1.5 h-1.5 bg-black"></div>
+                    <div className="absolute bottom-0 right-0 w-1.5 h-1.5 bg-black"></div>
                   </>
                 )}
               </div>

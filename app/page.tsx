@@ -6,6 +6,8 @@ import Testimonials from '@/components/Testimonials';
 import InvestmentPartners from '@/components/InvestmentPartners';
 import PartnerInitiatives from '@/components/PartnerInitiatives';
 import OfficialPartners from '@/components/OfficialPartners';
+import UnfairAdvantages from '@/components/UnfairAdvantages';
+import OurPerks from '@/components/OurPerks';
 
 function Home() {
   return (
@@ -14,6 +16,8 @@ function Home() {
         <Hero />
         <About />
         <BrandsSection />
+        <OurPerks />
+        <UnfairAdvantages />
         <Testimonials />
         <InvestmentPartners />
         <PartnerInitiatives />
