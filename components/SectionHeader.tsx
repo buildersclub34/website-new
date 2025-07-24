@@ -26,7 +26,7 @@ export function SectionHeader({
   titleClassName = ''
 }: SectionHeaderProps) {
   const renderTitle = () => {
-    const titleClasses = `font-black text-white mb-4 ${titleClassName || 'text-3xl md:text-4xl'}`;
+    const titleClasses = `font-black text-white mb-4 ${titleClassName || 'text-4xl md:text-5xl'}`;
     
     if (gradientText && typeof title === 'string') {
       const parts = title.split(gradientText);

@@ -53,7 +53,7 @@ export default function Header() {
     { name: 'The Builders Circle', link: '/circle' },
     { name: 'Discovery Calls', link: '/discovery-calls' },
     { name: 'Fundraising', link: '/fundraising' },
-    { name: 'Events', link: 'https://thebuildersclub.me/events/' },
+    { name: 'Events', link: '/events' },
     { name: 'Content', link: '/content' }
   ];
 

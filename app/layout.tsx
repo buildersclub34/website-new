@@ -1,6 +1,9 @@
 import './globals.css';
 import ClientLayout from './ClientLayout';
 import { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Builders Club - Venture Capital & Investment',
@@ -46,7 +49,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
       </head>
-      <body className="min-h-screen bg-black text-white font-sans antialiased" suppressHydrationWarning>
+      <body className={`${inter.className} min-h-screen bg-black text-white antialiased`} suppressHydrationWarning>
         <ClientLayout>
           {children}
         </ClientLayout>
