@@ -1,38 +1,151 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
-import { Rocket, Users, Star, Check, ArrowRight } from 'lucide-react';
+import { Rocket, Users, Star, Check, ArrowRight, ChevronRight, ChevronLeft, Handshake, Briefcase, MessageSquare, Award, Zap, UserCheck, Shield, BarChart2, Target, Lightbulb, TrendingUp } from 'lucide-react';
+import dynamic from 'next/dynamic';
 import SectionHeader from '../../components/SectionHeader';
 import NeoPopButton from '../../components/ui/NeoPopButton';
 import ClientLayout from '../ClientLayout';
 
 function BuildersCircle() {
+
   const features = [
     {
-      title: 'network',
-      description: 'Meet new curated founders, investors and CXOs every month.'
+      icon: <Rocket className="w-8 h-8 text-yellow-400" />,
+      title: 'Exclusive Access',
+      description: 'Get early access to premium content, tools, and resources before anyone else.',
+      gradient: 'from-amber-500/10 to-yellow-500/5',
+      borderColor: 'border-amber-500/30',
+      hoverBorderColor: 'border-yellow-400/50',
+      hoverBg: 'hover:bg-gradient-to-br hover:from-amber-500/15 hover:to-yellow-500/10',
     },
     {
+      icon: <Users className="w-8 h-8 text-yellow-400" />,
+      title: 'Private Community',
+      description: 'Connect with like-minded builders in our exclusive members-only community.',
+      gradient: 'from-yellow-500/10 to-amber-500/5',
+      borderColor: 'border-yellow-500/30',
+      hoverBorderColor: 'border-amber-400/50',
+      hoverBg: 'hover:bg-gradient-to-br hover:from-yellow-500/15 hover:to-amber-500/10',
+    },
+    {
+      icon: <Star className="w-8 h-8 text-yellow-400" />,
+      title: 'Expert Guidance',
+      description: 'Learn from industry experts and successful entrepreneurs in our mastermind sessions.',
+      gradient: 'from-amber-600/10 to-yellow-600/5',
+      borderColor: 'border-amber-600/30',
+      hoverBorderColor: 'border-yellow-500/50',
+      hoverBg: 'hover:bg-gradient-to-br hover:from-amber-600/15 hover:to-yellow-600/10',
+    },
+    {
+      icon: <Check className="w-8 h-8 text-yellow-400" />,
+      title: 'Hands-on Support',
+      description: 'Get personalized feedback and support for your projects from our team of experts.',
+      gradient: 'from-yellow-600/10 to-amber-600/5',
+      borderColor: 'border-yellow-600/30',
+      hoverBorderColor: 'border-amber-500/50',
+      hoverBg: 'hover:bg-gradient-to-br hover:from-yellow-600/15 hover:to-amber-600/10',
+    },
+    {
+      icon: <Users className="w-8 h-8 text-yellow-400" />,
+      title: 'Network',
+      description: 'Meet new curated founders, investors and CXOs every month.',
+      gradient: 'from-blue-500/10 to-indigo-500/5',
+      borderColor: 'border-blue-500/30',
+      hoverBorderColor: 'border-indigo-400/50',
+      hoverBg: 'hover:bg-gradient-to-br hover:from-blue-500/15 hover:to-indigo-500/10',
+    },
+    {
+      icon: <Handshake className="w-8 h-8 text-yellow-400" />,
       title: 'Business Referrals',
-      description: 'Business referral among the circle members + Get top industry connects from the club'
+      description: 'Business referral among the circle members + Get top industry connects from the club',
+      gradient: 'from-purple-500/10 to-pink-500/5',
+      borderColor: 'border-purple-500/30',
+      hoverBorderColor: 'border-pink-400/50',
+      hoverBg: 'hover:bg-gradient-to-br hover:from-purple-500/15 hover:to-pink-500/10',
     },
     {
-      title: 'Advisory Network',
-      description: 'Access 100+ advisors from all industries & domains'
+      icon: <UserCheck className="w-8 h-8 text-yellow-400" />,
+      title: 'Co-Founder Connect',
+      description: 'Looking for a co-founder? Meet potential co-founders in the club.',
+      gradient: 'from-green-500/10 to-teal-500/5',
+      borderColor: 'border-green-500/30',
+      hoverBorderColor: 'border-teal-400/50',
+      hoverBg: 'hover:bg-gradient-to-br hover:from-green-500/15 hover:to-teal-500/10',
     },
     {
-      title: 'Fundraising Support',
-      description: 'Help you get connected with investors for your next fundraise'
+      icon: <MessageSquare className="w-8 h-8 text-yellow-400" />,
+      title: 'Build in Public',
+      description: 'Share your progress, get feedback, and learn from others in the community.',
+      gradient: 'from-rose-500/10 to-red-500/5',
+      borderColor: 'border-rose-500/30',
+      hoverBorderColor: 'border-red-400/50',
+      hoverBg: 'hover:bg-gradient-to-br hover:from-rose-500/15 hover:to-red-500/10',
     },
     {
-      title: 'Vendor Connect',
-      description: 'Access to best quality service providers at your finger tips'
+      icon: <Award className="w-8 h-8 text-yellow-400" />,
+      title: 'Mentorship',
+      description: 'Get guidance from experienced entrepreneurs and industry experts.',
+      gradient: 'from-amber-500/10 to-orange-500/5',
+      borderColor: 'border-amber-500/30',
+      hoverBorderColor: 'border-orange-400/50',
+      hoverBg: 'hover:bg-gradient-to-br hover:from-amber-500/15 hover:to-orange-500/10',
     },
     {
-      title: 'Member Directory',
-      description: 'Connect with any circle member across the globe'
+      icon: <Briefcase className="w-8 h-8 text-yellow-400" />,
+      title: 'Investor Access',
+      description: 'Connect with angel investors and VCs looking to fund promising startups.',
+      gradient: 'from-emerald-500/10 to-cyan-500/5',
+      borderColor: 'border-emerald-500/30',
+      hoverBorderColor: 'border-cyan-400/50',
+      hoverBg: 'hover:bg-gradient-to-br hover:from-emerald-500/15 hover:to-cyan-500/10',
+    },
+    {
+      icon: <BarChart2 className="w-8 h-8 text-yellow-400" />,
+      title: 'Workshops',
+      description: 'Participate in exclusive workshops and masterclasses on various topics.',
+      gradient: 'from-violet-500/10 to-fuchsia-500/5',
+      borderColor: 'border-violet-500/30',
+      hoverBorderColor: 'border-fuchsia-400/50',
+      hoverBg: 'hover:bg-gradient-to-br hover:from-violet-500/15 hover:to-fuchsia-500/10',
+    },
+    {
+      icon: <Target className="w-8 h-8 text-yellow-400" />,
+      title: 'Accountability',
+      description: 'Stay on track with your goals through our accountability framework.',
+      gradient: 'from-sky-500/10 to-blue-500/5',
+      borderColor: 'border-sky-500/30',
+      hoverBorderColor: 'border-blue-400/50',
+      hoverBg: 'hover:bg-gradient-to-br hover:from-sky-500/15 hover:to-blue-500/10',
+    },
+    {
+      icon: <Zap className="w-8 h-8 text-yellow-400" />,
+      title: 'Pitch Practice',
+      description: 'Practice your pitch and get feedback from experienced founders.',
+      gradient: 'from-yellow-500/10 to-amber-500/5',
+      borderColor: 'border-yellow-500/30',
+      hoverBorderColor: 'border-amber-400/50',
+      hoverBg: 'hover:bg-gradient-to-br hover:from-yellow-500/15 hover:to-amber-500/10',
+    },
+    {
+      icon: <Lightbulb className="w-8 h-8 text-yellow-400" />,
+      title: 'Idea Validation',
+      description: 'Test your startup ideas with a community of builders and experts.',
+      gradient: 'from-lime-500/10 to-green-500/5',
+      borderColor: 'border-lime-500/30',
+      hoverBorderColor: 'border-green-400/50',
+      hoverBg: 'hover:bg-gradient-to-br hover:from-lime-500/15 hover:to-green-500/10',
+    },
+    {
+      icon: <TrendingUp className="w-8 h-8 text-yellow-400" />,
+      title: 'Growth Hacking',
+      description: 'Learn growth strategies that work from successful founders.',
+      gradient: 'from-orange-500/10 to-red-500/5',
+      borderColor: 'border-orange-500/30',
+      hoverBorderColor: 'border-red-400/50',
+      hoverBg: 'hover:bg-gradient-to-br hover:from-orange-500/15 hover:to-red-500/10',
     }
   ];
 
@@ -107,11 +220,6 @@ function BuildersCircle() {
   return (
     <div className="min-h-screen bg-black">
       <main className="relative pt-16">
-        {/* Background Elements */}
-        <div className="fixed inset-0 -z-10 bg-black"></div>
-        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5 -z-10"></div>
-        <div className="absolute top-20 left-10 w-96 h-96 bg-yellow-500/5 rounded-full filter blur-3xl -z-10"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-yellow-500/5 rounded-full filter blur-3xl -z-10" style={{ animationDelay: '3s' }}></div>
         {/* Hero Section */}
         <section className="relative py-32 overflow-hidden z-10">
           <div className="container mx-auto px-4 relative">
@@ -146,34 +254,46 @@ function BuildersCircle() {
                   className="flex items-center gap-2"
                 >
                   List of advisors
+                  <ChevronRight className="w-5 h-5" />
                 </NeoPopButton>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Features Section */}
+        {/* Why Join Us Section */}
         <section className="py-20 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-black via-black to-gray-900/80"></div>
           <div className="container mx-auto px-4 relative z-10">
-            <SectionHeader
-              badgeText="Why Join Us"
-              title="Everything You Need to"
-              highlightedText="Scale Your Business"
-              description="Access a curated network of founders, investors, and industry experts to accelerate your growth journey."
-              icon={<Star className="w-5 h-5" />}
-            />
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+            <div className="text-center mb-12">
+              <span className="inline-block px-4 py-1.5 text-xs font-semibold tracking-wider text-yellow-500 uppercase rounded-full bg-yellow-500/10 mb-4">
+                Why Join Us
+              </span>
+              <h2 className="font-black text-white mb-4 text-4xl md:text-5xl">
+                Everything You Need to <span className="text-yellow-400">Succeed</span>
+              </h2>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {features.map((feature, index) => (
-                <div 
+                <div
                   key={index}
-                  className="bg-gradient-to-br from-gray-900/80 to-gray-900/50 p-8 rounded-xl border border-gray-800 hover:border-yellow-500/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-yellow-500/10"
+                  className={`relative group bg-gradient-to-br ${feature.gradient} backdrop-blur-sm border ${feature.borderColor} rounded-2xl p-6`}
                 >
-                  <div className="w-12 h-12 bg-yellow-500/10 rounded-lg flex items-center justify-center mb-6 border border-yellow-500/20">
-                    <Check className="w-6 h-6 text-yellow-400" />
+                  <div className="relative z-10">
+                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-yellow-500/20 to-amber-500/10 flex items-center justify-center mb-5 shadow-lg shadow-yellow-500/10">
+                      {feature.icon}
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-3 bg-gradient-to-r from-yellow-400 to-amber-300 bg-clip-text text-transparent">
+                      {feature.title}
+                    </h3>
+                    <p className="text-gray-300 leading-relaxed">
+                      {feature.description}
+                    </p>
+                    <div className="mt-4 inline-flex items-center text-yellow-400 font-medium text-sm">
+                      Learn more
+                      <ArrowRight className="ml-1 w-4 h-4" />
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold mb-3 text-white capitalize">{feature.title}</h3>
-                  <p className="text-gray-400">{feature.description}</p>
                 </div>
               ))}
             </div>
@@ -198,10 +318,10 @@ function BuildersCircle() {
                   onClick={() => setActiveTab('growth')}
                   variant="primary"
                   size="lg"
-                  className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                  className={`px-6 py-2 rounded-full text-sm font-medium ${
                     activeTab === 'growth' 
                       ? 'bg-yellow-500 text-black' 
-                      : 'text-gray-400 hover:text-white'
+                      : 'text-gray-400'
                   }`}
                 >
                   Growth Circle
@@ -210,10 +330,10 @@ function BuildersCircle() {
                   onClick={() => setActiveTab('elite')}
                   variant="primary"
                   size="lg"
-                  className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                  className={`px-6 py-2 rounded-full text-sm font-medium ${
                     activeTab === 'elite' 
                       ? 'bg-yellow-500 text-black' 
-                      : 'text-gray-400 hover:text-white'
+                      : 'text-gray-400'
                   }`}
                 >
                   Elite Circle
@@ -223,9 +343,7 @@ function BuildersCircle() {
             
             <div className="grid md:grid-cols-2 gap-8">
               {/* Growth Circle */}
-              <div className={`bg-gradient-to-br from-gray-900/80 to-gray-900/50 p-8 rounded-2xl border-2 transition-all duration-300 ${
-                activeTab === 'growth' ? 'border-yellow-500 shadow-2xl shadow-yellow-500/10' : 'border-gray-800'
-              }`}>
+              <div className={`bg-gradient-to-br from-gray-900/80 to-gray-900/50 p-8 rounded-2xl border-2 border-gray-800 rounded-2xl p-6`}>
                 <h3 className="text-2xl font-bold mb-6 text-yellow-400">Growth Circle</h3>
                 <div className="mb-8">
                   <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-4 mb-6">
@@ -267,18 +385,13 @@ function BuildersCircle() {
                   variant="primary"
                   size="lg"
                   fullWidth
-                  className="group"
                 >
-                  <span className="group-hover:translate-x-1 transition-transform">
-                    Join Growth Circle →
-                  </span>
+                  Join Growth Circle →
                 </NeoPopButton>
               </div>
               
               {/* Elite Circle */}
-              <div className={`bg-gradient-to-br from-yellow-500/5 via-yellow-500/10 to-yellow-500/5 p-8 rounded-2xl border-2 transition-all duration-300 ${
-                activeTab === 'elite' ? 'border-yellow-500 shadow-2xl shadow-yellow-500/20' : 'border-yellow-500/30'
-              } relative overflow-hidden`}>
+              <div className={`bg-gradient-to-br from-yellow-500/5 via-yellow-500/10 to-yellow-500/5 p-8 rounded-2xl border-2 border-yellow-500/30 rounded-2xl p-6 relative overflow-hidden`}>
                 <div className="absolute top-4 right-4">
                   <span className="bg-yellow-500/20 text-yellow-400 text-xs font-bold px-3 py-1 rounded-full">
                     MOST POPULAR
@@ -321,11 +434,8 @@ function BuildersCircle() {
                   variant="primary"
                   size="lg"
                   fullWidth
-                  className="group"
                 >
-                  <span className="group-hover:translate-x-1 transition-transform">
-                    Join Elite Circle →
-                  </span>
+                  Join Elite Circle →
                 </NeoPopButton>
                 
                 <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-yellow-500/10 rounded-full filter blur-3xl"></div>
@@ -350,7 +460,7 @@ function BuildersCircle() {
               {testimonials.map((testimonial, index) => (
                 <div 
                   key={index} 
-                  className="bg-gradient-to-br from-gray-900/80 to-gray-900/50 p-8 rounded-2xl border border-gray-800 hover:border-yellow-500/30 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-yellow-500/10"
+                  className="bg-gradient-to-br from-gray-900/80 to-gray-900/50 p-8 rounded-2xl border border-gray-800"
                 >
                   <div className="text-yellow-400 mb-6">
                     <svg width="40" height="30" viewBox="0 0 40 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -389,7 +499,7 @@ function BuildersCircle() {
               {faqs.map((faq, index) => (
                 <div 
                   key={index} 
-                  className="bg-gradient-to-br from-gray-900/50 to-gray-900/30 p-6 rounded-xl border border-gray-800 hover:border-yellow-500/30 transition-all duration-300"
+                  className="bg-gradient-to-br from-gray-900/50 to-gray-900/30 p-6 rounded-xl border border-gray-800"
                 >
                   <h3 className="text-xl font-semibold text-white mb-3">{faq.question}</h3>
                   <p className="text-gray-400">{faq.answer}</p>
@@ -399,13 +509,109 @@ function BuildersCircle() {
           </div>
         </section>
 
+        {/* Enhanced Trusted By Leaders Section */}
+        <section className="w-full py-24 bg-gradient-to-b from-black to-gray-900 relative overflow-hidden">
+          {/* Static background elements */}
+          <div className="absolute inset-0 overflow-hidden">
+            {[...Array(15)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute rounded-full bg-yellow-400/10"
+                style={{
+                  width: Math.random() * 300 + 100 + 'px',
+                  height: Math.random() * 300 + 100 + 'px',
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                }}
+              />
+            ))}
+          </div>
+
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              <div className="space-y-8">
+                <div className="inline-block">
+                  <div
+                    className="px-4 py-1.5 bg-yellow-400/20 rounded-full text-yellow-400 text-sm font-medium mb-4 inline-flex items-center"
+                  >
+                    <span className="relative flex h-2 w-2 mr-2">
+                      <span className="absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-yellow-400"></span>
+                    </span>
+                    Trusted by the best
+                  </div>
+                </div>
+                
+                <h2 className="text-4xl md:text-6xl font-bold text-white leading-tight">
+                  Backed by <span className="text-yellow-400">Industry Leaders</span>
+                </h2>
+                
+                <p className="text-gray-300 text-lg md:text-xl max-w-lg">
+                  Join an elite network of visionaries and innovators from the world&apos;s most influential companies.
+                </p>
+                
+                <div className="flex flex-wrap gap-4 pt-4">
+                  <NeoPopButton
+                    as="link"
+                    href="#WIP-membership"
+                    variant="primary"
+                  >
+                    Join the Network
+                    <ChevronRight className="w-5 h-5 ml-2" />
+                  </NeoPopButton>
+                  
+                  <NeoPopButton
+                    as="button"
+                    variant="secondary"
+                    className="bg-transparent border border-yellow-400/30"
+                  >
+                    View Success Stories
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </NeoPopButton>
+                </div>
+                
+                <div className="flex items-center pt-4 space-x-2 text-yellow-400/80">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 fill-current" />
+                  ))}
+                  <span className="ml-2 text-gray-300">Rated 5/5 by 1000+ members</span>
+                </div>
+              </div>
+              
+              <div className="relative">
+                <div className="relative z-10 bg-gradient-to-br from-yellow-400 to-amber-500 p-1 rounded-3xl shadow-2xl shadow-yellow-500/20">
+                  <div className="bg-gray-900 p-6 md:p-8 rounded-2xl">
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+                      {['Google', 'Microsoft', 'Amazon', 'Meta', 'Netflix', 'Apple', 'Tesla', 'Airbnb', 'Uber'].map((company, i) => (
+                        <div 
+                          key={company}
+                          className="bg-black/50 backdrop-blur-sm p-4 rounded-xl border border-yellow-400/20 flex items-center justify-center h-24"
+                        >
+                          <div className="text-center">
+                            <div className="text-2xl font-bold text-yellow-400">{company}</div>
+                            <div className="text-xs text-yellow-400/70 mt-1">Partner</div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Decorative elements */}
+                <div 
+                  className="absolute -top-6 -left-6 w-32 h-32 bg-yellow-400/20 rounded-full filter blur-xl"
+                />
+                <div 
+                  className="absolute -bottom-8 -right-8 w-40 h-40 bg-yellow-400/10 rounded-full filter blur-xl"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="py-20 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/5 via-black to-yellow-500/5"></div>
-          <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20"></div>
-          <div className="absolute -top-20 -right-20 w-64 h-64 bg-yellow-500/10 rounded-full filter blur-3xl"></div>
-          <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-yellow-500/10 rounded-full filter blur-3xl"></div>
-          
+          <div className="absolute inset-0 bg-gradient-to-br from-black via-black to-gray-900/80 -z-10"></div>
           <div className="container mx-auto px-4 relative z-10 text-center">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
               Now in <span className="text-yellow-400">4 Cities</span>
@@ -416,10 +622,9 @@ function BuildersCircle() {
             <NeoPopButton 
               variant="primary"
               size="lg"
-              className="group"
             >
               REGISTER NOW
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-5 h-5 ml-2" />
             </NeoPopButton>
             
             <div className="mt-12 flex flex-wrap justify-center gap-8">
