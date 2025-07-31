@@ -9,6 +9,7 @@ import SectionHeader from '../../components/SectionHeader';
 import NeoPopButton from '../../components/ui/NeoPopButton';
 import ClientLayout from '../ClientLayout';
 import BuildersTeam from '../../components/BuildersTeam';
+import Testimonials from '../../components/Testimonials';
 
 function BuildersCircle() {
 
@@ -461,6 +462,45 @@ function BuildersCircle() {
                 
                 <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-yellow-500/10 rounded-full filter blur-3xl"></div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonials */}
+        <section className="py-20 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-black via-black to-gray-900/80"></div>
+          <div className="container mx-auto px-4 relative z-10">
+            <SectionHeader
+              badgeText="Testimonials"
+              title="What Our Members"
+              highlightedText="Say"
+              description="Hear from founders and executives who have transformed their businesses with our network."
+              icon={<Star className="w-5 h-5" />}
+            />
+            
+            <div className="grid md:grid-cols-3 gap-8 mt-16">
+              {testimonials.map((testimonial, index) => (
+                <div 
+                  key={index} 
+                  className="bg-gradient-to-br from-gray-900/80 to-gray-900/50 p-8 rounded-2xl border border-gray-800"
+                >
+                  <div className="text-yellow-400 mb-6">
+                    <svg width="40" height="30" viewBox="0 0 40 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M15.2 0L9.2 30H0L10 0H15.2ZM40 0L34 30H24.8L34.8 0H40Z" fill="currentColor"/>
+                    </svg>
+                  </div>
+                  <p className="text-gray-300 italic mb-6">&ldquo;{testimonial.quote}&rdquo;</p>
+                  <div className="flex items-center">
+                    <div className="h-12 w-12 rounded-full bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center text-yellow-400 font-bold text-lg mr-4">
+                      {testimonial.author.charAt(0)}
+                    </div>
+                    <div>
+                      <p className="font-semibold text-white">{testimonial.author}</p>
+                      <p className="text-sm text-gray-400">{testimonial.role}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>

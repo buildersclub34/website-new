@@ -4,6 +4,14 @@ import { useEffect, useRef, useCallback } from 'react';
 import Image from 'next/image';
 import SectionHeader from './SectionHeader';
 
+interface Testimonial {
+  id: number;
+  name: string;
+  role: string;
+  image: string;
+  quote: string;
+}
+
 const usePassiveScroll = (ref: React.RefObject<HTMLDivElement | null>, callback: () => void) => {
   useEffect(() => {
     const element = ref.current;
@@ -31,57 +39,31 @@ const getInitials = (name: string) => {
 const testimonials = [
   {
     id: 1,
-    name: 'Sarah Mitchell',
-    role: 'CEO, TechStart',
-    initials: 'SM',
-    backgroundColor: '#FFD700',
-    textColor: '#000000',
-    quote: 'Their web development expertise transformed our online presence. The modern design and seamless functionality exceeded our expectations completely.'
+    name: 'Vivek Prashanth',
+    role: 'COO, Livquik',
+    image: 'https://thebuildersclub.me/wp-content/uploads/2025/03/vivek-prashanth-150x150.png',
+    quote: 'The Builders Circle has been pivotal in helping us find the right advisors for our US GTM strategy. The connections and insights from the community have been invaluable. I\'ve also made some great friends here, which has made the journey even more rewarding. Plus, I\'ve had the opportunity to attend events I wouldn\'t have considered if I were part of a different community. It\'s more than just a network — it\'s a strategic and supportive ecosystem that opens doors and drives real growth.'
   },
   {
     id: 2,
-    name: 'Emma Thompson',
-    role: 'Business Owner',
-    initials: 'ET',
-    backgroundColor: '#FFA500',
-    textColor: '#FFFFFF',
-    quote: 'Outstanding web development service! They transformed our outdated site into a modern, fast-loading platform that our customers love.'
+    name: 'Sumit Rastogi',
+    role: 'Cofounder, Artinci',
+    image: 'https://thebuildersclub.me/wp-content/uploads/2025/03/Sumit-Rastogi-150x150.png',
+    quote: 'The Builders Circle has been a game-changer for me as a founder. It\'s an incredible community where I can truly lean on other founders for support and insights. Rohan is now running my marketing, and Amit is managing my LinkedIn — all thanks to the connections I made here. The knowledge and strategies I\'ve gained have been instrumental in running my business more effectively. It even helped me close my funding round in under three weeks!'
   },
   {
     id: 3,
-    name: 'David Chen',
-    role: 'E-commerce Manager',
-    initials: 'DC',
-    backgroundColor: '#FF6347',
-    textColor: '#FFFFFF',
-    quote: 'The e-commerce platform they built increased our online sales by 300%. Their attention to detail and UX expertise is remarkable.'
+    name: 'Amit Mishra',
+    role: 'CEO, Dazeinfo',
+    image: 'https://thebuildersclub.me/wp-content/uploads/2025/03/Amit-150x150.png',
+    quote: 'The Builders Circle is an incredibly curated gathering that consistently delivers value. I\'ve secured two new accounts through the connections I made here. Every month, I meet growth-stage founders and professionals who are carefully selected, which ensures meaningful and insightful conversations. The best part is that it\'s focused on growth-stage businesses — no early-stage noise — allowing for deep, strategic discussions.'
   },
   {
     id: 4,
-    name: 'Lisa Johnson',
-    role: 'Project Manager',
-    initials: 'LJ',
-    backgroundColor: '#4682B4',
-    textColor: '#FFFFFF',
-    quote: 'Professional, reliable, and incredibly talented team. They delivered our project on time and within budget. Highly recommend their services!'
-  },
-  {
-    id: 5,
-    name: 'Rachel Green',
-    role: 'CTO, InnovateLab',
-    initials: 'RG',
-    backgroundColor: '#9370DB',
-    textColor: '#FFFFFF',
-    quote: 'Their custom web application streamlined our business processes. The clean code and scalable architecture impressed our entire technical team.'
-  },
-  {
-    id: 6,
-    name: 'Michael Brown',
-    role: 'Marketing Director',
-    initials: 'MB',
-    backgroundColor: '#20B2AA',
-    textColor: '#FFFFFF',
-    quote: 'The digital marketing tools they implemented helped us reach 3x more customers and improved our conversion rates significantly.'
+    name: 'Debarya Dutta',
+    role: 'Cofounder, Upraised',
+    image: 'https://thebuildersclub.me/wp-content/uploads/2025/03/Debarya-Dutta-150x150.png',
+    quote: 'The Builders Circle is a powerhouse for business growth and cross-business opportunities. It\'s not just about networking — it\'s about connecting with the right people who can drive high growth in enterprises. The brainstorming sessions are incredibly valuable, with circle members acting as a reliable sounding board for ideas.'
   }
 ];
 
@@ -135,11 +117,12 @@ export default function Testimonials() {
   return (
     <section className="py-16 bg-black">
       <div className="container mx-auto px-4">
-        <SectionHeader
-          title="What Our Clients Say"
-          gradientText="Say"
-          subtitle="Hear from our satisfied clients about their experience working with us."
-        />
+        <div className="text-center mb-12">
+          <h2 className="font-black text-white mb-4 text-4xl md:text-5xl">
+            What Our Clients <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] via-[#FFC000] to-[#FFA500]">Say</span>
+          </h2>
+          <p className="max-w-2xl mx-auto text-lg text-gray-400">Hear from our community members about their experience with The Builders Circle.</p>
+        </div>
 
         <div 
           ref={containerRef}
@@ -161,23 +144,28 @@ export default function Testimonials() {
                 className="p-6 rounded-2xl border border-gray-800 bg-gray-900 shadow-lg shadow-yellow-500/5 hover:shadow-yellow-500/10 transition-all duration-300 hover:border-yellow-500/50 min-h-[250px] flex flex-col"
               >
                 <div className="flex-1">
-                  <p className="text-gray-300 text-sm leading-relaxed mb-4">
+                  <div className="text-yellow-400 mb-4">
+                    <svg width="40" height="30" viewBox="0 0 40 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M15.2 0L9.2 30H0L10 0H15.2ZM40 0L34 30H24.8L34.8 0H40Z" fill="currentColor"></path>
+                    </svg>
+                  </div>
+                  <p className="text-gray-300 italic text-sm leading-relaxed mb-6">
                     &ldquo;{testimonial.quote}&rdquo;
                   </p>
                 </div>
-                <div className="flex items-center gap-3 mt-auto">
-                  <div 
-                    className="relative h-12 w-12 rounded-full flex-shrink-0 flex items-center justify-center text-lg font-bold"
-                    style={{
-                      backgroundColor: testimonial.backgroundColor,
-                      color: testimonial.textColor
-                    }}
-                  >
-                    {testimonial.initials}
+                <div className="flex items-center mt-auto">
+                  <div className="h-12 w-12 rounded-full bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center overflow-hidden mr-4 flex-shrink-0">
+                    <Image 
+                      src={testimonial.image} 
+                      alt={testimonial.name}
+                      width={48}
+                      height={48}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <div>
-                    <div className="font-semibold text-white">{testimonial.name}</div>
-                    <div className="text-yellow-500 text-xs">{testimonial.role}</div>
+                    <p className="font-semibold text-white">{testimonial.name}</p>
+                    <p className="text-sm text-gray-400">{testimonial.role}</p>
                   </div>
                 </div>
               </div>
