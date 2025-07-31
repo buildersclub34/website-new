@@ -49,33 +49,39 @@ function DiscoveryCalls() {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-black">
       {/* Hero Section */}
-      <section className="relative py-24 md:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5 -z-10"></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto">
-            <SectionHeader
-              title={
-                <>
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">DISCOVERY</span> CALLS
-                </>
-              }
-              badgeText="A TBC INITIATIVE"
-              subtitle="Give demo of your product to your target audience and others who are interested in knowing more about the product."
-              className="text-center mb-8"
-              titleClassName="text-4xl md:text-6xl font-bold"
-            />
-            <NeoPopButton
-              as="link"
-              href="https://wa.link/fioj4n"
-              target="_blank"
-              rel="noopener noreferrer"
-              variant="primary"
-              size="lg"
-            >
-              Book a call with the team
-            </NeoPopButton>
+      <section className="relative py-32 overflow-hidden z-10">
+        <div className="container mx-auto px-4 relative">
+          <div className="max-w-4xl mx-auto text-center relative">
+            <div className="inline-flex items-center px-6 py-3 bg-yellow-500/10 border border-yellow-500/30 rounded-full text-yellow-400 text-sm font-medium mb-6 backdrop-blur-sm z-20">
+              <Rocket className="w-5 h-5 mr-2" />
+              DISCOVERY CALLS
+            </div>
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+              <span className="text-yellow-400">PRODUCT</span> <br />
+              <span className="text-yellow-400">DISCOVERY</span> <br />
+              <span className="text-yellow-400">CALLS</span>
+            </h1>
+            <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+              Get direct access to potential customers and validate your product with our curated network of builders and founders.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-6">
+              <a 
+                href="https://wa.link/fioj4n" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="relative inline-flex items-center justify-center font-bold text-center uppercase tracking-wider whitespace-nowrap border-2 rounded transition-all duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 disabled:opacity-50 disabled:cursor-not-allowed will-change-transform min-w-fit hover:-translate-y-0.5 hover:translate-x-0.5 active:translate-x-0 active:translate-y-0 active:shadow-none transform -translate-x-1 -translate-y-1 border-b-4 border-r-4 bg-[#FFD700] hover:bg-[#FFC000] active:bg-[#FFD700] text-gray-900 border-[#D4A017] px-8 py-3 text-lg inline-flex shadow-[4px_4px_0_0_rgba(0,0,0,0.9),6px_6px_0_0_rgba(0,0,0,0.5)] hover:shadow-[2px_2px_0_0_rgba(0,0,0,0.9),4px_4px_0_0_rgba(0,0,0,0.5)] active:shadow-none"
+              >
+                Book a Call
+              </a>
+              <button 
+                type="button" 
+                className="relative inline-flex items-center justify-center font-bold text-center uppercase tracking-wider whitespace-nowrap border-2 rounded transition-all duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 disabled:opacity-50 disabled:cursor-not-allowed will-change-transform min-w-fit hover:-translate-y-0.5 hover:translate-x-0.5 active:translate-x-0 active:translate-y-0 active:shadow-none transform -translate-x-1 -translate-y-1 border-b-4 border-r-4 bg-transparent hover:bg-[#FFD700]/10 active:bg-[#FFD700]/20 text-[#FFD700] border-[#D4A017] px-8 py-3 text-lg inline-flex items-center gap-2 shadow-[4px_4px_0_0_rgba(212,160,23,0.5),6px_6px_0_0_rgba(212,160,23,0.3)] hover:shadow-[2px_2px_0_0_rgba(212,160,23,0.5),4px_4px_0_0_rgba(212,160,23,0.3)] active:shadow-none"
+              >
+                How It Works
+              </button>
+            </div>
           </div>
         </div>
       </section>

@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Mic, Users, MessageSquare, ArrowRight } from 'lucide-react';
+import { Mic, Users, MessageSquare, ArrowRight, BookOpen } from 'lucide-react';
 import Link from 'next/link';
 import ClientLayout from '../ClientLayout';
 import SectionHeader from '../../components/SectionHeader';
@@ -104,24 +104,43 @@ const ProfileCard = ({ name, role, company }: ProfileCardProps) => (
 
 function ContentPage() {
   return (
-    <div className="bg-black text-white min-h-screen pt-24 pb-16">
-      <div className="container mx-auto px-4">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-16"
-        >
-          <SectionHeader
-            title="Explore Our Content"
-            subtitle="Discover podcasts, builder profiles, and testimonials from our community of innovative founders and creators."
-            className="text-center"
-            titleClassName="text-4xl md:text-6xl font-bold"
-            gradientText="Explore"
-          />
-        </motion.div>
+    <div className="min-h-screen bg-black">
+      {/* Hero Section */}
+      <section className="relative py-32 overflow-hidden z-10">
+        <div className="container mx-auto px-4 relative">
+          <div className="max-w-4xl mx-auto text-center relative">
+            <div className="inline-flex items-center px-6 py-3 bg-yellow-500/10 border border-yellow-500/30 rounded-full text-yellow-400 text-sm font-medium mb-6 backdrop-blur-sm z-20">
+              <BookOpen className="w-5 h-5 mr-2" />
+              EXPLORE CONTENT
+            </div>
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+              <span className="text-yellow-400">LEARN</span> <br />
+              <span className="text-yellow-400">FROM THE</span> <br />
+              <span className="text-yellow-400">BUILDERS</span>
+            </h1>
+            <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+              Discover podcasts, builder profiles, and testimonials from our community of innovative founders and creators.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-6">
+              <a 
+                href="#podcasts" 
+                className="relative inline-flex items-center justify-center font-bold text-center uppercase tracking-wider whitespace-nowrap border-2 rounded transition-all duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 disabled:opacity-50 disabled:cursor-not-allowed will-change-transform min-w-fit hover:-translate-y-0.5 hover:translate-x-0.5 active:translate-x-0 active:translate-y-0 active:shadow-none transform -translate-x-1 -translate-y-1 border-b-4 border-r-4 bg-[#FFD700] hover:bg-[#FFC000] active:bg-[#FFD700] text-gray-900 border-[#D4A017] px-8 py-3 text-lg inline-flex shadow-[4px_4px_0_0_rgba(0,0,0,0.9),6px_6px_0_0_rgba(0,0,0,0.5)] hover:shadow-[2px_2px_0_0_rgba(0,0,0,0.9),4px_4px_0_0_rgba(0,0,0,0.5)] active:shadow-none"
+              >
+                Listen to Podcasts
+              </a>
+              <a 
+                href="#profiles"
+                className="relative inline-flex items-center justify-center font-bold text-center uppercase tracking-wider whitespace-nowrap border-2 rounded transition-all duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 disabled:opacity-50 disabled:cursor-not-allowed will-change-transform min-w-fit hover:-translate-y-0.5 hover:translate-x-0.5 active:translate-x-0 active:translate-y-0 active:shadow-none transform -translate-x-1 -translate-y-1 border-b-4 border-r-4 bg-transparent hover:bg-[#FFD700]/10 active:bg-[#FFD700]/20 text-[#FFD700] border-[#D4A017] px-8 py-3 text-lg inline-flex items-center gap-2 shadow-[4px_4px_0_0_rgba(212,160,23,0.5),6px_6px_0_0_rgba(212,160,23,0.3)] hover:shadow-[2px_2px_0_0_rgba(212,160,23,0.5),4px_4px_0_0_rgba(212,160,23,0.3)] active:shadow-none"
+              >
+                View Builder Profiles
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        {/* Content Grid */}
+      {/* Rest of the content */}
+      <div className="container mx-auto px-4 py-16">
         <motion.div 
           variants={staggerContainer}
           initial="hidden"

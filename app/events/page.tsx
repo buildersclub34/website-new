@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import SectionHeader from '@/components/SectionHeader';
 import NeoPopButton from '@/components/ui/NeoPopButton';
-import { Calendar, MapPin, Clock, Search, Filter, X, ArrowRight, ArrowDown } from 'lucide-react';
+import { Calendar, MapPin, Clock, Search, Filter, X, ArrowRight, ArrowDown, Rocket } from 'lucide-react';
 
 type EventType = 'workshop' | 'talk' | 'networking' | 'hackathon' | 'conference';
 
@@ -331,46 +331,38 @@ const EventsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-black">
       {/* Hero Section */}
-      <section className="relative py-20 px-4 overflow-hidden bg-gradient-to-b from-black to-gray-900">
-        <div className="max-w-7xl mx-auto text-center relative z-10">
-          <SectionHeader
-            title="Upcoming Events"
-            subtitle="Join our community events to learn, network, and grow with industry experts"
-            badgeText="BUILDERS CLUB EVENTS"
-            gradientText="Events"
-            className="mb-12"
-            titleClassName="text-5xl md:text-7xl font-bold"
-          />
-          
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mt-8">
-            <NeoPopButton 
-              as="button"
-              variant="primary"
-              size="lg"
-              onClick={() => {
-                document.getElementById('events')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
-              View All Events
-            </NeoPopButton>
-            <NeoPopButton 
-              as="link"
-              href="/become-host"
-              variant="secondary"
-              size="lg"
-            >
-              Become a Host
-            </NeoPopButton>
+      <section className="relative py-32 overflow-hidden z-10">
+        <div className="container mx-auto px-4 relative">
+          <div className="max-w-4xl mx-auto text-center relative">
+            <div className="inline-flex items-center px-6 py-3 bg-yellow-500/10 border border-yellow-500/30 rounded-full text-yellow-400 text-sm font-medium mb-6 backdrop-blur-sm z-20">
+              <Rocket className="w-5 h-5 mr-2" />
+              UPCOMING EVENTS
+            </div>
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+              <span className="text-yellow-400">JOIN</span> <br />
+              <span className="text-yellow-400">OUR NEXT</span> <br />
+              <span className="text-yellow-400">EVENT</span>
+            </h1>
+            <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+              Connect with fellow builders, learn from industry experts, and grow your network at our exclusive events.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-6">
+              <a 
+                href="#upcoming-events" 
+                className="relative inline-flex items-center justify-center font-bold text-center uppercase tracking-wider whitespace-nowrap border-2 rounded transition-all duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 disabled:opacity-50 disabled:cursor-not-allowed will-change-transform min-w-fit hover:-translate-y-0.5 hover:translate-x-0.5 active:translate-x-0 active:translate-y-0 active:shadow-none transform -translate-x-1 -translate-y-1 border-b-4 border-r-4 bg-[#FFD700] hover:bg-[#FFC000] active:bg-[#FFD700] text-gray-900 border-[#D4A017] px-8 py-3 text-lg inline-flex shadow-[4px_4px_0_0_rgba(0,0,0,0.9),6px_6px_0_0_rgba(0,0,0,0.5)] hover:shadow-[2px_2px_0_0_rgba(0,0,0,0.9),4px_4px_0_0_rgba(0,0,0,0.5)] active:shadow-none"
+              >
+                View Events
+              </a>
+              <a 
+                href="#past-events"
+                className="relative inline-flex items-center justify-center font-bold text-center uppercase tracking-wider whitespace-nowrap border-2 rounded transition-all duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 disabled:opacity-50 disabled:cursor-not-allowed will-change-transform min-w-fit hover:-translate-y-0.5 hover:translate-x-0.5 active:translate-x-0 active:translate-y-0 active:shadow-none transform -translate-x-1 -translate-y-1 border-b-4 border-r-4 bg-transparent hover:bg-[#FFD700]/10 active:bg-[#FFD700]/20 text-[#FFD700] border-[#D4A017] px-8 py-3 text-lg inline-flex items-center gap-2 shadow-[4px_4px_0_0_rgba(212,160,23,0.5),6px_6px_0_0_rgba(212,160,23,0.3)] hover:shadow-[2px_2px_0_0_rgba(212,160,23,0.5),4px_4px_0_0_rgba(212,160,23,0.3)] active:shadow-none"
+              >
+                Past Events
+              </a>
+            </div>
           </div>
-        </div>
-        
-        {/* Decorative elements */}
-        <div className="absolute inset-0 overflow-hidden opacity-20">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-yellow-400 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
-          <div className="absolute -bottom-20 -left-20 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
-          <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-pink-400 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
         </div>
       </section>
 

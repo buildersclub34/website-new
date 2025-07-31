@@ -8,6 +8,7 @@ import dynamic from 'next/dynamic';
 import SectionHeader from '../../components/SectionHeader';
 import NeoPopButton from '../../components/ui/NeoPopButton';
 import ClientLayout from '../ClientLayout';
+import BuildersTeam from '../../components/BuildersTeam';
 
 function BuildersCircle() {
 
@@ -216,6 +217,26 @@ function BuildersCircle() {
   ];
 
   const [activeTab, setActiveTab] = useState('growth');
+
+  // Define the type for circle positions
+  interface CirclePosition {
+    size: number;
+    left: number;
+    top: number;
+  }
+
+  const [circlePositions, setCirclePositions] = useState<CirclePosition[]>([]);
+
+  useEffect(() => {
+    const positions: CirclePosition[] = [];  // Add type annotation here
+    for (let i = 0; i < 15; i++) {
+      const size = 150 + (i * 10);
+      const left = 10 + (i * 6);
+      const top = 10 + ((i * 20) % 80);
+      positions.push({ size, left, top });
+    }
+    setCirclePositions(positions);
+  }, []);
 
   return (
     <div className="min-h-screen bg-black">
@@ -444,44 +465,8 @@ function BuildersCircle() {
           </div>
         </section>
 
-        {/* Testimonials */}
-        <section className="py-20 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-black via-black to-gray-900/80"></div>
-          <div className="container mx-auto px-4 relative z-10">
-            <SectionHeader
-              badgeText="Testimonials"
-              title="What Our Members"
-              highlightedText="Say"
-              description="Hear from founders and executives who have transformed their businesses with our network."
-              icon={<Star className="w-5 h-5" />}
-            />
-            
-            <div className="grid md:grid-cols-3 gap-8 mt-16">
-              {testimonials.map((testimonial, index) => (
-                <div 
-                  key={index} 
-                  className="bg-gradient-to-br from-gray-900/80 to-gray-900/50 p-8 rounded-2xl border border-gray-800"
-                >
-                  <div className="text-yellow-400 mb-6">
-                    <svg width="40" height="30" viewBox="0 0 40 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M15.2 0L9.2 30H0L10 0H15.2ZM40 0L34 30H24.8L34.8 0H40Z" fill="currentColor"/>
-                    </svg>
-                  </div>
-                  <p className="text-gray-300 italic mb-6">&ldquo;{testimonial.quote}&rdquo;</p>
-                  <div className="flex items-center">
-                    <div className="h-12 w-12 rounded-full bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center text-yellow-400 font-bold text-lg mr-4">
-                      {testimonial.author.charAt(0)}
-                    </div>
-                    <div>
-                      <p className="font-semibold text-white">{testimonial.author}</p>
-                      <p className="text-sm text-gray-400">{testimonial.role}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        {/* Builders Team Section */}
+        <BuildersTeam />
 
         {/* FAQ Section */}
         <section className="py-20 relative overflow-hidden">
@@ -513,15 +498,16 @@ function BuildersCircle() {
         <section className="w-full py-24 bg-gradient-to-b from-black to-gray-900 relative overflow-hidden">
           {/* Static background elements */}
           <div className="absolute inset-0 overflow-hidden">
-            {[...Array(15)].map((_, i) => (
+            {circlePositions.map((position, i) => (
               <div
                 key={i}
-                className="absolute rounded-full bg-yellow-400/10"
+                className="absolute rounded-full bg-yellow-400/10 transition-all duration-1000"
                 style={{
-                  width: Math.random() * 300 + 100 + 'px',
-                  height: Math.random() * 300 + 100 + 'px',
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
+                  width: `${position.size}px`,
+                  height: `${position.size}px`,
+                  left: `${position.left}%`,
+                  top: `${position.top}%`,
+                  opacity: 0.7,
                 }}
               />
             ))}
@@ -570,7 +556,7 @@ function BuildersCircle() {
                   </NeoPopButton>
                 </div>
                 
-                <div className="flex items-center pt-4 space-x-2 text-yellow-400/80">
+                <div className="mt-12 flex flex-wrap justify-center gap-8">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="w-5 h-5 fill-current" />
                   ))}

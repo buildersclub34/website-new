@@ -69,9 +69,9 @@
     "next-auth": "^4.24.11",
     "next-themes": "^0.3.0",
     "postcss": "8.4.30",
-    "react": "^19.1.0",
+    "react": "^18.2.0",
     "react-day-picker": "^8.10.1",
-    "react-dom": "^19.1.0",
+    "react-dom": "^18.2.0",
     "react-hook-form": "^7.60.0",
     "react-icons": "^5.5.0",
     "react-intersection-observer": "^9.16.0",
@@ -89,11 +89,11 @@
     "@babel/core": "^7.28.0",
     "@babel/preset-env": "^7.28.0",
     "@babel/preset-react": "^7.27.1",
-    "@types/node": "^24.0.14",
-    "@types/react": "^19.1.8",
-    "@types/react-dom": "^19.1.6",
+    "@types/node": "24.1.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
     "critters": "^0.0.23",
     "next-transpile-modules": "^10.0.1",
-    "typescript": "^5.8.3"
+    "typescript": "5.8.3"
   }
 }
