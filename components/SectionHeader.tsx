@@ -11,6 +11,7 @@ interface SectionHeaderProps {
   gradientText?: string;
   gradientColors?: string;
   titleClassName?: string;
+  subtitleClassName?: string;
 }
 
 export function SectionHeader({ 
@@ -23,7 +24,8 @@ export function SectionHeader({
   icon,
   gradientText,
   gradientColors = 'from-[#FFD700] via-[#FFC000] to-[#FFA500]',
-  titleClassName = ''
+  titleClassName = '',
+  subtitleClassName = 'text-white/70 text-lg md:text-xl mt-4 max-w-3xl mx-auto'
 }: SectionHeaderProps) {
   const renderTitle = () => {
     const titleClasses = `font-black text-white mb-4 ${titleClassName || 'text-4xl md:text-5xl'}`;
@@ -57,7 +59,7 @@ export function SectionHeader({
       )}
       {renderTitle()}
       {subtitle && (
-        <p className="max-w-2xl mx-auto text-lg text-gray-400">
+        <p className={subtitleClassName}>
           {subtitle}
         </p>
       )}

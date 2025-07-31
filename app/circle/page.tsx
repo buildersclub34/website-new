@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Rocket, Users, Star, Check, ArrowRight, ChevronRight, ChevronLeft, Handshake, Briefcase, MessageSquare, Award, Zap, UserCheck, Shield, BarChart2, Target, Lightbulb, TrendingUp } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import SectionHeader from '../../components/SectionHeader';
@@ -269,15 +270,17 @@ function BuildersCircle() {
                 >
                   Register for Trial Session
                 </NeoPopButton>
-                <NeoPopButton
-                  as="button"
-                  variant="secondary"
-                  size="lg"
-                  className="flex items-center gap-2"
-                >
-                  List of advisors
-                  <ChevronRight className="w-5 h-5" />
-                </NeoPopButton>
+                <Link href="/advisors" className="block">
+                  <NeoPopButton
+                    as="button"
+                    variant="secondary"
+                    size="lg"
+                    className="flex items-center gap-2 w-full"
+                  >
+                    List of advisors
+                    <ChevronRight className="w-5 h-5" />
+                  </NeoPopButton>
+                </Link>
               </div>
             </div>
           </div>

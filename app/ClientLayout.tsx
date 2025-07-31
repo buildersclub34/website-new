@@ -38,16 +38,46 @@ export default function ClientLayout({
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-black">
+    <div className="min-h-screen flex flex-col bg-black text-white text-base md:text-[0.9375rem] lg:text-base">
+      {/* Fixed background */}
       <div className="fixed top-0 left-0 w-full h-full -z-10 bg-black"></div>
+      
+      {/* Header */}
       <Header />
-      <main className="flex-1 pt-24 relative z-10"> 
-        <div className="relative z-10">
+      
+      {/* Main content */}
+      <main className="flex-1 pt-16 md:pt-20 lg:pt-24 relative z-10 overflow-x-hidden">
+        <div className="relative z-10 max-w-[100vw] overflow-hidden">
           {children}
         </div>
       </main>
+      
+      {/* Footer */}
       <Footer />
+      
+      {/* Toast notifications */}
       <Toaster />
+      
+      {/* Prevent horizontal scroll on mobile */}
+      <style jsx global>{`
+        html, body {
+          max-width: 100%;
+          overflow-x: hidden;
+        }
+        
+        /* Improve text rendering */
+        body {
+          text-rendering: optimizeLegibility;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Better image handling */
+        img {
+          max-width: 100%;
+          height: auto;
+        }
+      `}</style>
     </div>
   );
 }

@@ -256,28 +256,35 @@ export default function Hero() {
 
 
       <section 
-        className="relative min-h-screen bg-black text-white overflow-hidden pt-32 pb-16 md:pt-40 md:pb-24"
+        className="relative min-h-screen bg-black text-white overflow-hidden pt-20 pb-12 sm:pt-32 sm:pb-16 md:pt-40 md:pb-24"
         style={{ opacity: isVisible ? 1 : 0 }}
       >
         {/* Video Background */}
         <div className="video-bg">
-          <video autoPlay muted loop playsInline>
+          <video 
+            autoPlay 
+            muted 
+            loop 
+            playsInline
+            className="object-cover w-full h-full"
+          >
             <source src="/BG hero.webm" type="video/webm" />
             Your browser does not support the video tag.
           </video>
           <div className="video-overlay"></div>
         </div>
 
-        <div className="container mx-auto px-4 relative z-10 flex flex-col items-center justify-center h-full">
-        <div className="w-full max-w-6xl mx-auto text-center flex flex-col items-center mt-48">
-          {/* Main Heading */}
-          <SectionHeader
-            title="Enablers In Your Business Journey!"
-            gradientText="Business Journey!"
-            subtitle="Join a global network of ambitious founders and turn your vision into reality with the right support system."
-            className="mb-8"
-            titleClassName="text-3xl md:text-5xl lg:text-6xl whitespace-nowrap"
-          />
+        <div className="container mx-auto px-4 sm:px-6 relative z-10 flex flex-col items-center justify-center h-full">
+          <div className="w-full max-w-6xl mx-auto text-center flex flex-col items-center mt-24 sm:mt-32 md:mt-40 lg:mt-48">
+            {/* Main Heading */}
+            <SectionHeader
+              title="Enablers In Your Business Journey!"
+              gradientText="Business Journey!"
+              subtitle="Join a global network of ambitious founders and turn your vision into reality with the right support system."
+              className="mb-6 sm:mb-8"
+              titleClassName="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-tight sm:leading-tight md:leading-none"
+              subtitleClassName="text-sm xs:text-base sm:text-lg max-w-2xl sm:max-w-3xl mx-auto px-2 sm:px-4"
+            />
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row justify-center gap-6 mb-12 z-10 w-full">
