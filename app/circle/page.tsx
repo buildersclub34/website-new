@@ -1,18 +1,31 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
+import { Rocket, Users, Star, Check, ArrowRight, ChevronRight, Handshake, Briefcase, MessageSquare, Award, Zap, UserCheck, BarChart2, Target, Lightbulb, TrendingUp, Play } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Rocket, Users, Star, Check, ArrowRight, ChevronRight, ChevronLeft, Handshake, Briefcase, MessageSquare, Award, Zap, UserCheck, Shield, BarChart2, Target, Lightbulb, TrendingUp } from 'lucide-react';
 import dynamic from 'next/dynamic';
+import styles from './testimonials.module.css';
 import SectionHeader from '../../components/SectionHeader';
 import NeoPopButton from '../../components/ui/NeoPopButton';
 import ClientLayout from '../ClientLayout';
 import BuildersTeam from '../../components/BuildersTeam';
-import Testimonials from '../../components/Testimonials';
+
+// Dynamically import AdvisorsSection with no SSR to avoid window is not defined errors
+const AdvisorsSection = dynamic(() => import('../../components/AdvisorsSection'), {
+  ssr: false,
+});
+
+const MembershipSection = dynamic(() => import('../../components/MembershipSection'), {
+  ssr: false,
+});
 
 function BuildersCircle() {
+  const [playingVideo, setPlayingVideo] = useState<string | null>(null);
+  
+  const handleVideoClick = (videoId: string) => {
+    setPlayingVideo(videoId === playingVideo ? null : videoId);
+  };
 
   const features = [
     {
@@ -242,7 +255,19 @@ function BuildersCircle() {
 
   return (
     <div className="min-h-screen bg-black">
-      <main className="relative pt-16">
+      <style jsx global>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
+      <main className="relative">
         {/* Hero Section */}
         <section className="relative py-32 overflow-hidden z-10">
           <div className="container mx-auto px-4 relative">
@@ -286,6 +311,136 @@ function BuildersCircle() {
           </div>
         </section>
 
+        {/* Why Join The Builders Circle Section */}
+        <section className="py-20 bg-black relative">
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="relative bg-gradient-to-r from-[#FFD700]/5 to-[#FFA500]/5 rounded-2xl p-10 md:p-16 overflow-hidden border border-white/10">
+              <div className="relative z-10 max-w-6xl mx-auto text-center">
+                <div className="text-center mb-16">
+                  <h2 className="font-black text-white mb-4 text-4xl md:text-5xl">
+                    Why Join <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] via-[#FFC000] to-[#FFA500]">The Builders Circle?</span>
+                  </h2>
+                  <p className="text-white/70 text-lg md:text-xl mt-4 max-w-3xl mx-auto">
+                    An offline network of funded and growth stage founders dedicated to scaling their business enabled by advisors, partners and investors.
+                  </p>
+                </div>
+                
+                {/* Video Carousel */}
+                <div className="mb-16">
+                  <h3 className="text-3xl md:text-4xl font-bold text-white mb-10 text-center">
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] via-[#FFC000] to-[#FFA500]">
+                      Hear From Our Community
+                    </span>
+                  </h3>
+                  
+                  <div className="relative">
+                    <div className="flex overflow-x-auto pb-8 -mx-4 snap-x snap-mandatory scrollbar-hide">
+                      <div className="flex space-x-6">
+                        {[
+                          {
+                            id: 'F0hIWT5HNsY',
+                            title: 'The Builders Circle: Founder Stories',
+                            description: 'Hear directly from our founders about their journey with The Builders Circle.'
+                          },
+                          {
+                            id: '6J_o7rbTVmA',
+                            title: 'Building Together: The Community Experience',
+                            description: 'Discover the power of our collaborative founder community.'
+                          },
+                          {
+                            id: 'DUmuQi95KM0',
+                            title: 'Growth & Success in The Builders Circle',
+                            description: 'Learn how our members achieve remarkable growth together.'
+                          }
+                        ].map((video, index) => (
+                          <div 
+                            key={video.id}
+                            className="w-[300px] md:w-[400px] flex-shrink-0 snap-center"
+                          >
+                            <div className="relative group bg-black/30 rounded-xl overflow-hidden border border-white/10 hover:border-[#FFD700]/50 transition-all duration-300 hover:shadow-lg hover:shadow-[#FFD700]/20">
+                              <div className="relative aspect-video">
+                                {playingVideo === video.id ? (
+                                  <iframe
+                                    className="w-full h-full"
+                                    src={`https://www.youtube.com/embed/${video.id}?autoplay=1&mute=1&rel=0&modestbranding=1`}
+                                    title={video.title}
+                                    frameBorder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowFullScreen
+                                  ></iframe>
+                                ) : (
+                                  <>
+                                    <Image
+                                      src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`}
+                                      alt={video.title}
+                                      fill
+                                      className="object-cover cursor-pointer"
+                                      onClick={() => handleVideoClick(video.id)}
+                                    />
+                                    <div 
+                                      className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-70 group-hover:opacity-30 transition-opacity"
+                                      onClick={() => handleVideoClick(video.id)}
+                                    ></div>
+                                    <div 
+                                      className="absolute inset-0 flex items-center justify-center cursor-pointer"
+                                      onClick={() => handleVideoClick(video.id)}
+                                    >
+                                      <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-r from-[#FFD700] to-[#FFA500] rounded-full flex items-center justify-center transform transition-transform duration-300 group-hover:scale-110">
+                                        <Play className="w-6 h-6 md:w-8 md:h-8 text-black ml-1" />
+                                      </div>
+                                    </div>
+                                  </>
+                                )}
+                              </div>
+                              <div className="p-6">
+                                <h4 className="text-xl font-bold text-white mb-2">{video.title}</h4>
+                                <p className="text-white/80 text-sm">{video.description}</p>
+                                <button 
+                                  className="mt-4 text-[#FFD700] text-sm font-medium flex items-center group"
+                                  onClick={() => handleVideoClick(video.id)}
+                                >
+                                  {playingVideo === video.id ? 'Playing' : 'Play Video'}
+                                  <svg className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                  </svg>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    {/* Scroll indicators */}
+                    <div className="flex justify-center mt-6 space-x-2">
+                      {[0, 1, 2, 3].map((dot) => (
+                        <button 
+                          key={dot}
+                          className="w-2 h-2 rounded-full bg-white/30 hover:bg-[#FFD700] transition-colors"
+                          aria-label={`Go to slide ${dot + 1}`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <div className="text-center">
+                  <a 
+                    className="relative inline-flex items-center justify-center font-bold text-center uppercase tracking-wider whitespace-nowrap border-2 rounded transition-all duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 disabled:opacity-50 disabled:cursor-not-allowed will-change-transform min-w-fit hover:-translate-y-0.5 hover:translate-x-0.5 active:translate-x-0 active:translate-y-0 active:shadow-none transform -translate-x-1 -translate-y-1 border-b-4 border-r-4 bg-[#FFD700] hover:bg-[#FFC000] active:bg-[#FFD700] text-gray-900 border-[#D4A017] px-8 py-3 text-lg inline-flex mx-auto mt-6 shadow-[4px_4px_0_0_rgba(0,0,0,0.9),6px_6px_0_0_rgba(0,0,0,0.5)] hover:shadow-[2px_2px_0_0_rgba(0,0,0,0.9),4px_4px_0_0_rgba(0,0,0,0.5)] active:shadow-none" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    href="https://nas.io/tbc"
+                  >
+                    Join the Community
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Membership Section */}
+        <MembershipSection />
+
         {/* Why Join Us Section */}
         <section className="py-20 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-black via-black to-gray-900/80"></div>
@@ -325,149 +480,8 @@ function BuildersCircle() {
           </div>
         </section>
 
-        {/* Circles Comparison */}
-        <section className="py-20 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-black via-black to-gray-900/80"></div>
-          <div className="container mx-auto px-4 relative z-10">
-            <SectionHeader
-              badgeText="Membership"
-              title="Choose Your"
-              highlightedText="Circle"
-              description="Select the membership that best fits your current stage and goals."
-              icon={<Users className="w-5 h-5" />}
-            />
-            
-            <div className="flex justify-center mb-12">
-              <div className="inline-flex p-1 bg-gray-800 rounded-full">
-                <NeoPopButton 
-                  onClick={() => setActiveTab('growth')}
-                  variant="primary"
-                  size="lg"
-                  className={`px-6 py-2 rounded-full text-sm font-medium ${
-                    activeTab === 'growth' 
-                      ? 'bg-yellow-500 text-black' 
-                      : 'text-gray-400'
-                  }`}
-                >
-                  Growth Circle
-                </NeoPopButton>
-                <NeoPopButton 
-                  onClick={() => setActiveTab('elite')}
-                  variant="primary"
-                  size="lg"
-                  className={`px-6 py-2 rounded-full text-sm font-medium ${
-                    activeTab === 'elite' 
-                      ? 'bg-yellow-500 text-black' 
-                      : 'text-gray-400'
-                  }`}
-                >
-                  Elite Circle
-                </NeoPopButton>
-              </div>
-            </div>
-            
-            <div className="grid md:grid-cols-2 gap-8">
-              {/* Growth Circle */}
-              <div className={`bg-gradient-to-br from-gray-900/80 to-gray-900/50 p-8 rounded-2xl border-2 border-gray-800 rounded-2xl p-6`}>
-                <h3 className="text-2xl font-bold mb-6 text-yellow-400">Growth Circle</h3>
-                <div className="mb-8">
-                  <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-4 mb-6">
-                    <h4 className="font-semibold text-white mb-2">Perfect For:</h4>
-                    <ul className="space-y-2">
-                      <li className="flex items-center">
-                        <Check className="w-4 h-4 text-yellow-400 mr-2" />
-                        <span className="text-gray-300">Seed to series A Founders</span>
-                      </li>
-                      <li className="flex items-center">
-                        <Check className="w-4 h-4 text-yellow-400 mr-2" />
-                        <span className="text-gray-300">Businesses doing $200K+</span>
-                      </li>
-                      <li className="flex items-center">
-                        <Check className="w-4 h-4 text-yellow-400 mr-2" />
-                        <span className="text-gray-300">Select startups in fundraising Track</span>
-                      </li>
-                    </ul>
-                  </div>
-                  
-                  <div className="mb-8">
-                    <h4 className="font-semibold text-white mb-3">Advisory Panel:</h4>
-                    <p className="text-gray-400">Enterprise CXOs, Founders & investors</p>
-                  </div>
-                  
-                  <div>
-                    <h4 className="font-semibold text-white mb-3">Key Benefits:</h4>
-                    <ul className="space-y-3">
-                      {growthCircleBenefits.slice(0, 6).map((benefit, i) => (
-                        <li key={i} className="flex items-start">
-                          <span className="text-yellow-400 mr-2 mt-1">•</span>
-                          <span className="text-gray-300">{benefit}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-                <NeoPopButton 
-                  variant="primary"
-                  size="lg"
-                  fullWidth
-                >
-                  Join Growth Circle →
-                </NeoPopButton>
-              </div>
-              
-              {/* Elite Circle */}
-              <div className={`bg-gradient-to-br from-yellow-500/5 via-yellow-500/10 to-yellow-500/5 p-8 rounded-2xl border-2 border-yellow-500/30 rounded-2xl p-6 relative overflow-hidden`}>
-                <div className="absolute top-4 right-4">
-                  <span className="bg-yellow-500/20 text-yellow-400 text-xs font-bold px-3 py-1 rounded-full">
-                    MOST POPULAR
-                  </span>
-                </div>
-                
-                <h3 className="text-2xl font-bold mb-6 text-yellow-400">Elite Circle</h3>
-                <div className="mb-8">
-                  <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-4 mb-6">
-                    <h4 className="font-semibold text-white mb-2">Perfect For:</h4>
-                    <ul className="space-y-2">
-                      <li className="flex items-center">
-                        <Check className="w-4 h-4 text-yellow-400 mr-2" />
-                        <span className="text-gray-300">Series B+ Founders & CXOs</span>
-                      </li>
-                      <li className="flex items-center">
-                        <Check className="w-4 h-4 text-yellow-400 mr-2" />
-                        <span className="text-gray-300">Businesses doing $5mn+</span>
-                      </li>
-                      <li className="flex items-center">
-                        <Check className="w-4 h-4 text-yellow-400 mr-2" />
-                        <span className="text-gray-300">Enterprise CXOs</span>
-                      </li>
-                    </ul>
-                  </div>
-                  
-                  <div className="mb-8">
-                    <h4 className="font-semibold text-white mb-3">Exclusive Benefits:</h4>
-                    <ul className="space-y-3">
-                      {eliteCircleBenefits.slice(0, 6).map((benefit, i) => (
-                        <li key={i} className="flex items-start">
-                          <span className="text-yellow-400 mr-2 mt-1">•</span>
-                          <span className="text-gray-300">{benefit}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-                <NeoPopButton 
-                  variant="primary"
-                  size="lg"
-                  fullWidth
-                >
-                  Join Elite Circle →
-                </NeoPopButton>
-                
-                <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-yellow-500/10 rounded-full filter blur-3xl"></div>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* Advisors Section */}
+        <AdvisorsSection />
 
         {/* Testimonials */}
         <section className="py-20 relative overflow-hidden">
@@ -482,20 +496,48 @@ function BuildersCircle() {
             />
             
             <div className="grid md:grid-cols-3 gap-8 mt-16">
-              {testimonials.map((testimonial, index) => (
+              {[{
+                id: 1,
+                quote: "The Builders Circle has been pivotal in helping us find the right advisors for our US GTM strategy. The connections and insights from the community have been invaluable. I've also made some great friends here, which has made the journey even more rewarding.",
+                author: "Vivek Prashanth",
+                role: "COO, Livquik",
+                initial: "V"
+              },
+              {
+                id: 2,
+                quote: "The Builders Circle has been a game-changer for me as a founder. It's an incredible community where I can truly lean on other founders for support and insights. The knowledge and strategies I've gained have been instrumental in running my business more effectively.",
+                author: "Sumit Rastogi",
+                role: "Cofounder, Artinci",
+                initial: "S"
+              },
+              {
+                id: 3,
+                quote: "The Builders Circle is a powerhouse for business growth and cross-business opportunities. It's not just about networking — it's about connecting with the right people who can drive high growth in enterprises.",
+                author: "Amit Mishra",
+                role: "CEO, Dazeinfo",
+                initial: "A"
+              }
+              ].map((testimonial, index) => (
                 <div 
-                  key={index} 
-                  className="bg-gradient-to-br from-gray-900/80 to-gray-900/50 p-8 rounded-2xl border border-gray-800"
+                  key={testimonial.id}
+                  className={`${styles.testimonialCard} bg-gradient-to-br from-gray-900/80 to-gray-900/50 p-8 rounded-2xl border border-gray-800`}
+                  style={{
+                    animationDelay: `${index * 0.2}s`,
+                    animationFillMode: 'forwards',
+                    animationDuration: '0.8s',
+                    animationTimingFunction: 'ease-out',
+                    animationName: 'fadeInUp'
+                  }}
                 >
                   <div className="text-yellow-400 mb-6">
                     <svg width="40" height="30" viewBox="0 0 40 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M15.2 0L9.2 30H0L10 0H15.2ZM40 0L34 30H24.8L34.8 0H40Z" fill="currentColor"/>
+                      <path d="M15.2 0L9.2 30H0L10 0H15.2ZM40 0L34 30H24.8L34.8 0H40Z" fill="currentColor"></path>
                     </svg>
                   </div>
                   <p className="text-gray-300 italic mb-6">&ldquo;{testimonial.quote}&rdquo;</p>
                   <div className="flex items-center">
                     <div className="h-12 w-12 rounded-full bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center text-yellow-400 font-bold text-lg mr-4">
-                      {testimonial.author.charAt(0)}
+                      {testimonial.initial}
                     </div>
                     <div>
                       <p className="font-semibold text-white">{testimonial.author}</p>
@@ -667,6 +709,7 @@ function BuildersCircle() {
           </div>
         </section>
       </main>
+
     </div>
   );
 }

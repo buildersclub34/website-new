@@ -1,9 +1,10 @@
 'use client';
 
-import { Rocket } from 'lucide-react';
+import { Rocket, ArrowRight, ChevronRight } from 'lucide-react';
 import ClientLayout from '../ClientLayout';
 import NeoPopButton from '../../components/ui/NeoPopButton';
 import SectionHeader from '../../components/SectionHeader';
+import { WhyFundWithUs, FundraisingProcess, SuccessStories, FAQSection, FinalCTA } from './components/EnhancedSections';
 
 function FundraisingPage() {
   return (
@@ -44,91 +45,68 @@ function FundraisingPage() {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-16 px-4 max-w-6xl mx-auto">
-        <SectionHeader
-          title="Support system for your fundraising journey"
-          className="text-center mb-12"
-          titleClassName="text-3xl md:text-4xl font-bold"
-        />
-        
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[
-            {
-              title: "Filtered Investor Reachouts",
-              description: "Your deck is sent only to those investors whose thesis matches your startup, increasing your chances of conversion"
-            },
-            {
-              title: "Pitch Opportunities",
-              description: "Pitch in front of investors in TBC & Partner events and demo days"
-            },
-            {
-              title: "Support in Closures",
-              description: "We coordinate with the investors on your behalf to close conversations faster"
-            },
-            {
-              title: "Pitch Deck Audit & Cleanup",
-              description: "We critique your pitch decks and help you create a compelling story for investors"
-            },
-            {
-              title: "Financial & Valuation Report",
-              description: "We help you create all the financial documents needed for investor due diligence"
-            },
-            {
-              title: "Legal & Compliance Support",
-              description: "We support you with all regulatory and legal needs for closing your fundraise"
-            }
-          ].map((feature, index) => (
-            <div key={index} className="bg-gray-900 p-6 rounded-lg border border-gray-800">
-              <h3 className="text-xl font-bold text-yellow-400 mb-3">{feature.title}</h3>
-              <p className="text-gray-300">{feature.description}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="text-center mt-12">
-          <NeoPopButton 
-            as="link"
-            href="/discovery-calls" 
-            variant="primary"
-            size="lg"
-            className="inline-block"
-          >
-            BOOK A DISCOVERY CALL
-          </NeoPopButton>
-        </div>
-      </section>
+      {/* Why Fund With Us Section */}
+      <WhyFundWithUs />
+      
+      {/* Fundraising Process */}
+      <FundraisingProcess />
+      
+      {/* Success Stories */}
+      <SuccessStories />
 
       {/* Investors Section */}
-      <section className="py-16 px-4 bg-gray-900">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-6">INVESTORS IN OUR NETWORK</h2>
+      <section className="py-20 bg-gray-900">
+        <div className="container mx-auto px-4">
+          <SectionHeader
+            title="Investors in Our"
+            gradientText="Network"
+            className="text-center mb-16"
+            titleClassName="text-3xl md:text-4xl font-bold"
+            subtitle="We work with a curated network of 300+ investors across different stages and sectors"
+          />
           
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-12">
-            {Array.from({ length: 12 }).map((_, index) => (
-              <div key={index} className="bg-black p-4 rounded-lg border border-gray-800 flex items-center justify-center">
-                <div className="w-32 h-32 bg-gray-800 rounded-lg flex items-center justify-center">
-                  <span className="text-gray-500">Investor {index + 1}</span>
+            {[
+              { name: 'Sequoia', logo: '/investors/sequoia.svg' },
+              { name: 'Accel', logo: '/investors/accel.svg' },
+              { name: 'Y Combinator', logo: '/investors/yc.svg' },
+              { name: 'Tiger Global', logo: '/investors/tiger-global.svg' },
+              { name: 'Andreessen Horowitz', logo: '/investors/a16z.svg' },
+              { name: 'Sequoia Surge', logo: '/investors/surge.svg' },
+              { name: 'Lightspeed', logo: '/investors/lightspeed.svg' },
+              { name: 'Matrix Partners', logo: '/investors/matrix.svg' },
+            ].map((investor, index) => (
+              <div 
+                key={index} 
+                className="bg-black/50 p-6 rounded-xl border border-gray-800 hover:border-yellow-500/50 transition-all duration-300 flex items-center justify-center h-32"
+              >
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-white mb-2">{investor.name.split(' ')[0]}</div>
+                  <div className="text-sm text-gray-400">{investor.name.split(' ').slice(1).join(' ')}</div>
                 </div>
               </div>
             ))}
           </div>
-
+          
           <div className="text-center">
-            <NeoPopButton 
-              as="link"
+            <a 
               href="https://tally.so/r/n9JBXX" 
-              variant="secondary"
-              size="lg"
-              className="inline-block"
-              target="_blank"
+              target="_blank" 
               rel="noopener noreferrer"
+              className="relative inline-flex items-center justify-center font-bold text-center uppercase tracking-wider whitespace-nowrap border-2 rounded transition-all duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 disabled:opacity-50 disabled:cursor-not-allowed will-change-transform min-w-fit hover:-translate-y-0.5 hover:translate-x-0.5 active:translate-x-0 active:translate-y-0 active:shadow-none transform -translate-x-1 -translate-y-1 border-b-4 border-r-4 bg-[#FFD700] hover:bg-[#FFC000] active:bg-[#FFD700] text-gray-900 border-[#D4A017] px-8 py-3 text-lg shadow-[4px_4px_0_0_rgba(0,0,0,0.9),6px_6px_0_0_rgba(0,0,0,0.5)] hover:shadow-[2px_2px_0_0_rgba(0,0,0,0.9),4px_4px_0_0_rgba(0,0,0,0.5)] active:shadow-none inline-flex items-center gap-2"
             >
-              APPLY NOW
-            </NeoPopButton>
+              Apply for Fundraising Support
+              <ArrowRight className="w-4 h-4" />
+            </a>
           </div>
         </div>
       </section>
+      
+      {/* FAQ Section */}
+      <FAQSection />
+      
+      {/* Final CTA */}
+      <FinalCTA />
     </div>
   );
 }

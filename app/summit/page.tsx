@@ -149,13 +149,12 @@ export default function SummitPage() {
               </p>
               
               <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 w-full max-w-md mx-auto">
-                <NeoPopButton
-                  variant="primary"
-                  size="lg"
-                  className="w-full sm:w-auto justify-center px-6 py-3 text-sm sm:text-base"
+                <button 
+                  type="button" 
+                  className="relative inline-flex items-center justify-center font-bold text-center uppercase tracking-wider whitespace-nowrap border-2 rounded transition-all duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 disabled:opacity-50 disabled:cursor-not-allowed will-change-transform min-w-fit hover:-translate-y-0.5 hover:translate-x-0.5 active:translate-x-0 active:translate-y-0 active:shadow-none transform -translate-x-1 -translate-y-1 border-b-4 border-r-4 bg-[#FFD700] hover:bg-[#FFC000] active:bg-[#FFD700] text-gray-900 border-[#D4A017] px-8 py-3 text-lg inline-flex w-full sm:w-auto justify-center shadow-[4px_4px_0_0_rgba(0,0,0,0.9),6px_6px_0_0_rgba(0,0,0,0.5)] hover:shadow-[2px_2px_0_0_rgba(0,0,0,0.9),4px_4px_0_0_rgba(0,0,0,0.5)] active:shadow-none"
                 >
-                  Book Your Spot Now
-                </NeoPopButton>
+Book Your Spot for Summit 2.0
+                </button>
                 <NeoPopButton
                   variant="secondary"
                   size="lg"

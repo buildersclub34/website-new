@@ -1,10 +1,11 @@
 'use client';
 
-import { Rocket } from 'lucide-react';
+import { Rocket, Play, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import ClientLayout from '../ClientLayout';
 import NeoPopButton from '../../components/ui/NeoPopButton';
 import SectionHeader from '../../components/SectionHeader';
+import { WhyChooseUs, VideoTestimonial, FAQSection, CTASection } from './components/EnhancedSections';
 
 function DiscoveryCalls() {
   const steps = [
@@ -87,45 +88,77 @@ function DiscoveryCalls() {
       </section>
 
       {/* How it Works Section */}
-      <section className="py-20 relative overflow-hidden">
+      <section id="how-it-works" className="py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-black via-black to-gray-900/80 -z-10"></div>
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <SectionHeader
-              title="How it Works"
+              title="How It"
               gradientText="Works"
-              className="text-center mb-12"
+              className="text-center mb-16"
               titleClassName="text-3xl md:text-4xl font-bold"
+              subtitle="A simple 4-step process to validate your product with real users"
             />
             
-            <div className="space-y-12">
-              {steps.map((step, index) => (
-                <div key={index} className="flex flex-col md:flex-row items-start gap-6 group">
-                  <div className="w-16 h-16 rounded-full bg-yellow-500/10 border border-yellow-500/30 flex items-center justify-center text-yellow-400 text-2xl font-bold shrink-0 group-hover:bg-yellow-500/20 transition-all duration-300">
-                    {step.number}
+            <div className="relative">
+              {/* Timeline line */}
+              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-yellow-500/30 via-yellow-500/30 to-yellow-500/30 -z-10"></div>
+              
+              <div className="space-y-16">
+                {steps.map((step, index) => (
+                  <div key={index} className="relative flex items-start group">
+                    <div className="absolute left-0 w-16 h-16 flex items-center justify-center -ml-0.5">
+                      <div className="w-4 h-4 rounded-full bg-yellow-500 group-hover:scale-125 transition-transform"></div>
+                    </div>
+                    <div className="ml-20">
+                      <div className="inline-block px-4 py-1 bg-yellow-500/10 text-yellow-400 text-sm font-medium rounded-full mb-3">
+                        Step {step.number}
+                      </div>
+                      <h3 className="text-2xl font-bold text-white mb-3">{step.title}</h3>
+                      <p className="text-gray-300">{step.description}</p>
+                      
+                      {index < steps.length - 1 && (
+                        <div className="mt-6 flex items-center text-sm text-gray-400">
+                          <span className="animate-pulse">↓</span>
+                          <span className="ml-2">Next: {steps[index + 1].title}</span>
+                        </div>
+                      )}
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-yellow-400 mb-2">{step.title}</h3>
-                    <p className="text-gray-300">{step.description}</p>
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
+            </div>
+            
+            <div className="mt-16 text-center">
+              <a 
+                href="https://wa.link/fioj4n" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center font-bold text-center uppercase tracking-wider whitespace-nowrap border-2 rounded transition-all duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 disabled:opacity-50 disabled:cursor-not-allowed will-change-transform min-w-fit hover:-translate-y-0.5 hover:translate-x-0.5 active:translate-x-0 active:translate-y-0 active:shadow-none transform -translate-x-1 -translate-y-1 border-b-4 border-r-4 bg-[#FFD700] hover:bg-[#FFC000] active:bg-[#FFD700] text-gray-900 border-[#D4A017] px-8 py-4 text-lg shadow-[4px_4px_0_0_rgba(0,0,0,0.9),6px_6px_0_0_rgba(0,0,0,0.5)] hover:shadow-[2px_2px_0_0_rgba(0,0,0,0.9),4px_4px_0_0_rgba(0,0,0,0.5)] active:shadow-none"
+              >
+                Start Your Discovery Journey
+              </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-20">
+      {/* Why Choose Us Section */}
+      <WhyChooseUs />
+
+      {/* Video Testimonials */}
+      <VideoTestimonial />
+
+      {/* Enhanced Testimonials Section */}
+      <section className="py-20 bg-gradient-to-b from-black to-gray-900">
         <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
-            <SectionHeader
-              title="Success Stories"
-              gradientText="Success"
-              className="text-center mb-12"
-              titleClassName="text-3xl md:text-4xl font-bold"
-            />
-          </div>
+          <SectionHeader
+            title="Success"
+            gradientText="Stories"
+            className="text-center mb-12"
+            titleClassName="text-3xl md:text-4xl font-bold"
+          />
+          
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
               <a 
@@ -133,23 +166,23 @@ function DiscoveryCalls() {
                 href={testimonial.url} 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block group"
+                className="group block transition-transform duration-300 hover:-translate-y-2"
               >
-                <div className="bg-gray-900/50 rounded-xl overflow-hidden border border-gray-800 hover:border-yellow-500/50 transition-all duration-300 h-full">
-                  <div className="aspect-w-16 aspect-h-9 relative h-48">
-                    <div className="w-full h-full bg-gray-800 flex items-center justify-center text-gray-500">
-                      {testimonial.title}
+                <div className="bg-gradient-to-br from-gray-900/50 to-gray-900/30 rounded-xl overflow-hidden border border-gray-800 hover:border-yellow-500/50 transition-all duration-300 h-full">
+                  <div className="relative h-48 bg-gray-900/50 overflow-hidden">
+                    <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-yellow-500/10 to-transparent">
+                      <div className="w-16 h-16 rounded-full bg-yellow-500/20 flex items-center justify-center backdrop-blur-sm border border-yellow-500/30 group-hover:bg-yellow-500/30 transition-colors">
+                        <Play className="w-6 h-6 text-yellow-400" />
+                      </div>
                     </div>
                   </div>
                   <div className="p-6">
-                    <h3 className="text-xl font-bold mb-2 group-hover:text-yellow-400 transition-colors">
+                    <h3 className="text-xl font-bold mb-3 text-white group-hover:text-yellow-400 transition-colors">
                       {testimonial.title}
                     </h3>
-                    <div className="flex items-center text-yellow-400 text-sm">
-                      Read Story
-                      <svg className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                      </svg>
+                    <div className="flex items-center text-yellow-400 text-sm font-medium">
+                      Watch Story
+                      <ChevronRight className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" />
                     </div>
                   </div>
                 </div>
@@ -159,27 +192,11 @@ function DiscoveryCalls() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-b from-gray-900 to-black">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8">
-            Ready to showcase your product?
-          </h2>
-          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            Join our network of builders and get your product in front of the right audience.
-          </p>
-          <NeoPopButton
-            as="link"
-            href="https://wa.link/fioj4n"
-            target="_blank"
-            rel="noopener noreferrer"
-            variant="primary"
-            size="lg"
-          >
-            Book a Discovery Call
-          </NeoPopButton>
-        </div>
-      </section>
+      {/* FAQ Section */}
+      <FAQSection />
+
+      {/* Final CTA */}
+      <CTASection />
     </div>
   );
 }
