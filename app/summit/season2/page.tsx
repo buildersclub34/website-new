@@ -4,10 +4,11 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { ChevronRight, Rocket, Zap, Users, Award, Mic2, Calendar, MapPin, Clock } from 'lucide-react';
 import NeoPopButton from "@/components/ui/NeoPopButton";
+import { SectionHeader } from '@/components/ui/SectionHeader';
 
 export const metadata: Metadata = {
-  title: "Summit Session 2 | The Great Indian Tech Summit & Awards 2025",
-  description: "Join us for the second session of The Great Indian Tech Summit & Awards 2025 - A premier gathering of tech leaders, innovators, and visionaries.",
+  title: "The Great Indian Tech Summit & Awards 2025",
+  description: "A premier gathering to educate, celebrate, and connect the brightest minds in the Indian tech ecosystem. Featuring CTOs, CIOs, Product Leaders, CXOs, Investors, and Startup Founders.",
 };
 
 // Event stats component
@@ -86,23 +87,28 @@ export default function SummitSession2() {
   const features = [
     {
       icon: Zap,
-      title: "Cutting-Edge Tech",
-      description: "Discover the latest technological advancements and innovations shaping the future."
+      title: "Panel Discussions",
+      description: "Conversations with top tech leaders, investors, and government officials on industry shifts and opportunities."
     },
     {
       icon: Users,
-      title: "Networking",
-      description: "Connect with industry leaders, investors, and like-minded professionals."
+      title: "Workshops & Masterclasses",
+      description: "Hands-on learning sessions designed to equip professionals with actionable strategies and skills."
     },
     {
       icon: Award,
-      title: "Recognition",
-      description: "Celebrate excellence in technology and innovation at our prestigious awards ceremony."
+      title: "Exhibition Zones",
+      description: "Showcasing cutting-edge products, tools, and innovations from startups and enterprises."
     },
     {
       icon: Mic2,
-      title: "Expert Talks",
-      description: "Learn from the brightest minds in the tech industry through engaging keynotes and panels."
+      title: "Product Spotlights",
+      description: "Live demos and presentations by disruptive companies in the tech ecosystem."
+    },
+    {
+      icon: Users,
+      title: "Awards Ceremony",
+      description: "Celebrating the best minds and organizations in technology across multiple categories."
     }
   ];
 
@@ -139,61 +145,139 @@ export default function SummitSession2() {
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Hero Section */}
-      <section className="relative py-20 overflow-hidden">
+      <section className="relative py-32 overflow-hidden z-10">
         <div className="absolute inset-0 bg-gradient-to-b from-yellow-400/5 to-transparent"></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-block px-4 py-1 mb-4 text-sm font-medium text-yellow-400 bg-yellow-400/20 rounded-full">
-              SESSION 2
+
+        <div className="container mx-auto px-4 relative">
+          <div className="max-w-4xl mx-auto text-center relative">
+            <div className="inline-flex items-center px-6 py-3 bg-yellow-500/10 border border-yellow-500/30 rounded-full text-yellow-400 text-sm font-medium mb-6 backdrop-blur-sm z-20">
+              <Rocket className="w-5 h-5 mr-2" />
+              THE GREAT INDIAN TECH SUMMIT & AWARDS 2025
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600">
-              The Great Indian Tech Summit
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+              <span className="text-yellow-400">WHERE</span> <br />
+              <span className="text-yellow-400">INNOVATION</span> <br />
+              <span className="text-yellow-400">MEETS OPPORTUNITY</span>
             </h1>
-            <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-              Join us for an immersive experience with industry leaders, innovative startups, and groundbreaking technologies.
+            <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+              A premier gathering designed to educate, celebrate, and connect the brightest minds in the Indian tech ecosystem.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <NeoPopButton className="bg-yellow-400 text-black hover:bg-yellow-300 transition-colors">
+            <div className="flex flex-col sm:flex-row justify-center gap-6">
+              <NeoPopButton
+                as="link"
+                href="#register"
+                variant="primary"
+                size="lg"
+                className="flex items-center"
+              >
                 <Rocket className="w-5 h-5 mr-2" />
                 Register Now
               </NeoPopButton>
-              <NeoPopButton variant="secondary" className="border-yellow-400 text-yellow-400 hover:bg-yellow-400/10">
+              <NeoPopButton
+                as="link"
+                href="#schedule"
+                variant="secondary"
+                size="lg"
+              >
                 View Schedule
               </NeoPopButton>
+            </div>
+            <div className="flex flex-wrap justify-center gap-8 mt-12">
+              <div className="flex items-center text-yellow-400">
+                <Calendar className="w-5 h-5 mr-2" />
+                <span>Friday, September 19, 2025</span>
+              </div>
+              <div className="flex items-center text-yellow-400">
+                <Clock className="w-5 h-5 mr-2" />
+                <span>10:00 AM - 7:00 PM</span>
+              </div>
+              <div className="flex items-center text-yellow-400">
+                <MapPin className="w-5 h-5 mr-2" />
+                <span>Bengaluru, Karnataka</span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Event Stats */}
-      <section className="py-12 bg-gradient-to-b from-black to-gray-900">
+      {/* Awards Section */}
+      <section className="py-16 bg-black">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Why Attend?</h2>
-            <div className="w-24 h-1 bg-yellow-400 mx-auto"></div>
+          <div className="max-w-4xl mx-auto mb-12">
+            <SectionHeader
+              title="The Great Indian Tech"
+              highlightedText="Awards"
+              description="We are unveiling The Great Indian Startup Awards where we honor excellence in technology, leadership, and innovation across the Indian ecosystem."
+              badgeText="Awards"
+              align="center"
+              titleClassName="text-3xl sm:text-4xl"
+            />
+            <NeoPopButton
+              as="link"
+              href="https://tally.so/r/mVO9WJ"
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="primary"
+              className="mt-4"
+            >
+              Nominate Now
+            </NeoPopButton>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {features.map((feature, index) => (
-              <FeatureCard 
-                key={index}
-                icon={feature.icon}
-                title={feature.title}
-                description={feature.description}
-              />
-            ))}
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <div className="bg-black/50 border border-yellow-400/30 p-6 rounded-lg">
+              <h3 className="text-xl font-bold text-yellow-400 mb-4">Enterprise & Mid Market</h3>
+              <p className="text-gray-300">Recognizing excellence in enterprise technology solutions and mid-market innovation.</p>
+            </div>
+            <div className="bg-black/50 border border-yellow-400/30 p-6 rounded-lg">
+              <h3 className="text-xl font-bold text-yellow-400 mb-4">SMB & Startup Awards</h3>
+              <p className="text-gray-300">Celebrating the most promising startups and small-to-medium businesses in tech.</p>
+            </div>
+            <div className="bg-black/50 border border-yellow-400/30 p-6 rounded-lg">
+              <h3 className="text-xl font-bold text-yellow-400 mb-4">Individual Awards</h3>
+              <p className="text-gray-300">Honoring the visionaries and leaders driving innovation in the tech industry.</p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Featured Speakers */}
-      <section className="py-20 bg-black">
+      {/* About The Builders Club */}
+      <section className="py-16 bg-gradient-to-b from-black to-gray-900">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Featured Speakers</h2>
-            <div className="w-24 h-1 bg-yellow-400 mx-auto mb-8"></div>
-            <p className="text-gray-400 max-w-2xl mx-auto">
-              Learn from and network with some of the brightest minds in the technology industry.
-            </p>
+          <div className="max-w-4xl mx-auto">
+            <SectionHeader
+              title="About The Builders"
+              highlightedText="Club"
+              description="We are one of the world's largest CXO & operator communities with 75,000+ members. We enable businesses to scale through knowledge sharing and high-value networking."
+              badgeText="Community"
+              align="center"
+              titleClassName="text-3xl sm:text-4xl"
+            />
+            <NeoPopButton
+              as="link"
+              href="https://thebuildersclub.me"
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="secondary"
+            >
+              Learn More About Us
+            </NeoPopButton>
+          </div>
+        </div>
+      </section>
+
+      {/* Speakers Section */}
+      <section className="py-16 bg-gradient-to-b from-black to-gray-900">
+        <div className="container mx-auto px-4">
+          <div className="mb-12">
+            <SectionHeader
+              title="Featured"
+              highlightedText="Speakers"
+              description="Learn from and network with some of the brightest minds in the technology industry."
+              badgeText="Speakers"
+              align="center"
+              titleClassName="text-3xl sm:text-4xl"
+            />
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -220,9 +304,15 @@ export default function SummitSession2() {
       {/* Event Schedule */}
       <section className="py-20 bg-gradient-to-b from-black to-gray-900">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Event Schedule</h2>
-            <div className="w-24 h-1 bg-yellow-400 mx-auto mb-8"></div>
+          <div className="mb-12">
+            <SectionHeader
+              title="Event"
+              highlightedText="Schedule"
+              description=""
+              badgeText="Agenda"
+              align="center"
+              titleClassName="text-3xl sm:text-4xl"
+            />
             <div className="flex items-center justify-center gap-4 text-gray-400 mb-8">
               <div className="flex items-center">
                 <Calendar className="w-5 h-5 mr-2 text-yellow-400" />
@@ -260,10 +350,14 @@ export default function SummitSession2() {
       {/* CTA Section */}
       <section className="py-20 bg-black">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Join Us?</h2>
-          <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
-            Don&apos;t miss this opportunity to connect with industry leaders and be part of the tech revolution.
-          </p>
+          <SectionHeader
+            title="Ready to Join"
+            highlightedText="Us?"
+            description="Don't miss this opportunity to connect with industry leaders and be part of the tech revolution."
+            badgeText="Register Now"
+            align="center"
+            titleClassName="text-3xl sm:text-4xl"
+          />
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <NeoPopButton className="bg-yellow-400 text-black hover:bg-yellow-300 transition-colors text-lg py-3 px-8">
               Register Now

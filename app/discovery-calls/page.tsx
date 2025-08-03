@@ -55,9 +55,14 @@ function DiscoveryCalls() {
       <section className="relative py-32 overflow-hidden z-10">
         <div className="container mx-auto px-4 relative">
           <div className="max-w-4xl mx-auto text-center relative">
-            <div className="inline-flex items-center px-6 py-3 bg-yellow-500/10 border border-yellow-500/30 rounded-full text-yellow-400 text-sm font-medium mb-6 backdrop-blur-sm z-20">
-              <Rocket className="w-5 h-5 mr-2" />
-              DISCOVERY CALLS
+            <div className="mb-6 z-20">
+              <SectionHeader
+                badgeText="Discovery Calls"
+                title=""
+                highlightedText=""
+                align="center"
+                className="mb-0"
+              />
             </div>
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
               <span className="text-yellow-400">PRODUCT</span> <br />
@@ -94,10 +99,11 @@ function DiscoveryCalls() {
           <div className="max-w-4xl mx-auto">
             <SectionHeader
               title="How It"
-              gradientText="Works"
+              highlightedText="Works"
               className="text-center mb-16"
               titleClassName="text-3xl md:text-4xl font-bold"
-              subtitle="A simple 4-step process to validate your product with real users"
+              description="A simple 4-step process to validate your product with real users"
+              badgeText="Process"
             />
             
             <div className="relative">
@@ -154,9 +160,10 @@ function DiscoveryCalls() {
         <div className="container mx-auto px-4">
           <SectionHeader
             title="Success"
-            gradientText="Stories"
+            highlightedText="Stories"
             className="text-center mb-12"
             titleClassName="text-3xl md:text-4xl font-bold"
+            badgeText="Testimonials"
           />
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

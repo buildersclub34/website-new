@@ -77,14 +77,14 @@ export default function OurPerks() {
   return (
     <section className="py-20 bg-black">
       <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-4xl mx-auto">
           <SectionHeader
-            title="$100K worth of credits from handpicked brands"
-            gradientText="handpicked brands"
-            badgeText="EXCLUSIVE PERKS"
-            subtitle="Access to handpicked perks from D2C, SaaS, lifestyle & experience brands."
-            className="mb-12"
-            titleClassName="text-4xl md:text-5xl"
+            title="$100K worth of credits from"
+            highlightedText="handpicked brands"
+            description="Access to handpicked perks from D2C, SaaS, lifestyle & experience brands."
+            badgeText="Exclusive Perks"
+            className="mb-12 text-center"
+            titleClassName="text-3xl md:text-4xl lg:text-5xl"
           />
         </div>
 

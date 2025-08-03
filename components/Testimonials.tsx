@@ -136,9 +136,11 @@ export default function Testimonials() {
     <section className="py-16 bg-black">
       <div className="container mx-auto px-4">
         <SectionHeader
-          title="What Our Clients Say"
-          gradientText="Say"
-          subtitle="Hear from our satisfied clients about their experience working with us."
+          title="What Our Clients"
+          highlightedText="Say"
+          description="Hear from our satisfied clients about their experience working with us."
+          badgeText="Testimonials"
+          className="mb-12"
         />
 
         <div 

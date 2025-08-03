@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { Linkedin, ArrowRight } from 'lucide-react';
+import SectionHeader from './SectionHeader';
 
 interface TeamMember {
   id: string;
@@ -143,13 +144,15 @@ export default function BuildersTeam() {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Meet Our <span className="text-yellow-400">Builders</span>
-          </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            A community of passionate founders and industry leaders building the future
-          </p>
+        <div className="mb-16">
+          <SectionHeader
+            title="Meet Our"
+            highlightedText="Builders"
+            description="A community of passionate founders and industry leaders building the future"
+            badgeText="Our Network"
+            align="center"
+            titleClassName="text-3xl md:text-4xl lg:text-5xl"
+          />
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">

@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { Users, ExternalLink, Linkedin, ArrowRight } from 'lucide-react';
+import SectionHeader from './SectionHeader';
 
 type Advisor = {
   id: string;
@@ -203,16 +204,15 @@ export default function AdvisorsSection() {
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center justify-center mb-4">
-            <Users className="w-8 h-8 text-yellow-400 mr-2" />
-            <h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">
-              Meet Our Esteemed Advisors
-            </h2>
-          </div>
-          <p className="text-gray-300 max-w-3xl mx-auto text-lg md:text-xl">
-            Learn from and connect with industry leaders and domain experts from top companies
-          </p>
+        <div className="mb-16">
+          <SectionHeader
+            title="Meet Our Esteemed"
+            highlightedText="Advisors"
+            description="Learn from and connect with industry leaders and domain experts from top companies"
+            badgeText="Expert Network"
+            align="center"
+            titleClassName="text-3xl md:text-4xl lg:text-5xl"
+          />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">

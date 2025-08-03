@@ -46,12 +46,11 @@ export default function Contact() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-7xl mx-auto">
           <SectionHeader
+            title="Ready to Build"
+            highlightedText="the Future?"
+            description="Let's connect and explore how we can work together to bring your vision to life."
             badgeText="Get in Touch"
-            title="Ready to Build the Future?"
-            gradientText="Future?"
-            highlightedText="Future Together?"
-            description="Join the next generation of unicorn builders. We're looking for extraordinary entrepreneurs who are ready to revolutionize industries and create lasting impact."
-            icon={<Rocket className="w-5 h-5" />}
+            className="mb-12"
           />
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-16">

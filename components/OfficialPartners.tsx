@@ -40,13 +40,16 @@ export default function OfficialPartners() {
       
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
-        <SectionHeader
-          badgeText="Our Network"
-          title="Trusted By"
-          highlightedText="Industry Leaders"
-          description="We're proud to collaborate with visionary companies who share our passion for innovation and excellence."
-          icon={<Rocket className="w-5 h-5" />}
-        />
+        <div className="max-w-5xl mx-auto text-center mb-16">
+          <SectionHeader
+            title="Trusted By"
+            highlightedText="Industry Leaders"
+            description="We're proud to collaborate with visionary companies who share our passion for innovation and excellence."
+            badgeText="Our Network"
+            align="center"
+            titleClassName="text-3xl md:text-4xl lg:text-5xl"
+          />
+        </div>
 
         {/* Partners Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">

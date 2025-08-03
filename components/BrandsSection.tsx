@@ -94,14 +94,13 @@ export default function BrandsSection() {
 
   return (
     <section className="relative py-16 bg-black overflow-hidden">
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-10 mb-12">
         <SectionHeader 
-          title="Brands We've Worked With"
-          gradientText="Worked With"
+          title="Brands We've"
+          highlightedText="Worked With"
+          description="Trusted by leading companies and innovative startups worldwide"
+          badgeText="Partners"
         />
-        <p className="text-xl text-white/80 max-w-3xl mx-auto">
-          Trusted by leading companies and innovative startups worldwide
-        </p>
       </div>
 
       <div 

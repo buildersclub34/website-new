@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import SectionHeader from './SectionHeader';
 
 const partnerLogos = [
   { id: 1, src: 'https://thebuildersclub.me/wp-content/uploads/2024/12/25-1.png', alt: 'Sequoia Capital' },
@@ -49,15 +50,15 @@ export default function InvestmentPartners() {
   return (
     <section id="investment-partners" className="py-16 bg-black overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
-            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] via-[#FFC000] to-[#FFA500]">
-              Investment Partners
-            </span>
-          </h2>
-          <p className="text-xl text-white/80 max-w-3xl mx-auto">
-            Trusted by the world&apos;s leading investment firms and venture capitalists
-          </p>
+        <div className="max-w-5xl mx-auto text-center mb-12">
+          <SectionHeader
+            title="Our"
+            highlightedText="Investment Partners"
+            description="Trusted by the world's leading investment firms and venture capitalists"
+            badgeText="Network"
+            align="center"
+            titleClassName="text-3xl md:text-4xl lg:text-5xl"
+          />
         </div>
         
         <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-0.5">

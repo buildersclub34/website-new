@@ -42,9 +42,10 @@ export const WhyChooseUs = () => {
       <div className="container mx-auto px-4">
         <SectionHeader
           title="Why Choose Our"
-          gradientText="Discovery Calls"
+          highlightedText="Discovery Calls"
           className="text-center mb-16"
           titleClassName="text-3xl md:text-4xl font-bold"
+          badgeText="Benefits"
         />
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -92,9 +93,10 @@ export const VideoTestimonial = () => {
       <div className="container mx-auto px-4">
         <SectionHeader
           title="See It In"
-          gradientText="Action"
+          highlightedText="Action"
           className="text-center mb-16"
           titleClassName="text-3xl md:text-4xl font-bold"
+          badgeText="Videos"
         />
         
         <div className="grid md:grid-cols-3 gap-8">
@@ -171,9 +173,10 @@ export const FAQSection = () => {
       <div className="container mx-auto px-4 max-w-4xl">
         <SectionHeader
           title="Frequently Asked"
-          gradientText="Questions"
+          highlightedText="Questions"
           className="text-center mb-16"
           titleClassName="text-3xl md:text-4xl font-bold"
+          badgeText="FAQ"
         />
         
         <div className="space-y-4">

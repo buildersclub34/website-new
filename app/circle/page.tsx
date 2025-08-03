@@ -272,8 +272,7 @@ function BuildersCircle() {
         <section className="relative py-32 overflow-hidden z-10">
           <div className="container mx-auto px-4 relative">
             <div className="max-w-4xl mx-auto text-center relative">
-              <div className="inline-flex items-center px-6 py-3 bg-yellow-500/10 border border-yellow-500/30 rounded-full text-yellow-400 text-sm font-medium mb-6 backdrop-blur-sm z-20">
-                <Rocket className="w-5 h-5 mr-2" />
+              <div className="inline-flex items-center px-4 py-1.5 bg-yellow-500/10 border border-yellow-500/20 rounded-full text-yellow-400 text-xs font-bold uppercase tracking-wider mb-6 z-20">
                 A TBC INITIATIVE
               </div>
               <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
@@ -315,23 +314,27 @@ function BuildersCircle() {
         <section className="py-20 bg-black relative">
           <div className="container mx-auto px-4 relative z-10">
             <div className="relative bg-gradient-to-r from-[#FFD700]/5 to-[#FFA500]/5 rounded-2xl p-10 md:p-16 overflow-hidden border border-white/10">
-              <div className="relative z-10 max-w-6xl mx-auto text-center">
-                <div className="text-center mb-16">
-                  <h2 className="font-black text-white mb-4 text-4xl md:text-5xl">
-                    Why Join <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] via-[#FFC000] to-[#FFA500]">The Builders Circle?</span>
-                  </h2>
-                  <p className="text-white/70 text-lg md:text-xl mt-4 max-w-3xl mx-auto">
-                    An offline network of funded and growth stage founders dedicated to scaling their business enabled by advisors, partners and investors.
-                  </p>
+              <div className="relative z-10 max-w-6xl mx-auto">
+                <div className="mb-16">
+                  <SectionHeader
+                    title="Why Join"
+                    highlightedText="The Builders Circle?"
+                    description="An offline network of funded and growth stage founders dedicated to scaling their business enabled by advisors, partners and investors."
+                    badgeText="Community"
+                    align="center"
+                    titleClassName="text-3xl md:text-4xl lg:text-5xl"
+                  />
                 </div>
                 
                 {/* Video Carousel */}
                 <div className="mb-16">
-                  <h3 className="text-3xl md:text-4xl font-bold text-white mb-10 text-center">
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] via-[#FFC000] to-[#FFA500]">
-                      Hear From Our Community
-                    </span>
-                  </h3>
+                  <SectionHeader
+                    title="Hear From Our"
+                    highlightedText="Community"
+                    align="center"
+                    className="mb-10"
+                    titleClassName="text-3xl md:text-4xl"
+                  />
                   
                   <div className="relative">
                     <div className="flex overflow-x-auto pb-8 -mx-4 snap-x snap-mandatory scrollbar-hide">
@@ -445,13 +448,14 @@ function BuildersCircle() {
         <section className="py-20 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-black via-black to-gray-900/80"></div>
           <div className="container mx-auto px-4 relative z-10">
-            <div className="text-center mb-12">
-              <span className="inline-block px-4 py-1.5 text-xs font-semibold tracking-wider text-yellow-500 uppercase rounded-full bg-yellow-500/10 mb-4">
-                Why Join Us
-              </span>
-              <h2 className="font-black text-white mb-4 text-4xl md:text-5xl">
-                Everything You Need to <span className="text-yellow-400">Succeed</span>
-              </h2>
+            <div className="mb-12">
+              <SectionHeader
+                title="Everything You Need to"
+                highlightedText="Succeed"
+                badgeText="Why Join Us"
+                align="center"
+                titleClassName="text-3xl md:text-4xl lg:text-5xl"
+              />
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {features.map((feature, index) => (
@@ -488,11 +492,12 @@ function BuildersCircle() {
           <div className="absolute inset-0 bg-gradient-to-br from-black via-black to-gray-900/80"></div>
           <div className="container mx-auto px-4 relative z-10">
             <SectionHeader
-              badgeText="Testimonials"
               title="What Our Members"
               highlightedText="Say"
               description="Hear from founders and executives who have transformed their businesses with our network."
-              icon={<Star className="w-5 h-5" />}
+              badgeText="Testimonials"
+              align="center"
+              titleClassName="text-3xl md:text-4xl lg:text-5xl"
             />
             
             <div className="grid md:grid-cols-3 gap-8 mt-16">

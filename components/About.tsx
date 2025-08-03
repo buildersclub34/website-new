@@ -53,9 +53,10 @@ export default function About() {
         <div className="relative bg-gradient-to-r from-[#FFD700]/5 to-[#FFA500]/5 rounded-2xl p-10 md:p-16 mb-24 overflow-hidden border border-white/10">
           <div className="relative z-10 max-w-4xl mx-auto text-center">
             <SectionHeader 
-              title="Why Join The Builders Club?"
-              gradientText="The Builders Club?"
-              subtitle="We are one of the largest startup founder communities globally, helping startups in their growth journey with Community, Content and Capital."
+              title="Why Join"
+              highlightedText="The Builders Club?"
+              description="We are one of the largest startup founder communities globally, helping startups in their growth journey with Community, Content and Capital."
+              badgeText="About Us"
               className="mb-10"
             />
             
@@ -123,13 +124,15 @@ export default function About() {
         </div>
 
         {/* Initiatives Section */}
-        <div className="max-w-6xl mx-auto text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
-            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] via-[#FFC000] to-[#FFA500]">Initiatives</span>
-          </h2>
-          <p className="text-xl text-white/80 max-w-3xl mx-auto">
-            We help startups in their growth journey with Community, Content and Capital.
-          </p>
+        <div className="max-w-5xl mx-auto mb-16">
+          <SectionHeader
+            title="Our"
+            highlightedText="Initiatives"
+            description="We help startups in their growth journey with Community, Content and Capital."
+            badgeText="What We Do"
+            align="center"
+            titleClassName="text-3xl md:text-4xl lg:text-5xl"
+          />
         </div>
 
         {/* Initiative Cards */}

@@ -277,14 +277,14 @@ export default function Hero() {
         <div className="container mx-auto px-4 sm:px-6 relative z-10 flex flex-col items-center justify-center h-full">
           <div className="w-full max-w-6xl mx-auto text-center flex flex-col items-center mt-24 sm:mt-32 md:mt-40 lg:mt-48">
             {/* Main Heading */}
-            <SectionHeader
-              title="Enablers In Your Business Journey!"
-              gradientText="Business Journey!"
-              subtitle="Join a global network of ambitious founders and turn your vision into reality with the right support system."
-              className="mb-6 sm:mb-8"
-              titleClassName="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-tight sm:leading-tight md:leading-none"
-              subtitleClassName="text-sm xs:text-base sm:text-lg max-w-2xl sm:max-w-3xl mx-auto px-2 sm:px-4"
-            />
+            <div className="text-center mb-8 sm:mb-12 max-w-5xl mx-auto">
+              <h1 className="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight sm:leading-tight md:leading-none mb-4">
+                Enablers In Your <span className="text-yellow-400">Business Journey!</span>
+              </h1>
+              <p className="text-sm xs:text-base sm:text-lg text-gray-300 max-w-2xl sm:max-w-3xl mx-auto px-2 sm:px-4">
+                Join a global network of ambitious founders and turn your vision into reality with the right support system.
+              </p>
+            </div>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row justify-center gap-6 mb-12 z-10 w-full">

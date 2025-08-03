@@ -1,8 +1,9 @@
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import SectionHeader from '../../../../components/SectionHeader';
 
 // Mock data - replace with actual data fetching
 const builderProfiles = {
@@ -46,9 +47,11 @@ const builderProfiles = {
 export async function generateStaticParams() {
   // Return an array of all possible builder IDs
   return Object.keys(builderProfiles).map(id => ({
-    id,
+    id: id,
   }));
 }
+
+export const dynamicParams = true; // Enable fallback for non-pre-rendered pages
 
 type Params = {
   params: {
@@ -71,7 +74,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 
 export default function BuilderProfile({ params }: Params) {
   const builder = builderProfiles[params.id as keyof typeof builderProfiles];
-  
+
   if (!builder) {
     notFound();
   }
@@ -93,6 +96,13 @@ export default function BuilderProfile({ params }: Params) {
       <div className="container mx-auto px-4 mb-16">
         <div className="flex flex-col md:flex-row items-start gap-8">
           <div className="w-full md:w-1/3 lg:w-1/4">
+            <SectionHeader
+              title=""
+              highlightedText=""
+              badgeText="Profile"
+              className="mb-6"
+              align="left"
+            />
             <div className="relative aspect-square rounded-2xl overflow-hidden border-2 border-yellow-400/30">
               <Image
                 src={builder.image}
@@ -105,23 +115,36 @@ export default function BuilderProfile({ params }: Params) {
             </div>
             
             <div className="mt-6 space-y-4">
-              <div>
-                <h4 className="text-sm font-medium text-gray-400">Company</h4>
-                <p className="text-lg font-medium">{builder.company}</p>
-              </div>
-              
-              <div>
-                <h4 className="text-sm font-medium text-gray-400">Industry</h4>
-                <p className="text-lg">{builder.industry}</p>
-              </div>
-              
-              <div>
-                <h4 className="text-sm font-medium text-gray-400">Location</h4>
-                <p className="text-lg">{builder.location}</p>
+              <div className="space-y-1">
+                <SectionHeader
+                  title=""
+                  highlightedText=""
+                  badgeText="Profile"
+                  className="mb-6 -ml-2"
+                  align="left"
+                />
+                <div className="flex items-center justify-between py-2 border-b border-gray-800">
+                  <span className="text-gray-400">Company</span>
+                  <span className="font-medium text-right">{builder.company}</span>
+                </div>
+                <div className="flex items-center justify-between py-2 border-b border-gray-800">
+                  <span className="text-gray-400">Industry</span>
+                  <span className="text-right">{builder.industry}</span>
+                </div>
+                <div className="flex items-center justify-between py-2 border-b border-gray-800">
+                  <span className="text-gray-400">Location</span>
+                  <span className="text-right">{builder.location}</span>
+                </div>
               </div>
               
               <div className="pt-4 border-t border-gray-800">
-                <h4 className="text-sm font-medium text-gray-400 mb-3">Connect</h4>
+                <SectionHeader
+                  title=""
+                  highlightedText=""
+                  badgeText="Connect"
+                  className="mb-3 -ml-2"
+                  align="left"
+                />
                 <div className="flex space-x-4">
                   {builder.website && (
                     <a 
@@ -172,13 +195,21 @@ export default function BuilderProfile({ params }: Params) {
           
           <div className="w-full md:w-2/3 lg:w-3/4">
             <div className="bg-gradient-to-r from-yellow-400/5 to-transparent p-6 rounded-xl border border-yellow-400/20 mb-8">
-              <h1 className="text-4xl font-bold mb-2">{builder.name}</h1>
-              <p className="text-2xl text-yellow-400 mb-4">{builder.role}</p>
-              <p className="text-lg text-gray-300 mb-6">{builder.bio}</p>
+              <div className="mb-6">
+                <h1 className="text-4xl font-bold mb-2">{builder.name}</h1>
+                <p className="text-2xl text-yellow-400 mb-4">{builder.role}</p>
+                <p className="text-lg text-gray-300">{builder.bio}</p>
+              </div>
               
               {builder.highlights && builder.highlights.length > 0 && (
-                <div className="mt-6">
-                  <h3 className="text-lg font-semibold mb-3">Highlights</h3>
+                <div className="mt-8">
+                  <SectionHeader
+                    title=""
+                    highlightedText=""
+                    badgeText="Highlights"
+                    className="mb-4 -ml-2"
+                    align="left"
+                  />
                   <ul className="space-y-2">
                     {builder.highlights.map((highlight, index) => (
                       <li key={index} className="flex items-start">
@@ -193,7 +224,13 @@ export default function BuilderProfile({ params }: Params) {
             
             {builder.content && builder.content.length > 0 && (
               <div className="bg-gray-900/50 p-6 rounded-xl border border-gray-800">
-                <h3 className="text-xl font-semibold mb-4">Featured Content</h3>
+                <SectionHeader
+                  title="Featured"
+                  highlightedText="Content"
+                  badgeText="Media"
+                  className="mb-6 -ml-2"
+                  align="left"
+                />
                 <div className="space-y-4">
                   {builder.content.map((item, index) => (
                     <a 

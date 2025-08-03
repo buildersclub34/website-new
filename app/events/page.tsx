@@ -336,9 +336,14 @@ const EventsPage = () => {
       <section className="relative py-32 overflow-hidden z-10">
         <div className="container mx-auto px-4 relative">
           <div className="max-w-4xl mx-auto text-center relative">
-            <div className="inline-flex items-center px-6 py-3 bg-yellow-500/10 border border-yellow-500/30 rounded-full text-yellow-400 text-sm font-medium mb-6 backdrop-blur-sm z-20">
-              <Rocket className="w-5 h-5 mr-2" />
-              UPCOMING EVENTS
+            <div className="mb-6 z-20">
+              <SectionHeader
+                title=""
+                highlightedText=""
+                badgeText="Upcoming Events"
+                align="center"
+                className="mb-0"
+              />
             </div>
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
               <span className="text-yellow-400">JOIN</span> <br />
@@ -564,11 +569,14 @@ const EventsPage = () => {
               </div>
             ) : (
               <div className="text-center py-16 bg-gray-900/50 rounded-xl border border-gray-800">
-                <div className="inline-block p-4 mb-4 rounded-full bg-yellow-500/10">
-                  <Calendar className="h-8 w-8 text-yellow-400" />
-                </div>
-                <h3 className="text-xl font-medium text-gray-300 mb-2">No upcoming events found</h3>
-                <p className="text-gray-500 mb-4">Check back later for new events or adjust your filters</p>
+                <SectionHeader
+                  title="No Upcoming"
+                  highlightedText="Events Found"
+                  badgeText="Empty"
+                  description="Check back later for new events or adjust your filters"
+                  className="mb-4"
+                  align="center"
+                />
                 <button
                   onClick={handleClearFilters}
                   className="text-yellow-400 hover:text-yellow-300 text-sm font-medium px-4 py-2 border border-yellow-400/30 rounded-lg hover:bg-yellow-400/10 transition-colors"
@@ -582,10 +590,14 @@ const EventsPage = () => {
           {/* Recent Events Section */}
           {pastEventsFiltered.length > 0 && (
             <section className="mt-16 pt-12 border-t border-gray-800">
-              <h2 className="text-2xl md:text-3xl font-bold mb-8">
-                Recent Events
-                <span className="ml-2 text-gray-500">({pastEventsFiltered.length})</span>
-              </h2>
+              <SectionHeader
+                title="Recent"
+                highlightedText="Events"
+                badgeText="Past"
+                description={`${pastEventsFiltered.length} events`}
+                className="mb-8"
+                align="left"
+              />
               
               <div className="space-y-6">
                 {pastEventsFiltered.map((event) => (
@@ -749,11 +761,13 @@ const EventsPage = () => {
       <section className="py-20 px-4 bg-gradient-to-b from-gray-900 to-black">
         <div className="max-w-4xl mx-auto text-center">
           <SectionHeader
-            title="Host Your Own Event"
-            subtitle="Share your knowledge and connect with our community of builders and creators"
-            gradientText="Become a Host"
+            title="Host Your Own"
+            highlightedText="Event"
+            badgeText="Become a Host"
+            description="Share your knowledge and connect with our community of builders and creators"
             className="mb-8"
             titleClassName="text-4xl md:text-5xl font-bold"
+            align="center"
           />
           
           <p className="text-gray-400 mb-8 max-w-2xl mx-auto">

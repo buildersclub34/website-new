@@ -42,10 +42,11 @@ export const WhyFundWithUs = () => {
       <div className="container mx-auto px-4">
         <SectionHeader
           title="Why Raise With"
-          gradientText="The Builders Club"
+          highlightedText="The Builders Club"
           className="text-center mb-16"
           titleClassName="text-3xl md:text-4xl font-bold"
-          subtitle="We've helped 100+ startups raise over $50M in funding"
+          description="We've helped 100+ startups raise over $50M in funding"
+          badgeText="Fundraising"
         />
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -112,10 +113,11 @@ export const FundraisingProcess = () => {
       <div className="container mx-auto px-4">
         <SectionHeader
           title="Our Fundraising"
-          gradientText="Process"
+          highlightedText="Process"
           className="text-center mb-16"
           titleClassName="text-3xl md:text-4xl font-bold"
-          subtitle="A clear, step-by-step approach to securing your next round"
+          description="A clear, step-by-step approach to securing your next round"
+          badgeText="How It Works"
         />
         
         <div className="relative max-w-4xl mx-auto">
@@ -173,10 +175,11 @@ export const SuccessStories = () => {
       <div className="container mx-auto px-4">
         <SectionHeader
           title="Success"
-          gradientText="Stories"
+          highlightedText="Stories"
           className="text-center mb-16"
           titleClassName="text-3xl md:text-4xl font-bold"
-          subtitle="Real results from startups we've helped fundraise"
+          description="Real results from startups we've helped fundraise"
+          badgeText="Case Studies"
         />
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -234,9 +237,10 @@ export const FAQSection = () => {
       <div className="container mx-auto px-4 max-w-4xl">
         <SectionHeader
           title="Frequently Asked"
-          gradientText="Questions"
+          highlightedText="Questions"
           className="text-center mb-16"
           titleClassName="text-3xl md:text-4xl font-bold"
+          badgeText="FAQ"
         />
         
         <div className="space-y-4">

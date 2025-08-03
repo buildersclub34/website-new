@@ -1,66 +1,64 @@
-import React from 'react';
+import { ReactNode } from 'react';
 
 interface SectionHeaderProps {
-  title: string | React.ReactNode;
-  subtitle?: string;
-  badgeText?: string;
-  className?: string;
+  /** Main title text */
+  title: string;
+  /** Highlighted text that appears after the title */
   highlightedText?: string;
-  description?: string;
-  icon?: React.ReactNode;
-  gradientText?: string;
-  gradientColors?: string;
+  /** Description text below the title */
+  description?: string | ReactNode;
+  /** Badge text at the top */
+  badgeText?: string;
+  /** Optional icon to display with the badge */
+  icon?: ReactNode;
+  /** Additional class names for the container */
+  className?: string;
+  /** Additional class names for the title */
   titleClassName?: string;
-  subtitleClassName?: string;
+  /** Additional class names for the description */
+  descriptionClassName?: string;
+  /** Text alignment */
+  align?: 'left' | 'center' | 'right';
+  /** Gradient colors for the highlighted text */
+  gradientColors?: string;
 }
 
-export function SectionHeader({ 
-  title, 
-  subtitle, 
-  badgeText, 
-  className = '',
+export function SectionHeader({
+  title,
   highlightedText,
   description,
-  icon,
-  gradientText,
-  gradientColors = 'from-[#FFD700] via-[#FFC000] to-[#FFA500]',
+  badgeText,
+  icon: Icon,
+  className = '',
   titleClassName = '',
-  subtitleClassName = 'text-white/70 text-lg md:text-xl mt-4 max-w-3xl mx-auto'
+  descriptionClassName = 'text-lg text-gray-300 mt-4 max-w-3xl',
+  align = 'center',
+  gradientColors = 'from-yellow-400 to-yellow-600',
 }: SectionHeaderProps) {
-  const renderTitle = () => {
-    const titleClasses = `font-black text-white mb-4 ${titleClassName || 'text-4xl md:text-5xl'}`;
-    
-    if (gradientText && typeof title === 'string') {
-      const parts = title.split(gradientText);
-      return (
-        <h2 className={titleClasses}>
-          {parts[0]}
-          <span className={`text-transparent bg-clip-text bg-gradient-to-r ${gradientColors}`}>
-            {gradientText}
-          </span>
-          {parts[1]}
-        </h2>
-      );
-    }
-    
-    return (
-      <h2 className={titleClasses}>
-        {title}
-      </h2>
-    );
+  const alignmentClasses = {
+    left: 'text-left items-start',
+    center: 'text-center items-center',
+    right: 'text-right items-end',
   };
 
   return (
-    <div className={`text-center mb-12 ${className}`}>
+    <div className={`flex flex-col ${alignmentClasses[align]} ${className} mb-12`}>
       {badgeText && (
-        <span className="inline-block px-4 py-1.5 text-xs font-semibold tracking-wider text-yellow-500 uppercase rounded-full bg-yellow-500/10 mb-4">
+        <div className="inline-flex items-center px-4 py-1.5 bg-yellow-500/10 border border-yellow-500/30 rounded-full text-yellow-400 text-xs font-medium uppercase tracking-wider mb-4">
           {badgeText}
-        </span>
+        </div>
       )}
-      {renderTitle()}
-      {subtitle && (
-        <p className={subtitleClassName}>
-          {subtitle}
+      <h2 className={`text-3xl md:text-5xl font-bold text-white ${titleClassName}`}>
+        {title}
+        {highlightedText && (
+          <span className={`text-transparent bg-clip-text bg-gradient-to-r ${gradientColors}`}>
+            {' '}{highlightedText}
+          </span>
+        )}
+      </h2>
+      {description && (
+        <p className={`${descriptionClassName} ${align === 'center' ? 'mx-auto' : ''}`}>
+          {description}
         </p>
       )}
     </div>

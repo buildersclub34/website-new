@@ -138,13 +138,16 @@ export default function PartnerInitiatives() {
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-yellow-500/5 rounded-full filter blur-3xl" style={{ animationDelay: '3s' }}></div>
       
       <div className="container mx-auto px-4 relative z-10">
-        <SectionHeader
-          badgeText="Community & Events"
-          title="Partner"
-          highlightedText="Initiatives"
-          description="Explore our curated selection of events, workshops, and programs designed to empower and connect the builder community."
-          icon={<Users className="w-5 h-5" />}
-        />
+        <div className="max-w-5xl mx-auto mb-16">
+          <SectionHeader
+            title="Partner"
+            highlightedText="Initiatives"
+            description="Explore our curated selection of events, workshops, and programs designed to empower and connect the builder community."
+            badgeText="Community & Events"
+            align="center"
+            titleClassName="text-3xl md:text-4xl lg:text-5xl"
+          />
+        </div>
 
         {/* Filters */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">

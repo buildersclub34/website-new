@@ -13,9 +13,14 @@ function FundraisingPage() {
       <section className="relative py-32 overflow-hidden z-10">
         <div className="container mx-auto px-4 relative">
           <div className="max-w-4xl mx-auto text-center relative">
-            <div className="inline-flex items-center px-6 py-3 bg-yellow-500/10 border border-yellow-500/30 rounded-full text-yellow-400 text-sm font-medium mb-6 backdrop-blur-sm z-20">
-              <Rocket className="w-5 h-5 mr-2" />
-              FUNDRAISING SUPPORT
+            <div className="mb-6 z-20">
+              <SectionHeader
+                badgeText="Fundraising Support"
+                title=""
+                highlightedText=""
+                align="center"
+                className="mb-0"
+              />
             </div>
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
               <span className="text-yellow-400">RAISE</span> <br />
@@ -59,10 +64,11 @@ function FundraisingPage() {
         <div className="container mx-auto px-4">
           <SectionHeader
             title="Investors in Our"
-            gradientText="Network"
+            highlightedText="Network"
             className="text-center mb-16"
             titleClassName="text-3xl md:text-4xl font-bold"
-            subtitle="We work with a curated network of 300+ investors across different stages and sectors"
+            description="We work with a curated network of 300+ investors across different stages and sectors"
+            badgeText="Partners"
           />
           
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-12">

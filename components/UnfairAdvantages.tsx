@@ -47,11 +47,15 @@ export default function UnfairAdvantages() {
   return (
     <section className="py-20 bg-black">
       <div className="container mx-auto px-4">
-        <SectionHeader
-          title="Our Unfair Advantages"
-          gradientText="Unfair Advantages"
-          className="mb-16"
-        />
+        <div className="max-w-4xl mx-auto text-center mb-16">
+          <SectionHeader
+            title="Our"
+            highlightedText="Unfair Advantages"
+            description="Discover what sets us apart and how we can help you succeed"
+            badgeText="Why Choose Us"
+            align="center"
+          />
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {advantages.map((advantage, index) => (
