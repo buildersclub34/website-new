@@ -51,7 +51,8 @@ export async function generateStaticParams() {
   }));
 }
 
-export const dynamicParams = true; // Enable fallback for non-pre-rendered pages
+// Disable dynamicParams when using static export
+// export const dynamicParams = true; // Commented out for static export compatibility
 
 type Params = {
   params: {
@@ -75,7 +76,10 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 export default function BuilderProfile({ params }: Params) {
   const builder = builderProfiles[params.id as keyof typeof builderProfiles];
 
+  // If builder not found, return 404
+  // In static export mode, this should never happen if generateStaticParams is correct
   if (!builder) {
+    console.error(`Builder with id ${params.id} not found`);
     notFound();
   }
 

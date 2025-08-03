@@ -212,16 +212,7 @@ export default function SummitSession2() {
               align="center"
               titleClassName="text-3xl sm:text-4xl"
             />
-            <NeoPopButton
-              as="link"
-              href="https://tally.so/r/mVO9WJ"
-              target="_blank"
-              rel="noopener noreferrer"
-              variant="primary"
-              className="mt-4"
-            >
-              Nominate Now
-            </NeoPopButton>
+            {/* Nominate Now button removed as requested */}
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
@@ -244,7 +235,7 @@ export default function SummitSession2() {
       {/* About The Builders Club */}
       <section className="py-16 bg-gradient-to-b from-black to-gray-900">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-4xl mx-auto text-center">
             <SectionHeader
               title="About The Builders"
               highlightedText="Club"
@@ -253,15 +244,14 @@ export default function SummitSession2() {
               align="center"
               titleClassName="text-3xl sm:text-4xl"
             />
-            <NeoPopButton
-              as="link"
-              href="https://thebuildersclub.me"
-              target="_blank"
-              rel="noopener noreferrer"
-              variant="secondary"
-            >
-              Learn More About Us
-            </NeoPopButton>
+            <div className="mt-8">
+              <Link 
+                href="/"
+                className="relative inline-flex items-center justify-center font-bold text-center uppercase tracking-wider whitespace-nowrap border-2 rounded transition-all duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 disabled:opacity-50 disabled:cursor-not-allowed will-change-transform min-w-fit hover:-translate-y-0.5 hover:translate-x-0.5 active:translate-x-0 active:translate-y-0 active:shadow-none transform -translate-x-1 -translate-y-1 border-b-4 border-r-4 bg-transparent hover:bg-[#FFD700]/10 active:bg-[#FFD700]/20 text-[#FFD700] border-[#D4A017] px-6 py-2 text-base inline-flex shadow-[4px_4px_0_0_rgba(212,160,23,0.5),6px_6px_0_0_rgba(212,160,23,0.3)] hover:shadow-[2px_2px_0_0_rgba(212,160,23,0.5),4px_4px_0_0_rgba(212,160,23,0.3)] active:shadow-none"
+              >
+                Learn More About Us
+              </Link>
+            </div>
           </div>
         </div>
       </section>
