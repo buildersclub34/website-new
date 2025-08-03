@@ -342,7 +342,7 @@ export default function SummitPage() {
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <NeoPopButton
                 as="link"
-                href="#register"
+                href="/summit/season2"
                 variant="primary"
                 size="lg"
                 className="flex items-center"
@@ -478,8 +478,37 @@ export default function SummitPage() {
                 ))}
               </div>
             </div>
+
+            {/* Key Metrics */}
+            <div className="mb-16">
+              <SectionHeader
+                title="Event"
+                highlightedText="Metrics"
+                description="Join our growing community of tech leaders and innovators"
+                badgeText="By The Numbers"
+                titleClassName="text-3xl sm:text-4xl"
+              />
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto mt-8">
+                <div className="bg-black/50 border border-yellow-400/30 p-6 rounded-lg text-center">
+                  <div className="text-3xl md:text-4xl font-bold text-yellow-400 mb-2">500+</div>
+                  <p className="text-white font-medium">Founders</p>
+                </div>
+                <div className="bg-black/50 border border-yellow-400/30 p-6 rounded-lg text-center">
+                  <div className="text-3xl md:text-4xl font-bold text-yellow-400 mb-2">100+</div>
+                  <p className="text-white font-medium">Investors</p>
+                </div>
+                <div className="bg-black/50 border border-yellow-400/30 p-6 rounded-lg text-center">
+                  <div className="text-3xl md:text-4xl font-bold text-yellow-400 mb-2">50+</div>
+                  <p className="text-white font-medium">CXOs</p>
+                </div>
+                <div className="bg-black/50 border border-yellow-400/30 p-6 rounded-lg text-center">
+                  <div className="text-3xl md:text-4xl font-bold text-yellow-400 mb-2">20+</div>
+                  <p className="text-white font-medium">Speakers</p>
+                </div>
+              </div>
+            </div>
           </div>
-          
+            
           {/* Decorative elements */}
           <div className="absolute top-1/4 -right-20 w-60 h-60 bg-yellow-500/5 rounded-full filter blur-3xl"></div>
         </section>
