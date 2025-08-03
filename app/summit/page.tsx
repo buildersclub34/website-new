@@ -12,6 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Calendar, Clock, MapPin, Rocket, Users, Award, Mic, User, ChevronRight, Image as ImageIcon, Star } from 'lucide-react';
 import { SectionHeader } from '@/components/ui/SectionHeader';
+import { SpeakersSection } from '@/components/SpeakersSection';
 
 // Types
 interface EventStat {
@@ -507,8 +508,11 @@ export default function SummitPage() {
                 </div>
               </div>
             </div>
+
+            {/* Speakers Section */}
+            <SpeakersSection />
           </div>
-            
+          
           {/* Decorative elements */}
           <div className="absolute top-1/4 -right-20 w-60 h-60 bg-yellow-500/5 rounded-full filter blur-3xl"></div>
         </section>
