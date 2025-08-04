@@ -1,3 +1,5 @@
+'use client';
+
 import { SectionHeader } from './ui/SectionHeader';
 import { SpeakerCard } from './SpeakerCard';
 import { useEffect, useRef, useMemo, useState } from 'react';
@@ -183,14 +185,14 @@ export function SpeakersSection() {
     <section className="py-16 relative overflow-hidden bg-gradient-to-b from-black to-gray-900">
       <div className="container mx-auto px-4 relative z-10">
         <SectionHeader 
-          title="Meet Our"
+          title="Featured"
           highlightedText="Speakers"
-          description="True pioneers of their craft and some of the most influential minds in the world."
-          badgeText="Season 1"
+          description="Learn from and network with some of the brightest minds in the technology industry."
+          badgeText="Speakers"
           align="center"
           className="mb-12"
-          titleClassName="text-4xl md:text-5xl"
-          descriptionClassName="text-lg text-gray-300 max-w-3xl mx-auto"
+          titleClassName="text-3xl md:text-5xl"
+          descriptionClassName="text-lg text-gray-300 mt-4 max-w-3xl mx-auto"
         />
         
         <div className="relative w-full py-8 overflow-hidden">

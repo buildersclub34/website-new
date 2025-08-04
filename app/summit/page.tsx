@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { cn } from "@/lib/utils";
@@ -71,18 +71,76 @@ const eventStats: EventStat[] = [
   }
 ];
 
-interface Highlight {
+interface Event {
   id: number;
   title: string;
   image: string;
-  tag: string;
   date: string;
-  description: string;
+  excerpt: string;
   link: string;
+  categories: string[];
   featured?: boolean;
 }
 
-const highlights: Highlight[] = [
+const realEvents: Event[] = [
+  {
+    id: 1,
+    title: "🔥 BUILDING IN TECH CONFERENCE",
+    image: "https://thebuildersclub.me/wp-content/uploads/2025/06/Speaker-Reveal.png",
+    date: "2025-06-15",
+    excerpt: "Join us for the biggest tech conference of the year featuring industry leaders and innovators.",
+    link: "https://thebuildersclub.me/announcements/%f0%9f%94%a5building-in-tech-conference/",
+    categories: ["Conference", "Tech"],
+    featured: true
+  },
+  {
+    id: 2,
+    title: "🎉 Bangalore's Most Exclusive B2C Founder Meet-Up 🎉",
+    image: "https://thebuildersclub.me/wp-content/uploads/2025/05/1748282668148.jpg",
+    date: "2025-05-30",
+    excerpt: "An exclusive gathering for B2C founders to network and share insights.",
+    link: "https://thebuildersclub.me/announcements/%f0%9f%8e%89bangalores-most-exclusive-b2c-founder-meet-up%f0%9f%8e%89/",
+    categories: ["Networking", "B2C"]
+  },
+  {
+    id: 3,
+    title: "🚀 Revolutionize Your Sales Process: Build AI Sales Assistants",
+    image: "https://thebuildersclub.me/wp-content/uploads/2025/05/WhatsApp-Image-2025-05-19-at-17.21.03_e3af7361.jpg",
+    date: "2025-05-19",
+    excerpt: "Learn how to leverage AI to transform your sales process in this exclusive workshop.",
+    link: "https://thebuildersclub.me/events/%f0%9f%9a%80revolutionize-your-sales-process-build-ai-sales-assistants-in-an-exclusive-workshop-by-the-builders-club-lyzr-ai/",
+    categories: ["Workshop", "AI", "Sales"]
+  },
+  {
+    id: 4,
+    title: "The Pune Board Room Meeting #Circle",
+    image: "https://thebuildersclub.me/wp-content/uploads/2025/04/pune.png",
+    date: "2025-04-25",
+    excerpt: "Exclusive board room meeting for Pune's top entrepreneurs and investors.",
+    link: "https://thebuildersclub.me/announcements/the-pune-board-room-meeting-circle/",
+    categories: ["Networking", "Investors"]
+  },
+  {
+    id: 5,
+    title: "Upcoming Investor Dates – May 2025 Edition",
+    image: "https://thebuildersclub.me/wp-content/uploads/2025/04/UPCOMING-EVENTS.png",
+    date: "2025-04-20",
+    excerpt: "Don't miss these important investor dates for May 2025.",
+    link: "https://thebuildersclub.me/announcements/upcoming-investor-dates-may-2025-edition/",
+    categories: ["Investors", "Calendar"]
+  },
+  {
+    id: 6,
+    title: "A Date with She Capital Ventures",
+    image: "https://thebuildersclub.me/wp-content/uploads/2025/04/she-capital.png",
+    date: "2025-04-15",
+    excerpt: "Exclusive opportunity to pitch to She Capital Ventures.",
+    link: "https://thebuildersclub.me/announcements/a-date-with-she-capital-ventures/",
+    categories: ["Pitching", "Investors", "Women Founders"]
+  }
+];
+
+const highlights: any[] = [
   {
     id: 1,
     title: "How Ariro Toys Benefited from The Great Indian Startup Summit",
@@ -317,8 +375,10 @@ const sponsors: Sponsor[] = [
 ];
 
 export default function SummitPage() {
-  const [activeTab, setActiveTab] = useState('highlights');
+  const [activeTab, setActiveTab] = useState('upcoming');
   const [galleryFilter, setGalleryFilter] = useState('all');
+  const [events, setEvents] = useState<Event[]>([]);
+  const [loading, setLoading] = useState(true);
   const [formData, setFormData] = useState<RegistrationForm>({
     name: '',
     email: '',
@@ -336,6 +396,25 @@ export default function SummitPage() {
       [name]: value
     }));
   };
+
+  // Fetch events from API in a real implementation
+  useEffect(() => {
+    // In a real app, you would fetch this from your API
+    // For now, we'll use the static data
+    const fetchEvents = async () => {
+      try {
+        // Simulate API call
+        await new Promise(resolve => setTimeout(resolve, 500));
+        setEvents(realEvents);
+      } catch (error) {
+        console.error('Error fetching events:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchEvents();
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -447,63 +526,90 @@ export default function SummitPage() {
               ))}
             </div>
             
-            {/* Highlights */}
+            {/* Events Section */}
             <div className="mb-16">
               <SectionHeader
-                title="Season 1"
-                highlightedText="Highlights"
-                description="Relive the most memorable moments from our previous summit"
-                badgeText="Highlights"
+                title="Upcoming"
+                highlightedText="Events"
+                description="Join us for our upcoming events and workshops"
+                badgeText="Events"
                 titleClassName="text-3xl sm:text-4xl"
               />
               
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {highlights.map((highlight, index) => (
-                  <div key={highlight.id} className="group">
-                    <div className="h-full bg-gray-900/50 border border-gray-800 rounded-xl overflow-hidden flex flex-col">
-                      <div className="relative h-48 overflow-hidden">
-                        <Image
-                          src={highlight.image}
-                          alt={highlight.title}
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-500"
-                        />
-                        {highlight.featured && (
-                          <div className="absolute top-4 right-4 bg-yellow-500 text-black text-xs font-bold px-3 py-1 rounded-full">
-                            Featured
-                          </div>
-                        )}
-                      </div>
-                      <div className="p-6 flex flex-col flex-1">
-                        <div className="flex items-center justify-between mb-3">
-                          <span className="inline-block px-3 py-1 bg-yellow-500/20 text-yellow-400 text-xs font-medium rounded-full">
-                            {highlight.tag}
-                          </span>
-                          <span className="text-xs text-gray-400">{highlight.date}</span>
-                        </div>
-                        <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">{highlight.title}</h3>
-                        <p className="text-sm sm:text-base text-gray-300 flex-1 mb-4 sm:mb-6">{highlight.description}</p>
-                        <div className="mt-auto pt-3 sm:pt-4 border-t border-gray-800">
-                          <div className="flex items-center justify-between">
-                            <div className="flex items-center space-x-2">
-                              <div className="flex -space-x-1.5 sm:-space-x-2">
-                                {[1, 2, 3].map((i) => (
-                                  <div key={i} className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gray-700 border-2 border-gray-800"></div>
-                                ))}
-                              </div>
-                              <span className="text-xs text-gray-400">+12 attending</span>
+              {loading ? (
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  {[1, 2, 3].map((i) => (
+                    <div key={i} className="h-80 bg-gray-900/50 rounded-xl animate-pulse"></div>
+                  ))}
+                </div>
+              ) : events.length > 0 ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {events.map((event) => (
+                    <div key={event.id} className="group">
+                      <div className="h-full bg-gray-900/50 border border-gray-800 rounded-xl overflow-hidden flex flex-col hover:border-yellow-500/50 transition-colors duration-300">
+                        <div className="relative h-48 overflow-hidden">
+                          <Image
+                            src={event.image}
+                            alt={event.title}
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-500"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          />
+                          {event.featured && (
+                            <div className="absolute top-4 right-4 bg-yellow-500 text-black text-xs font-bold px-3 py-1 rounded-full">
+                              Featured
                             </div>
-                            <button className="text-yellow-400 hover:text-yellow-300 text-xs sm:text-sm font-medium flex items-center">
+                          )}
+                        </div>
+                        <div className="p-6 flex flex-col flex-1">
+                          <div className="flex items-center justify-between mb-3">
+                            <div className="flex flex-wrap gap-2">
+                              {event.categories.slice(0, 2).map((category, i) => (
+                                <span key={i} className="inline-block px-2 py-1 bg-yellow-500/20 text-yellow-400 text-xs font-medium rounded-full">
+                                  {category}
+                                </span>
+                              ))}
+                              {event.categories.length > 2 && (
+                                <span className="inline-block px-2 py-1 bg-gray-800 text-gray-400 text-xs rounded-full">
+                                  +{event.categories.length - 2}
+                                </span>
+                              )}
+                            </div>
+                            <span className="text-xs text-gray-400">
+                              {new Date(event.date).toLocaleDateString('en-US', {
+                                year: 'numeric',
+                                month: 'short',
+                                day: 'numeric'
+                              })}
+                            </span>
+                          </div>
+                          <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3 line-clamp-2">
+                            {event.title}
+                          </h3>
+                          <p className="text-sm sm:text-base text-gray-300 flex-1 mb-4 sm:mb-6 line-clamp-3">
+                            {event.excerpt}
+                          </p>
+                          <div className="mt-auto pt-3 sm:pt-4 border-t border-gray-800">
+                            <a 
+                              href={event.link} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="text-yellow-400 hover:text-yellow-300 text-sm font-medium flex items-center group-hover:translate-x-1 transition-transform duration-300 w-fit"
+                            >
                               Learn more
-                              <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
-                            </button>
+                              <ChevronRight className="w-4 h-4 ml-1" />
+                            </a>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-12">
+                  <p className="text-gray-400">No upcoming events at the moment. Please check back later!</p>
+                </div>
+              )}
             </div>
 
             {/* Key Metrics */}

@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { ChevronRight, Rocket, Zap, Users, Award, Mic2, Calendar, MapPin, Clock } from 'lucide-react';
 import NeoPopButton from "@/components/ui/NeoPopButton";
 import { SectionHeader } from '@/components/ui/SectionHeader';
+import { SpeakersSection } from '@/components/SpeakersSection';
 
 export const metadata: Metadata = {
   title: "The Great Indian Tech Summit & Awards 2025",
@@ -329,41 +330,7 @@ export default function SummitSession2() {
       </section>
 
       {/* Speakers Section */}
-      <section className="py-16 bg-gradient-to-b from-black to-gray-900">
-        <div className="container mx-auto px-4">
-          <div className="mb-12">
-            <SectionHeader
-              title="Featured"
-              highlightedText="Speakers"
-              description="Learn from and network with some of the brightest minds in the technology industry."
-              badgeText="Speakers"
-              align="center"
-              titleClassName="text-3xl sm:text-4xl"
-            />
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {speakers.map((speaker, index) => (
-              <SpeakerCard 
-                key={index}
-                name={speaker.name}
-                role={speaker.role}
-                company={speaker.company}
-                image={speaker.image}
-              />
-            ))}
-          </div>
-          
-          <div className="text-center mt-12">
-            <NeoPopButton variant="secondary" className="border-yellow-400 text-yellow-400 hover:bg-yellow-400/10">
-              View All Speakers
-              <ChevronRight className="w-4 h-4 ml-2" />
-            </NeoPopButton>
-          </div>
-        </div>
-      </section>
-
-
+      <SpeakersSection />
 
       {/* Investment Partners Section */}
       <section id="investment-partners" className="py-16 bg-black overflow-hidden">
