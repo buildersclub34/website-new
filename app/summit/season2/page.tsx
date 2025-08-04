@@ -175,11 +175,13 @@ export default function SummitSession2() {
               </NeoPopButton>
               <NeoPopButton
                 as="link"
-                href="#schedule"
+                href="/summit"
                 variant="secondary"
                 size="lg"
+                className="group"
               >
-                View Schedule
+                Season 1 Highlights
+                <ChevronRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </NeoPopButton>
             </div>
             <div className="flex flex-wrap justify-center gap-8 mt-12">
@@ -361,6 +363,87 @@ export default function SummitSession2() {
         </div>
       </section>
 
+
+
+      {/* Investment Partners Section */}
+      <section id="investment-partners" className="py-16 bg-black overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto text-center mb-12">
+            <div className="flex flex-col text-center items-center mb-12">
+              <div className="inline-flex items-center px-4 py-1.5 bg-yellow-500/10 border border-yellow-500/30 rounded-full text-yellow-400 text-xs font-medium uppercase tracking-wider mb-4">
+                Network
+              </div>
+              <h2 className="text-3xl md:text-5xl font-bold text-white">
+                Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">Investment Partners</span>
+              </h2>
+              <p className="text-lg text-gray-300 mt-4 max-w-3xl mx-auto">
+                Trusted by the world&apos;s leading investment firms and venture capitalists
+              </p>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-0.5">
+            {[
+              { name: 'Sequoia Capital', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/25-1.png', invert: false },
+              { name: 'Y Combinator', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/26-1.png', invert: true },
+              { name: 'Andreessen Horowitz', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/27-1.png', invert: false },
+              { name: 'Tiger Global', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/28-1.png', invert: true },
+              { name: 'Accel', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/31-1.png', invert: false },
+              { name: 'Lightspeed Venture Partners', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/32-1.png', invert: true },
+              { name: 'Bessemer Venture Partners', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/33-1.png', invert: false },
+              { name: 'Benchmark', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/34.png', invert: true },
+              { name: 'Kleiner Perkins', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/35.png', invert: false },
+              { name: 'Greylock Partners', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/36.png', invert: true },
+              { name: 'Bain Capital Ventures', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/37.png', invert: false },
+              { name: 'Insight Partners', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/38.png', invert: true },
+              { name: 'Index Ventures', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/39.png', invert: false },
+              { name: 'Battery Ventures', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/40.png', invert: true },
+              { name: 'GGV Capital', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/41.png', invert: false },
+              { name: 'Khosla Ventures', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/42.png', invert: true },
+              { name: 'General Catalyst', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/43.png', invert: false },
+              { name: 'New Enterprise Associates', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/44.png', invert: true },
+              { name: 'First Round Capital', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/3.png', invert: false },
+              { name: 'Founders Fund', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/5.png', invert: true },
+              { name: 'Coatue Management', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/121.png', invert: false },
+              { name: 'D1 Capital Partners', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/122.png', invert: true },
+              { name: 'T. Rowe Price', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/142.png', invert: false },
+              { name: 'Dragoneer Investment Group', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/45.png', invert: true },
+              { name: 'Durable Capital Partners', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/46.png', invert: false },
+              { name: 'Fidelity Management', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/47.png', invert: true },
+              { name: 'BlackRock', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/48.png', invert: false },
+            ].map((partner, index) => (
+              <div 
+                key={index}
+                className={`${
+                  partner.invert 
+                    ? 'bg-black border-gray-800' 
+                    : 'bg-gradient-to-br from-[#FFD700] to-[#FFA500] border-[#FFD700] shadow-[0_0_10px_rgba(255,215,0,0.2)]'
+                } border md:border-2 p-1 md:p-2 flex items-center justify-center transition-all duration-200 hover:scale-105 hover:shadow-neon-gold hover:z-10 relative`}
+                style={{ aspectRatio: '1/1' }}
+              >
+                <div className="relative w-full h-full flex items-center justify-center">
+                  <Image
+                    src={partner.image}
+                    alt={partner.name}
+                    fill
+                    className={`object-contain p-1 ${partner.invert ? 'invert' : 'invert-0'}`}
+                    sizes="(max-width: 768px) 33vw, (max-width: 1200px) 16.66vw, 12.5vw"
+                  />
+                </div>
+                {!partner.invert && (
+                  <>
+                    <div className="absolute top-0 left-0 w-1.5 h-1.5 bg-black"></div>
+                    <div className="absolute top-0 right-0 w-1.5 h-1.5 bg-black"></div>
+                    <div className="absolute bottom-0 left-0 w-1.5 h-1.5 bg-black"></div>
+                    <div className="absolute bottom-0 right-0 w-1.5 h-1.5 bg-black"></div>
+                  </>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Location Section with Map */}
       <section className="py-16 bg-black">
         <div className="container mx-auto px-4">
@@ -407,7 +490,7 @@ export default function SummitSession2() {
       </section>
 
       {/* CTA Section - Moved to bottom */}
-      <section className="py-20 bg-gradient-to-b from-gray-900 to-black">
+      <section className="py-20 bg-gradient-to-b from-black to-gray-900">
         <div className="container mx-auto px-4 text-center">
           <SectionHeader
             title="Ready to Join"

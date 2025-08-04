@@ -4,6 +4,32 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { cn } from "@/lib/utils";
+
+// Partner Card Component
+interface PartnerCardProps {
+  name: string;
+  url: string;
+  small?: boolean;
+}
+
+const PartnerCard = ({ name, url, small = false }: PartnerCardProps) => (
+  <a 
+    href={url} 
+    target="_blank" 
+    rel="noopener noreferrer"
+    className={`relative group bg-gray-900/50 border-2 border-yellow-500/20 rounded-lg overflow-hidden 
+      transition-all duration-300 hover:border-yellow-400 hover:shadow-lg hover:shadow-yellow-500/10
+      ${small ? 'p-3' : 'p-6'}`}
+  >
+    <div className="relative w-full aspect-[4/3] flex items-center justify-center">
+      <div className="w-4/5 h-4/5 bg-yellow-500/10 rounded-md flex items-center justify-center">
+        <span className="text-xs sm:text-sm text-center text-yellow-400 font-medium">{name}</span>
+      </div>
+    </div>
+    <div className="absolute inset-0 border-2 border-yellow-500/0 group-hover:border-yellow-400/50 rounded-md transition-all duration-300 pointer-events-none"></div>
+    <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/0 to-yellow-500/0 group-hover:to-yellow-500/5 transition-all duration-300"></div>
+  </a>
+);
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -626,6 +652,359 @@ export default function SummitPage() {
             <div className="text-center mt-12">
               <NeoPopButton variant="secondary" className="px-8 py-3">
                 VIEW MORE PHOTOS
+              </NeoPopButton>
+            </div>
+          </div>
+        </section>
+
+        {/* Investment Partners Section */}
+        <section id="investment-partners" className="py-16 bg-black overflow-hidden">
+          <div className="container mx-auto px-4">
+            <div className="max-w-5xl mx-auto text-center mb-12">
+              <div className="flex flex-col text-center items-center mb-12">
+                <div className="inline-flex items-center px-4 py-1.5 bg-yellow-500/10 border border-yellow-500/30 rounded-full text-yellow-400 text-xs font-medium uppercase tracking-wider mb-4">
+                  Network
+                </div>
+                <h2 className="text-3xl md:text-5xl font-bold text-white">
+                  Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">Investment Partners</span>
+                </h2>
+                <p className="text-lg text-gray-300 mt-4 max-w-3xl mx-auto">
+Trusted by the world&apos;s leading investment firms and venture capitalists
+                </p>
+              </div>
+            </div>
+            
+            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-0.5">
+              {[
+                { name: 'Sequoia Capital', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/25-1.png', invert: false },
+                { name: 'Y Combinator', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/26-1.png', invert: true },
+                { name: 'Andreessen Horowitz', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/27-1.png', invert: false },
+                { name: 'Tiger Global', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/28-1.png', invert: true },
+                { name: 'Accel', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/31-1.png', invert: false },
+                { name: 'Lightspeed Venture Partners', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/32-1.png', invert: true },
+                { name: 'Bessemer Venture Partners', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/33-1.png', invert: false },
+                { name: 'Benchmark', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/34.png', invert: true },
+                { name: 'Kleiner Perkins', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/35.png', invert: false },
+                { name: 'Greylock Partners', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/36.png', invert: true },
+                { name: 'Bain Capital Ventures', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/37.png', invert: false },
+                { name: 'Insight Partners', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/38.png', invert: true },
+                { name: 'Index Ventures', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/39.png', invert: false },
+                { name: 'Battery Ventures', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/40.png', invert: true },
+                { name: 'GGV Capital', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/41.png', invert: false },
+                { name: 'Khosla Ventures', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/42.png', invert: true },
+                { name: 'General Catalyst', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/43.png', invert: false },
+                { name: 'New Enterprise Associates', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/44.png', invert: true },
+                { name: 'First Round Capital', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/3.png', invert: false },
+                { name: 'Founders Fund', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/5.png', invert: true },
+                { name: 'Coatue Management', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/121.png', invert: false },
+                { name: 'D1 Capital Partners', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/122.png', invert: true },
+                { name: 'T. Rowe Price', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/142.png', invert: false },
+                { name: 'Dragoneer Investment Group', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/45.png', invert: true },
+                { name: 'Durable Capital Partners', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/46.png', invert: false },
+                { name: 'Fidelity Management', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/47.png', invert: true },
+                { name: 'BlackRock', image: 'https://thebuildersclub.me/wp-content/uploads/2024/12/48.png', invert: false },
+              ].map((partner, index) => (
+                <div 
+                  key={index}
+                  className={`${
+                    partner.invert 
+                      ? 'bg-black border-gray-800' 
+                      : 'bg-gradient-to-br from-[#FFD700] to-[#FFA500] border-[#FFD700] shadow-[0_0_10px_rgba(255,215,0,0.2)]'
+                  } border md:border-2 p-1 md:p-2 flex items-center justify-center transition-all duration-200 hover:scale-105 hover:shadow-neon-gold hover:z-10 relative`}
+                  style={{ aspectRatio: '1/1' }}
+                >
+                  <div className="relative w-full h-full flex items-center justify-center">
+                    <Image
+                      src={partner.image}
+                      alt={partner.name}
+                      fill
+                      className={`object-contain p-1 ${partner.invert ? 'invert' : 'invert-0'}`}
+                      sizes="(max-width: 768px) 33vw, (max-width: 1200px) 16.66vw, 12.5vw"
+                    />
+                  </div>
+                  {!partner.invert && (
+                    <>
+                      <div className="absolute top-0 left-0 w-1.5 h-1.5 bg-black"></div>
+                      <div className="absolute top-0 right-0 w-1.5 h-1.5 bg-black"></div>
+                      <div className="absolute bottom-0 left-0 w-1.5 h-1.5 bg-black"></div>
+                      <div className="absolute bottom-0 right-0 w-1.5 h-1.5 bg-black"></div>
+                    </>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* The Great Indian Startup Pitch Section */}
+        <section id="startup-pitch" className="py-16 bg-black">
+          <div className="container mx-auto px-4">
+            <div className="max-w-5xl mx-auto text-center mb-12">
+              <div className="flex flex-col text-center items-center mb-12">
+                <div className="inline-flex items-center px-4 py-1.5 bg-yellow-500/10 border border-yellow-500/30 rounded-full text-yellow-400 text-xs font-medium uppercase tracking-wider mb-4">
+                  Competition
+                </div>
+                <h2 className="text-3xl md:text-5xl font-bold text-white">
+                  THE GREAT INDIAN <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">STARTUP PITCH</span>
+                </h2>
+                <p className="text-lg text-gray-300 mt-4 max-w-3xl mx-auto">
+                  250+ startups applied to be among the top 10 startups pitching in front of 100+ Investors
+                </p>
+              </div>
+            </div>
+
+            {/* Gallery Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+              {[
+                'https://thebuildersclub.me/wp-content/uploads/2024/09/KU4A8572-1024x683.jpg',
+                'https://thebuildersclub.me/wp-content/uploads/2024/09/KU4A8558-1024x683.jpg',
+                'https://thebuildersclub.me/wp-content/uploads/2024/09/KU4A8545-1024x683.jpg',
+                'https://thebuildersclub.me/wp-content/uploads/2024/09/KU4A8520-1024x683.jpg',
+                'https://thebuildersclub.me/wp-content/uploads/2024/09/KU4A8519-1024x683.jpg',
+                'https://thebuildersclub.me/wp-content/uploads/2024/09/KU4A8518-1024x683.jpg',
+                'https://thebuildersclub.me/wp-content/uploads/2024/09/KU4A8513-1024x683.jpg',
+                'https://thebuildersclub.me/wp-content/uploads/2024/09/KU4A8510-1024x683.jpg',
+              ].map((src, index) => (
+                <div key={index} className="aspect-square overflow-hidden rounded-lg border-2 border-yellow-500/30 hover:border-yellow-400 transition-colors group">
+                  <Image
+                    src={src}
+                    alt={`Startup pitch event ${index + 1}`}
+                    width={400}
+                    height={300}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* Finalists Section */}
+            <div className="max-w-4xl mx-auto bg-gray-900/50 border border-yellow-500/30 rounded-xl p-6 mb-12">
+              <h3 className="text-2xl font-bold text-yellow-400 mb-6 text-center">Top 10 Finalists</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {[
+                  'Ariro Toys',
+                  'Find Your Kicks India Private Limited',
+                  'The Folding Company',
+                  'Prodancy Pvt Ltd',
+                  'WinHealth.Care',
+                  'AIOTEL PRIVATE LIMITED',
+                  'FlexyPe',
+                  'GoPllay',
+                  'PRESET Building Systems Pvt Ltd',
+                  'Doodley Pets Ecosystem Private Limited'
+                ].map((startup, index) => (
+                  <div key={index} className="flex items-center p-3 bg-black/30 border border-gray-800 rounded-lg hover:bg-yellow-500/10 transition-colors">
+                    <div className="w-8 h-8 flex items-center justify-center bg-yellow-500/20 text-yellow-400 rounded-full mr-3 text-sm font-medium">
+                      {index + 1}
+                    </div>
+                    <span className="text-white">{startup}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Winner Announcement */}
+            <div className="text-center">
+              <div className="inline-block bg-yellow-500/10 border border-yellow-500/30 rounded-full px-6 py-2 text-yellow-400 mb-6">
+                🏆 Winner Announcement
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-4">ARIRO TOYS was adjudged the winner of <span className="text-yellow-400">The Great Indian Startup Pitch 2024</span></h3>
+              <div className="max-w-2xl mx-auto mt-8 rounded-xl overflow-hidden border-2 border-yellow-500/30">
+                <Image
+                  src="https://thebuildersclub.me/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-19-at-11.08.41-AM-1-1024x682.jpeg"
+                  alt="Ariro Toys - Winner of The Great Indian Startup Pitch 2024"
+                  width={800}
+                  height={533}
+                  className="w-full h-auto"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Road to Summit Series */}
+        <section id="road-to-summit" className="py-16 bg-black relative overflow-hidden">
+          <div className="absolute inset-0 -z-10 bg-gradient-to-br from-yellow-900/5 to-transparent opacity-10"></div>
+          <div className="container mx-auto px-4">
+            <SectionHeader
+              title="ROAD TO SUMMIT"
+              highlightedText="SERIES"
+              description="As a prequel to the summit, we ran a multi-city roadshow spreading awareness about the event and inviting founders to attend the summit in Bangalore. These events happened in Delhi, Gurgaon, Mumbai, Bangalore, and Hyderabad."
+              badgeText="Journey"
+              align="center"
+              className="mb-12"
+            />
+            
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+              {[
+                {
+                  city: 'Bangalore',
+                  image: 'https://thebuildersclub.me/wp-content/uploads/2024/09/r2s-BANG-1024x1024.png'
+                },
+                {
+                  city: 'Delhi',
+                  image: 'https://thebuildersclub.me/wp-content/uploads/2024/09/r2s-Delhi-1024x1024.png'
+                },
+                {
+                  city: 'Mumbai',
+                  image: 'https://thebuildersclub.me/wp-content/uploads/2024/09/Mumbai_2-1024x1024.png'
+                },
+                {
+                  city: 'Gurgaon',
+                  image: 'https://thebuildersclub.me/wp-content/uploads/2024/09/Gurgaon-1024x1024.png'
+                },
+                {
+                  city: 'Hyderabad',
+                  image: 'https://thebuildersclub.me/wp-content/uploads/2024/09/Hyderabad-1024x1024.png'
+                }
+              ].map((item, index) => (
+                <div key={index} className="group relative overflow-hidden rounded-lg border-2 border-yellow-500/30 hover:border-yellow-400 transition-all duration-300">
+                  <div className="aspect-square overflow-hidden">
+                    <Image
+                      src={item.image}
+                      alt={`${item.city} Road to Summit`}
+                      width={400}
+                      height={400}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                    <h3 className="text-white font-bold text-lg">{item.city}</h3>
+                  </div>
+                  <div className="absolute top-2 right-2 bg-yellow-500 text-black text-xs font-bold px-2 py-1 rounded-full">
+                    {item.city}
+                  </div>
+                </div>
+              ))}
+            </div>
+            
+            <div className="mt-12 text-center">
+              <NeoPopButton 
+                variant="primary"
+                size="lg"
+                className="px-8 py-3"
+              >
+                VIEW ALL PHOTOS
+              </NeoPopButton>
+            </div>
+          </div>
+        </section>
+
+        {/* Partners Section */}
+        <section id="partners" className="py-16 bg-black">
+          <div className="container mx-auto px-4">
+            <SectionHeader
+              title="EVENT"
+              highlightedText="PARTNERS"
+              description="We're proud to collaborate with industry leaders who share our vision for innovation and excellence."
+              badgeText="Our Network"
+              align="center"
+              className="mb-12"
+            />
+
+            {/* Ecosystem Partners */}
+            <div className="mb-12">
+              <h3 className="text-xl font-bold text-yellow-400 mb-6 flex items-center">
+                <span className="w-4 h-4 bg-yellow-400 mr-2 rounded-sm"></span>
+                ECOSYSTEM PARTNERS
+              </h3>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <PartnerCard key={`eco-${i}`} name={`Eco Partner ${i}`} url={`#`} />
+                ))}
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+              {/* Exhibition Partners */}
+              <div>
+                <h3 className="text-xl font-bold text-yellow-400 mb-6 flex items-center">
+                  <span className="w-4 h-4 bg-yellow-400 mr-2 rounded-sm"></span>
+                  EXHIBITION PARTNERS
+                </h3>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                  {[1, 2, 3, 4].map((i) => (
+                    <PartnerCard key={`exh-${i}`} name={`Exh. Partner ${i}`} url={`#`} small />
+                  ))}
+                </div>
+              </div>
+
+              {/* Learning Partner */}
+              <div>
+                <h3 className="text-xl font-bold text-yellow-400 mb-6 flex items-center">
+                  <span className="w-4 h-4 bg-yellow-400 mr-2 rounded-sm"></span>
+                  LEARNING PARTNER
+                </h3>
+                <div className="grid grid-cols-2 gap-4">
+                  {[1, 2].map((i) => (
+                    <PartnerCard key={`learn-${i}`} name={`Learn Partner ${i}`} url={`#`} />
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+              {/* Knowledge Partners */}
+              <div>
+                <h3 className="text-xl font-bold text-yellow-400 mb-6 flex items-center">
+                  <span className="w-4 h-4 bg-yellow-400 mr-2 rounded-sm"></span>
+                  KNOWLEDGE PARTNERS
+                </h3>
+                <div className="grid grid-cols-2 gap-4">
+                  {[1, 2, 3, 4].map((i) => (
+                    <PartnerCard key={`know-${i}`} name={`Knowledge ${i}`} url={`#`} small />
+                  ))}
+                </div>
+              </div>
+
+              {/* Gifting Partners */}
+              <div>
+                <h3 className="text-xl font-bold text-yellow-400 mb-6 flex items-center">
+                  <span className="w-4 h-4 bg-yellow-400 mr-2 rounded-sm"></span>
+                  GIFTING PARTNERS
+                </h3>
+                <div className="grid grid-cols-2 gap-4">
+                  {[1, 2].map((i) => (
+                    <PartnerCard key={`gift-${i}`} name={`Gift Partner ${i}`} url={`#`} small />
+                  ))}
+                </div>
+              </div>
+
+              {/* Tool Partners */}
+              <div>
+                <h3 className="text-xl font-bold text-yellow-400 mb-6 flex items-center">
+                  <span className="w-4 h-4 bg-yellow-400 mr-2 rounded-sm"></span>
+                  TOOL PARTNERS
+                </h3>
+                <div className="grid grid-cols-2 gap-4">
+                  {[1, 2, 3].map((i) => (
+                    <PartnerCard key={`tool-${i}`} name={`Tool ${i}`} url={`#`} small />
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Media Partners */}
+            <div>
+              <h3 className="text-xl font-bold text-yellow-400 mb-6 flex items-center">
+                <span className="w-4 h-4 bg-yellow-400 mr-2 rounded-sm"></span>
+                MEDIA PARTNERS
+              </h3>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                {[1, 2, 3, 4, 5, 6].map((i) => (
+                  <PartnerCard key={`media-${i}`} name={`Media ${i}`} url={`#`} small />
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-16 text-center">
+              <p className="text-gray-400 mb-6">Interested in becoming a partner?</p>
+              <NeoPopButton 
+                variant="primary"
+                size="lg" 
+                className="px-8 py-3 text-lg font-medium"
+              >
+                PARTNER WITH US
               </NeoPopButton>
             </div>
           </div>
