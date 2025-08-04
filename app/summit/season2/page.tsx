@@ -361,28 +361,6 @@ export default function SummitSession2() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-black">
-        <div className="container mx-auto px-4 text-center">
-          <SectionHeader
-            title="Ready to Join"
-            highlightedText="Us?"
-            description="Don't miss this opportunity to connect with industry leaders and be part of the tech revolution."
-            badgeText="Register Now"
-            align="center"
-            titleClassName="text-3xl sm:text-4xl"
-          />
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <NeoPopButton className="bg-yellow-400 text-black hover:bg-yellow-300 transition-colors text-lg py-3 px-8">
-              Register Now
-            </NeoPopButton>
-            <NeoPopButton variant="secondary" className="border-yellow-400 text-yellow-400 hover:bg-yellow-400/10 text-lg py-3 px-8">
-              Contact Us
-            </NeoPopButton>
-          </div>
-        </div>
-      </section>
-
       {/* Location Section with Map */}
       <section className="py-16 bg-black">
         <div className="container mx-auto px-4">
@@ -428,6 +406,27 @@ export default function SummitSession2() {
         </div>
       </section>
 
+      {/* CTA Section - Moved to bottom */}
+      <section className="py-20 bg-gradient-to-b from-gray-900 to-black">
+        <div className="container mx-auto px-4 text-center">
+          <SectionHeader
+            title="Ready to Join"
+            highlightedText="Us?"
+            description="Don't miss this opportunity to connect with industry leaders and be part of the tech revolution."
+            badgeText="Register Now"
+            align="center"
+            titleClassName="text-3xl sm:text-4xl"
+          />
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+            <NeoPopButton className="bg-yellow-400 text-black hover:bg-yellow-300 transition-colors text-lg py-3 px-8">
+              Register Now
+            </NeoPopButton>
+            <NeoPopButton variant="secondary" className="border-yellow-400 text-yellow-400 hover:bg-yellow-400/10 text-lg py-3 px-8">
+              Contact Us
+            </NeoPopButton>
+          </div>
+        </div>
+      </section>
 
     </div>
   );
