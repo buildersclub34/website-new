@@ -3,8 +3,7 @@ import { NextAuthOptions, SessionStrategy, DefaultSession } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { prisma } from '@/lib/prisma';
 import { compare } from 'bcryptjs';
-
-import { UserRole } from '@/types/next-auth';
+import { UserRole } from '@/types/auth';
 
 // Extend the built-in session and user types
 declare module 'next-auth' {
