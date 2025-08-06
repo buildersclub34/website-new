@@ -16,7 +16,6 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
     "incremental": true,
     "baseUrl": ".",
     "paths": {
@@ -29,16 +28,22 @@
         "name": "next"
       }
     ],
+    "typeRoots": [
+      "./node_modules/@types",
+      "./types"
+    ],
     "strictNullChecks": true,
     "types": [
-      "node"
-    ]
+      "node",
+      "react",
+      "react-dom"
+    ],
+    "jsx": "preserve"
   },
   "include": [
-    "**/*.d.ts",
+    "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "next-env.d.ts",
     ".next/types/**/*.ts"
   ],
   "exclude": [

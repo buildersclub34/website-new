@@ -371,7 +371,7 @@ export default function NewEventPage() {
                     <Switch
                       id="event-published"
                       checked={isPublished}
-                      onCheckedChange={(checked) => setValue('isPublished', checked)}
+                      onCheckedChange={(checked: boolean) => setValue('isPublished', checked)}
                       aria-label="Publish this event"
                     />
                     <Label htmlFor="event-published">Publish</Label>
@@ -386,7 +386,7 @@ export default function NewEventPage() {
                     <Switch
                       id="event-featured"
                       checked={isFeatured}
-                      onCheckedChange={(checked) => setValue('isFeatured', checked)}
+                      onCheckedChange={(checked: boolean) => setValue('isFeatured', checked)}
                       aria-label="Feature this event"
                     />
                     <Label htmlFor="event-featured">Featured</Label>

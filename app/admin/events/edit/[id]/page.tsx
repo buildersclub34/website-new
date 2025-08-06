@@ -398,7 +398,7 @@ export default function EditEventPage({ params }: PageProps) {
                   <Switch
                     id="isPublished"
                     checked={isPublished}
-                    onCheckedChange={(checked) => setValue('isPublished', checked)}
+                    onCheckedChange={(checked: boolean) => setValue('isPublished', checked)}
                     className="data-[state=checked]:bg-yellow-400 data-[state=unchecked]:bg-gray-700"
                   />
                 </div>
@@ -413,7 +413,7 @@ export default function EditEventPage({ params }: PageProps) {
                   <Switch
                     id="isFeatured"
                     checked={isFeatured}
-                    onCheckedChange={(checked) => setValue('isFeatured', checked)}
+                    onCheckedChange={(checked: boolean) => setValue('isFeatured', checked)}
                     className="data-[state=checked]:bg-yellow-400 data-[state=unchecked]:bg-gray-700"
                   />
                 </div>

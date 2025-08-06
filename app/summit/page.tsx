@@ -41,10 +41,12 @@ import { SectionHeader } from '@/components/ui/SectionHeader';
 import { SpeakersSection } from '@/components/SpeakersSection';
 
 // Types
+import React from 'react';
+
 interface EventStat {
   number: string;
   label: string;
-  icon: () => JSX.Element;
+  icon: () => React.JSX.Element;
 }
 
 // Event data
