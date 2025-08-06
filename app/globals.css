@@ -7,48 +7,100 @@
 :root {
   /* NeoPop Theme Variables */
   --neopop-primary: 45, 100%, 50%; /* #FFC000 - Darker gold */
-  --neopop-primary-hover: 51, 100%, 50%; /* #FFD700 - Brighter gold on hover */
+  --neopop-primary-hover: 51, 100%, 50%; /* #FFD700 - Brighter gold */
   --neopop-accent: 45, 100%, 45%; /* #D4AF37 - Metallic gold */
   --neopop-secondary: 0, 0%, 0%; /* #000000 - Black */
   --neopop-dark: 0, 0%, 7%; /* #121212 - Dark background */
   --neopop-light: 0, 0%, 100%; /* #FFFFFF - White */
-  --neopop-border: 45, 100%, 40%; /* #8B8000 - Dark gold border */
+  --neopop-border: 0, 0%, 20%; /* #333333 - Dark border */
   --neopop-gold: 51, 100%, 50%; /* #FFD700 - Pure gold */
   
-  --foreground-rgb: var(--neopop-light);
-  --background-start-rgb: var(--neopop-dark);
-  --background-end-rgb: var(--neopop-dark);
+  --foreground-rgb: 0, 0%, 7%;
+  --background-start-rgb: 0, 0%, 98%;
+  --background-end-rgb: 0, 0%, 100%;
+  
+  /* Dark mode colors */
+  --neopop-dark-bg: 0, 0%, 7%;
+  --neopop-dark-foreground: 0, 0%, 98%;
+  --neopop-dark-border: 0, 0%, 15%;
 }
 
-/* NeoPop Utility Classes */
+.dark {
+  --foreground-rgb: 0, 0%, 98%;
+  --background-start-rgb: 0, 0%, 7%;
+  --background-end-rgb: 0, 0%, 10%;
+  --neopop-border: 0, 0%, 25%;
+}
+
+/* NeoPop Shadow Effects */
 @layer utilities {
+  /* Shadow effects */
+  .shadow-neo {
+    box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.8);
+  }
+  
+  .shadow-neo-yellow {
+    box-shadow: 4px 4px 0px 0px rgba(234, 179, 8, 0.8);
+  }
+  
+  .shadow-neo-green {
+    box-shadow: 4px 4px 0px 0px rgba(34, 197, 94, 0.8);
+  }
+  
+  .shadow-neo-amber {
+    box-shadow: 4px 4px 0px 0px rgba(245, 158, 11, 0.8);
+  }
+  
+  .shadow-neo-red {
+    box-shadow: 4px 4px 0px 0px rgba(239, 68, 68, 0.8);
+  }
+  
+  .shadow-neo-hover {
+    @apply shadow-neo transform -translate-y-0.5 -translate-x-0.5 transition-all duration-200;
+  }
+  
+  /* Text effects */
+  .text-neo {
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* NeoPop Utility Classes */
   .text-neopop-primary {
     color: rgb(var(--neopop-primary));
   }
+  
   .bg-neopop-primary {
     background-color: rgb(var(--neopop-primary));
   }
+  
   .border-neopop-primary {
     border-color: rgb(var(--neopop-primary));
   }
+  
   .text-neopop-accent {
     color: rgb(var(--neopop-accent));
   }
+  
   .bg-neopop-accent {
     background-color: rgb(var(--neopop-accent));
   }
+  
   .text-neopop-light {
     color: rgb(var(--neopop-light));
   }
+  
   .bg-neopop-dark {
     background-color: rgb(var(--neopop-dark));
   }
+  
   .border-neopop-dark {
     border-color: rgb(var(--neopop-dark));
   }
+  
   .shadow-neopop-glow {
     box-shadow: 0 0 20px rgba(var(--neopop-primary), 0.3);
   }
+  
   .hover\:bg-neopop-primary:hover {
     background-color: rgba(var(--neopop-primary), 0.9);
   }

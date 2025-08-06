@@ -44,7 +44,7 @@ function BuildersCircle() {
           <div className="text-center max-w-3xl">
             <SectionHeader
               title="Builders Circle"
-              subtitle="Join our exclusive community of builders and innovators. Connect, collaborate, and grow together."
+              description="Join our exclusive community of builders and innovators. Connect, collaborate, and grow together."
               className="mb-8"
               titleClassName="text-4xl md:text-5xl font-bold"
             />

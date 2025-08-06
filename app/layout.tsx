@@ -1,7 +1,8 @@
 import './globals.css';
-import ClientLayout from './ClientLayout';
 import { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { Providers } from '@/components/providers';
+import ClientLayoutWrapper from '@/components/ClientLayoutWrapper';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -50,10 +51,12 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
       </head>
-      <body className={`${inter.className} min-h-screen bg-black text-white antialiased`} suppressHydrationWarning>
-        <ClientLayout>
-          {children}
-        </ClientLayout>
+      <body className={`${inter.className} antialiased`} suppressHydrationWarning>
+        <Providers>
+          <ClientLayoutWrapper>
+            {children}
+          </ClientLayoutWrapper>
+        </Providers>
       </body>
     </html>
   );

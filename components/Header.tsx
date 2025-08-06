@@ -117,9 +117,7 @@ export default function Header() {
               <div className="relative z-50">
                 <NeoPopButton
                   as="link"
-                  href="https://nas.io/tbc"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/auth/signin"
                   variant="primary"
                   size="lg"
                   className="text-sm sm:text-base whitespace-nowrap"
@@ -147,9 +145,7 @@ export default function Header() {
               <div className="relative z-50">
                 <NeoPopButton
                   as="link"
-                  href="https://nas.io/tbc"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/auth/signin"
                   variant="primary"
                   size="sm"
                   className="text-xs sm:text-sm px-3 sm:px-4"

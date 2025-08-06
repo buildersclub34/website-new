@@ -48,7 +48,25 @@ const staggerContainer = {
   }
 };
 
-const ContentCard = ({ title, description, icon: Icon, link, linkText, children, className = '' }) => (
+interface ContentCardProps {
+  title: string;
+  description: string;
+  icon: React.ComponentType<{ size: number }>;
+  link?: string;
+  linkText?: string;
+  children?: React.ReactNode;
+  className?: string;
+}
+
+const ContentCard = ({ 
+  title, 
+  description, 
+  icon: Icon, 
+  link, 
+  linkText, 
+  children, 
+  className = '' 
+}: ContentCardProps) => (
   <motion.div 
     variants={fadeInUp}
     className={`bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl overflow-hidden border border-gray-800 hover:border-yellow-400/30 transition-all duration-300 hover:shadow-lg hover:shadow-yellow-400/10 h-full ${className}`}

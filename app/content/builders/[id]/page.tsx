@@ -54,26 +54,27 @@ export async function generateStaticParams() {
 // Disable dynamicParams when using static export
 // export const dynamicParams = true; // Commented out for static export compatibility
 
-type Params = {
+interface PageProps {
   params: {
     id: string;
   };
-};
+  searchParams?: { [key: string]: string | string[] | undefined };
+}
 
-export async function generateMetadata({ params }: Params): Promise<Metadata> {
-  const builder = builderProfiles[params.id as keyof typeof builderProfiles];
-  if (!builder) return {};
-  
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const profile = builderProfiles[params.id as keyof typeof builderProfiles];
+  if (!profile) return {};
+
   return {
-    title: `${builder.name} | Builders Club`,
-    description: `${builder.role} at ${builder.company} - ${builder.bio.substring(0, 160)}...`,
+    title: `${profile.name} | Builders Club`,
+    description: profile.bio,
     openGraph: {
-      images: [builder.image],
+      images: [profile.image],
     },
   };
 }
 
-export default function BuilderProfile({ params }: Params) {
+export default function BuilderProfile({ params }: PageProps) {
   const builder = builderProfiles[params.id as keyof typeof builderProfiles];
 
   // If builder not found, return 404
