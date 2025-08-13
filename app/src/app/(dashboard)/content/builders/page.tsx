@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, Search, X, Filter } from 'lucide-react';
-import { SectionHeader } from '@/components/ui/section-header';
+import { SectionHeader } from '../../../../components/ui/section-header';
 
 // Mock data - replace with actual data fetching
 const builders = [

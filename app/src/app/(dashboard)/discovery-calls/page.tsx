@@ -2,9 +2,9 @@
 
 import { Rocket, Play, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
-import ClientLayout from '../ClientLayout';
-import NeoPopButton from '../../components/ui/NeoPopButton';
-import SectionHeader from '../../components/SectionHeader';
+import ClientLayout from '../../../../../app/ClientLayout';
+import { NeopopButton } from '../../../../../components/ui/neopop-button';
+import { SectionHeader } from '../../../../../components/ui/SectionHeader';
 import { WhyChooseUs, VideoTestimonial, FAQSection, CTASection } from './components/EnhancedSections';
 
 function DiscoveryCalls() {

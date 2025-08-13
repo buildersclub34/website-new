@@ -6,17 +6,17 @@ import Image from 'next/image';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import styles from './testimonials.module.css';
-import SectionHeader from '../../components/SectionHeader';
-import NeoPopButton from '../../components/ui/NeoPopButton';
-import ClientLayout from '../ClientLayout';
-import BuildersTeam from '../../components/BuildersTeam';
+import { SectionHeader } from '../../../components/ui/section-header';
+import NeoPopButton from '../../../components/ui/NeoPopButton';
+import ClientLayout from '../../../app/(marketing)/ClientLayout';
+import BuildersTeam from '../../../app/(marketing)/_components/BuildersTeam';
 
 // Dynamically import AdvisorsSection with no SSR to avoid window is not defined errors
-const AdvisorsSection = dynamic(() => import('../../components/AdvisorsSection'), {
+const AdvisorsSection = dynamic(() => import('../../../app/(marketing)/_components/AdvisorsSection'), {
   ssr: false,
 });
 
-const MembershipSection = dynamic(() => import('../../components/MembershipSection'), {
+const MembershipSection = dynamic(() => import('../../../app/(marketing)/_components/MembershipSection'), {
   ssr: false,
 });
 
@@ -567,7 +567,6 @@ function BuildersCircle() {
               title="Frequently Asked"
               highlightedText="Questions"
               description="Find answers to common questions about The Builders Circle membership and benefits."
-              icon={<Check className="w-5 h-5" />}
             />
             
             <div className="space-y-6 mt-12">

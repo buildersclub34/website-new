@@ -1,7 +1,7 @@
 import { Zap, Users, BarChart2, Target, Lightbulb, Check, ChevronRight, Play, MessageSquare, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
-import NeoPopButton from '../../../components/ui/NeoPopButton';
-import SectionHeader from '../../../components/SectionHeader';
+import { SectionHeader } from '../../../../components/ui/section-header';
+import NeoPopButton from '../../../../components/ui/NeoPopButton';
 
 export const WhyChooseUs = () => {
   const features = [

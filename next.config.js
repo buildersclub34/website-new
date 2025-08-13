@@ -10,24 +10,16 @@ const nextConfig = {
   // Server-side rendering configuration
   output: 'standalone',
   images: {
-    domains: ['localhost'], // Add your image domains here
+    domains: ['localhost'],
+    unoptimized: true
   },
   
   // Environment variables that should be exposed to the browser
   env: {
-    // Public environment variables
     NEXT_PUBLIC_ADMIN_EMAIL: process.env.NEXT_PUBLIC_ADMIN_EMAIL,
     NEXT_PUBLIC_ADMIN_PASSWORD: process.env.NEXT_PUBLIC_ADMIN_PASSWORD,
     NEXTAUTH_URL: process.env.NEXTAUTH_URL || 'http://localhost:3000',
-    NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET || (process.env.NODE_ENV === 'production' ? undefined : 'your-secret-key-here'),
-    
-    // Add other public environment variables here
-  },
-  
-  // Enable server actions
-  experimental: {
-    serverActions: true,
-    optimizePackageImports: ['react-icons']
+    NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET || (process.env.NODE_ENV === 'production' ? undefined : 'your-secret-key-here')
   },
   
   // Security headers

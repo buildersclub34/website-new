@@ -4,8 +4,8 @@ import { useState, useMemo, useEffect, ReactNode } from 'react';
 import Image from 'next/image';
 import { User, Linkedin, ArrowRight, ChevronRight, ChevronLeft, Search } from 'lucide-react';
 import Link from 'next/link';
-import NeoPopButton from '../../components/ui/NeoPopButton';
-import ClientLayout from '../ClientLayout';
+import NeoPopButton from '../../../components/ui/NeoPopButton';
+import ClientLayout from '../../../app/(marketing)/ClientLayout';
 
 // Pagination settings
 const ITEMS_PER_PAGE = 9;

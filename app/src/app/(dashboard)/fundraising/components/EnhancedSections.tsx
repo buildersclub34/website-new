@@ -1,7 +1,7 @@
 import { Zap, Users, BarChart2, Target, Lightbulb, Check, ChevronRight, Play, MessageSquare, ArrowRight, Award, Clock, Shield, Handshake, TrendingUp } from 'lucide-react';
 import { useState } from 'react';
-import NeoPopButton from '../../../components/ui/NeoPopButton';
-import SectionHeader from '../../../components/SectionHeader';
+import { NeopopButton } from '../../../../../components/ui/neopop-button';
+import { SectionHeader } from '../../../../../components/ui/SectionHeader';
 
 export const WhyFundWithUs = () => {
   const features = [
