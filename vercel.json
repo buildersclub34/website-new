@@ -4,13 +4,6 @@
     {
       "src": "package.json",
       "use": "@vercel/next"
-    },
-    {
-      "src": "vercel-build.js",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": ".next"
-      }
     }
   ],
   "routes": [
@@ -28,5 +21,5 @@
     }
   },
   "installCommand": "npm install",
-  "buildCommand": "node vercel-build.js"
+  "buildCommand": "chmod +x vercel-build.sh && ./vercel-build.sh"
 }
