@@ -62,9 +62,7 @@ interface PageProps {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  // Ensure params is resolved before accessing
-  const id = await Promise.resolve(params.id);
-  const profile = builderProfiles[id as keyof typeof builderProfiles];
+  const profile = builderProfiles[params.id as keyof typeof builderProfiles];
   if (!profile) return {};
 
   return {
@@ -76,15 +74,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export default async function BuilderProfile({ params }: PageProps) {
-  // Ensure params is resolved before accessing
-  const id = await Promise.resolve(params.id);
-  const builder = builderProfiles[id as keyof typeof builderProfiles];
+export default function BuilderProfile({ params }: PageProps) {
+  const builder = builderProfiles[params.id as keyof typeof builderProfiles];
 
   // If builder not found, return 404
   // In static export mode, this should never happen if generateStaticParams is correct
   if (!builder) {
-    console.error(`Builder with id ${id} not found`);
+    console.error(`Builder with id ${params.id} not found`);
     notFound();
   }
 

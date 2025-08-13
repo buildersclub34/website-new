@@ -1,0 +1,96 @@
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+@media (min-width: 640px) {
+  .buttonContainer {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.neopopButton {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 2rem;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  border: 3px solid;
+  border-radius: 0.25rem;
+  transition: all 0.2s ease-in-out;
+  overflow: hidden;
+  z-index: 1;
+  font-size: 1rem;
+  line-height: 1.5;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+  .neopopButton {
+    width: auto;
+  }
+}
+
+.neopopPrimary {
+  background-color: #FFD700; /* neopop primary yellow */
+  color: #000000;
+  border-color: #FFD700;
+  box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.8);
+}
+
+.neopopPrimary:hover {
+  background-color: #E6B800; /* slightly darker yellow on hover */
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.8);
+  color: #000000;
+}
+
+.neopopPrimary:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.8);
+}
+
+.neopopSecondary {
+  background-color: transparent;
+  color: #FFD700;
+  border: 3px solid #FFD700;
+  box-shadow: 4px 4px 0 0 rgba(255, 215, 0, 0.8);
+  font-weight: 700;
+}
+
+.neopopSecondary:hover {
+  background-color: rgba(255, 215, 0, 0.1);
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 0 rgba(255, 215, 0, 0.8);
+  color: #FFD700;
+}
+
+.neopopSecondary:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.8);
+  background-color: rgba(255, 215, 0, 0.2);
+}
+
+/* For the investor grid buttons */
+.investorButton {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+/* For the main CTA button */
+.mainCta {
+  font-size: 1.125rem;
+  padding: 1rem 2.5rem;
+  max-width: 100%;
+}

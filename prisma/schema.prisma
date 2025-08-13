@@ -2,39 +2,39 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider        = "prisma-client-js"
-  previewFeatures = ["mongoDb"]
-  // Using default output directory
+  provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "mongodb"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
 // User model for authentication
 model User {
-  id            String      @id @default(auto()) @map("_id") @db.ObjectId
+  id            String      @id @default(uuid())
   name          String?
   email         String?     @unique
   emailVerified DateTime?   @map("email_verified")
   image         String?
   password      String?
   role          Role        @default(USER)
-  createdAt     DateTime    @default(now()) @map("created_at") @db.Date
-  updatedAt     DateTime    @updatedAt @map("updated_at") @db.Date
+  createdAt     DateTime    @default(now()) @map("created_at")
+  updatedAt     DateTime    @updatedAt @map("updated_at")
   accounts      Account[]
   sessions      Session[]
   events        Event[]
   posts         Post[]
   memberships   Membership[]
+  createdCategories Category[] @relation("CategoryCreatedBy")
+  createdTags      Tag[]      @relation("TagCreatedBy")
 
   @@map("users")
 }
 
 model Account {
-  id                String   @id @default(auto()) @map("_id") @db.ObjectId
-  userId            String   @db.ObjectId
+  id                String   @id @default(uuid())
+  userId            String
   type              String
   provider          String
   providerAccountId String
@@ -52,9 +52,9 @@ model Account {
 }
 
 model Session {
-  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  id           String   @id @default(uuid())
   sessionToken String   @unique @map("sessionToken")
-  userId       String   @db.ObjectId
+  userId       String
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -62,7 +62,7 @@ model Session {
 }
 
 model VerificationToken {
-  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  id         String   @id @default(uuid())
   identifier String
   token      String   @unique
   expires    DateTime
@@ -73,7 +73,7 @@ model VerificationToken {
 
 // Event model
 model Event {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  id          String   @id @default(uuid())
   title       String
   slug        String   @unique
   description String
@@ -81,59 +81,65 @@ model Event {
   image       String?  // URL or path to uploaded image
   imageFile   String?  // Path to uploaded file
   imageType   String?  // 'url' or 'file'
-  startDate   DateTime @db.Date
-  endDate     DateTime @db.Date
+  startDate   DateTime
+  endDate     DateTime
   location    String
   isFeatured  Boolean  @default(false)
   isPublished Boolean  @default(false)
-  categories  String[] @db.ObjectId
-  createdAt   DateTime @default(now()) @db.Date
-  updatedAt   DateTime @updatedAt @db.Date
-  authorId    String   @db.ObjectId
+  categories  Category[] @relation("EventCategories")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
   author      User     @relation(fields: [authorId], references: [id])
+  authorId    String
 
   @@map("events")
 }
 
 // Blog Post model
 model Post {
-  id         String   @id @default(auto()) @map("_id") @db.ObjectId
-  title      String
-  slug       String   @unique
-  excerpt    String
-  content    String
-  coverImage String
-  published  Boolean  @default(false)
-  createdAt  DateTime @default(now()) @db.Date
-  updatedAt  DateTime @updatedAt @db.Date
-  authorId   String   @db.ObjectId
-  author     User     @relation(fields: [authorId], references: [id])
-  categories String[] @db.ObjectId
-  tags       String[] @db.ObjectId
+  id          String     @id @default(uuid())
+  title       String
+  slug        String     @unique
+  excerpt     String
+  content     String
+  image       String?
+  isFeatured  Boolean    @default(false)
+  isPublished Boolean    @default(false)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  author      User       @relation(fields: [authorId], references: [id])
+  authorId    String
+  categories  Category[] @relation("PostCategories")
+  tags        Tag[]      @relation("PostTags")
 
   @@map("posts")
 }
 
 model Category {
-  id    String @id @default(auto()) @map("_id") @db.ObjectId
-  name  String @unique
-  slug  String @unique
-  posts String[] @db.ObjectId
+  id        String   @id @default(uuid())
+  name      String
+  slug      String   @unique
+  posts     Post[]   @relation("PostCategories")
+  events    Event[]  @relation("EventCategories")
+  createdBy User     @relation("CategoryCreatedBy", fields: [createdById], references: [id])
+  createdById String
 
   @@map("categories")
 }
 
 model Tag {
-  id    String @id @default(auto()) @map("_id") @db.ObjectId
-  name  String @unique
-  slug  String @unique
-  posts String[] @db.ObjectId
+  id        String @id @default(uuid())
+  name      String
+  slug      String @unique
+  posts     Post[] @relation("PostTags")
+  createdBy User   @relation("TagCreatedBy", fields: [createdById], references: [id])
+  createdById String
 
   @@map("tags")
 }
 
 model Membership {
-  id                    String        @id @default(auto()) @map("_id") @db.ObjectId
+  id                    String        @id @default(uuid())
   name                  String
   email                 String
   phoneNumber           String
@@ -156,12 +162,12 @@ model Membership {
   inviteeDetails       String?       @default("")
   status               MembershipStatus @default(PENDING)
   notes                String?       @default("")
-  reviewedById         String?       @default("") @db.ObjectId
-  reviewedAt           DateTime?     @default(now()) @db.Date
-  createdAt            DateTime      @default(now()) @db.Date
-  updatedAt            DateTime      @updatedAt @db.Date
-  user                 User?         @relation(fields: [userId], references: [id])
-  userId               String?       @db.ObjectId
+  reviewedById         String?       @default("")
+  reviewedAt           DateTime?     @default(now())
+  createdAt            DateTime      @default(now())
+  updatedAt            DateTime      @updatedAt
+  user                 User?         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId               String?
 
   @@index([email])
   @@index([status])
