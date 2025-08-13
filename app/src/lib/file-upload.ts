@@ -3,21 +3,25 @@ import type { NextApiRequest } from 'next';
 import { promises as fs } from 'fs';
 import path from 'path';
 
-interface FormidableFile {
+type FormidableFile = {
   filepath: string;
   originalFilename: string | null;
-  newFilename: string;
   mimetype: string | null;
   size: number;
-}
+  newFilename: string;
+  _writeStream?: any;
+  hash?: string;
+};
 
-interface FormidableFiles {
+type FormidableFiles = {
   [key: string]: FormidableFile | FormidableFile[] | undefined;
-}
+};
 
-interface FormidableFields {
-  [key: string]: string | string[] | undefined;
-}
+type FormidableFields = {
+  [key: string]: string[];
+};
+
+
 
 export interface FileUploadResult {
   fields: { [key: string]: string[] };
@@ -28,7 +32,7 @@ export async function parseForm(req: NextApiRequest): Promise<FileUploadResult> 
   const form = new IncomingForm();
   
   return new Promise((resolve, reject) => {
-    form.parse(req, (err: Error | null, fields: FormidableFields, files: FormidableFiles) => {
+    form.parse(req, (err: any, fields: any, files: any) => {
       if (err) return reject(err);
       
       // Convert fields to string arrays

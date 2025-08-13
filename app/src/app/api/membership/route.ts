@@ -73,8 +73,8 @@ export async function POST(req: Request) {
 
     const data = validation.data;
 
-    // Get the user ID and ensure it's a number
-    const userId = typeof session.user.id === 'string' ? parseInt(session.user.id, 10) : session.user.id;
+    // Get the user ID and ensure it's a string
+    const userId = session.user.id.toString();
 
     // Check if user already has a pending or approved membership
     const existingMembership = await prisma.membership.findFirst({

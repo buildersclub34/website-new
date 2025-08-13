@@ -1,6 +1,6 @@
-import ClientLayout from '../ClientLayout';
-import NeoPopButton from '../../components/ui/NeoPopButton';
-import SectionHeader from '../../components/SectionHeader';
+import ClientLayout from '@/app/(marketing)/ClientLayout';
+import { NeopopButton } from '@/components/ui/neopop-button';
+import { SectionHeader } from '@/components/ui/SectionHeader';
 
 const TrustedByLeaders = () => (
   <section className="w-full py-20 bg-black">
@@ -13,14 +13,13 @@ const TrustedByLeaders = () => (
           <p className="text-gray-300 text-lg">
             Leaders from top tech companies support us in this mission.
           </p>
-          <NeoPopButton
-            as="link"
+          <NeopopButton
             href="#WIP-membership"
             variant="secondary"
             className="mt-4"
           >
             Become a Member
-          </NeoPopButton>
+          </NeopopButton>
         </div>
         <div className="bg-yellow-400 p-8 rounded-2xl shadow-neo">
           <div className="grid grid-cols-2 md:grid-cols-3 gap-8 items-center justify-items-center">
@@ -48,16 +47,16 @@ function BuildersCircle() {
               className="mb-8"
               titleClassName="text-4xl md:text-5xl font-bold"
             />
-            <NeoPopButton
-              as="link"
+            <NeopopButton
               href="https://nas.io/tbc"
               target="_blank"
               rel="noopener noreferrer"
               variant="primary"
               size="lg"
+              className="mt-4"
             >
               Join The Club
-            </NeoPopButton>
+            </NeopopButton>
           </div>
         </div>
       </section>

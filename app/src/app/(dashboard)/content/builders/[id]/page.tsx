@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import { ArrowLeft, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import SectionHeader from '../../../../components/SectionHeader';
+import { SectionHeader } from '@/components/ui/SectionHeader';
 
 // Mock data - replace with actual data fetching
 const builderProfiles = {

@@ -1,5 +1,5 @@
-import { NextResponse } from 'next/server';
-import { requireAuth } from '@/lib/auth-app-router';
+import { NextResponse, NextRequest } from 'next/server';
+import { requireAdmin } from '@/lib/auth-app-router';
 import { prisma } from '@/lib/prisma';
 
 // Revalidate the data at most every hour
@@ -18,13 +18,9 @@ const jsonResponse = (data: any, status = 200) => {
 export async function GET() {
   try {
     // Verify admin authentication
-    try {
-      await requireAuth('ADMIN');
-    } catch (error) {
-      return jsonResponse(
-        { error: 'Unauthorized', message: 'Authentication required' },
-        401
-      );
+    const auth = await requireAdmin(new NextRequest('http://localhost'));
+    if (auth instanceof NextResponse) {
+      return auth;
     }
 
     // Get counts for each status using Prisma's count with where clauses

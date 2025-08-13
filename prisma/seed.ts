@@ -1,4 +1,4 @@
-import { PrismaClient } from '../generated/prisma';
+import { PrismaClient } from '@prisma/client';
 import { hash } from 'bcryptjs';
 
 // Define Role enum since it's not directly exported from @prisma/client in MongoDB
@@ -54,18 +54,27 @@ async function main() {
         data: {
           name: 'Technology',
           slug: 'technology',
+          createdBy: {
+            connect: { id: admin.id }
+          }
         },
       }),
       prisma.category.create({
         data: {
           name: 'Business',
           slug: 'business',
+          createdBy: {
+            connect: { id: admin.id }
+          }
         },
       }),
       prisma.category.create({
         data: {
           name: 'Startups',
           slug: 'startups',
+          createdBy: {
+            connect: { id: admin.id }
+          }
         },
       }),
     ]);

@@ -2,8 +2,8 @@
 
 import { Rocket, ArrowRight, ChevronRight } from 'lucide-react';
 import ClientLayout from '../../../../../app/ClientLayout';
-import { NeopopButton } from '../../../../../components/ui/neopop-button';
-import { SectionHeader } from '../../../../../components/ui/SectionHeader';
+import { NeopopButton } from '../../../../../app/src/components/ui/neopop-button';
+import { SectionHeader } from '../../../../../app/src/components/ui/section-header';
 import { WhyFundWithUs, FundraisingProcess, SuccessStories, FAQSection, FinalCTA } from './components/EnhancedSections';
 
 function FundraisingPage() {

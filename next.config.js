@@ -1,8 +1,20 @@
 /** @type {import('next').NextConfig} */
+// Prisma client configuration
+const { withPlaiceholder } = require('@plaiceholder/next');
+
 const nextConfig = {
   experimental: {
     serverActions: {},
-    optimizePackageImports: ['react-icons']
+    optimizePackageImports: ['react-icons', '@prisma/client']
+  },
+  
+  // Prisma optimizations
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      // This ensures Prisma client is generated before the build starts
+      require('./prisma/generate-client');
+    }
+    return config;
   },
   serverExternalPackages: ['@prisma/client', 'bcryptjs'],
   reactStrictMode: true,

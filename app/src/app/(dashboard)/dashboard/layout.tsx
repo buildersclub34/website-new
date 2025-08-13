@@ -1,6 +1,6 @@
 import Sidebar from '@/app/admin/dashboard/_components/Sidebar';
 import { UserMenu } from '@/app/admin/dashboard/_components/UserMenu';
-import { ProtectedRoute } from '@/components/shared/ProtectedRoute';
+import { ProtectedRouteClient as ProtectedRoute } from '@/components/auth/ProtectedRoute';
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -30,8 +30,17 @@ const DashboardContent = ({ children }: { children: React.ReactNode }) => (
 export default function DashboardLayout({
   children,
 }: DashboardLayoutProps) {
+  // In a real app, you would get the session and check the user's role here
+  // For now, we'll use placeholder values
+  const session = null; // Replace with actual session
+  const hasRequiredRole = false; // Replace with actual role check
+
   return (
-    <ProtectedRoute requiredRole="ADMIN">
+    <ProtectedRoute 
+      requiredRole="ADMIN"
+      session={session}
+      hasRequiredRole={hasRequiredRole}
+    >
       <DashboardContent>{children}</DashboardContent>
     </ProtectedRoute>
   );

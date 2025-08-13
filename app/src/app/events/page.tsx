@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { SectionHeader } from '@/components/ui/section-header';
-import NeoPopButton from '@/components/ui/NeoPopButton';
+import { SectionHeader } from '@/components/ui/SectionHeader';
+import { NeopopButton } from '@/components/ui/neopop-button';
 import { Calendar, MapPin, Clock, Search, Filter, X, ArrowRight, ArrowDown, Rocket } from 'lucide-react';
 
 type EventType = 'workshop' | 'talk' | 'networking' | 'hackathon' | 'conference';
@@ -551,17 +551,14 @@ const EventsPage = () => {
                       </div>
                       
                       <div className="mt-6">
-                        <NeoPopButton 
-                          as="link"
+                        <NeopopButton 
                           href={`/events/${event.id}`}
                           variant={event.isSoldOut ? "secondary" : "primary"}
                           size="lg"
-                          fullWidth
-                          disabled={event.isSoldOut}
-                          className={`${event.isSoldOut ? 'opacity-75 cursor-not-allowed' : ''} mt-auto`}
+                          className={`${event.isSoldOut ? 'opacity-75 cursor-not-allowed' : ''} mt-auto w-full`}
                         >
                           {event.isSoldOut ? 'Event Full' : 'Register Now'}
-                        </NeoPopButton>
+                        </NeopopButton>
                       </div>
                     </div>
                   </div>
@@ -774,15 +771,14 @@ const EventsPage = () => {
             Whether you&apos;re an industry expert, founder, or passionate creator, we&apos;d love to have you host an event with us.
           </p>
           
-          <NeoPopButton 
-            as="link"
+          <NeopopButton 
             href="/become-host"
             variant="primary"
             size="lg"
             className="mx-auto"
           >
             Submit Event Proposal
-          </NeoPopButton>
+          </NeopopButton>
         </div>
       </section>
     </div>

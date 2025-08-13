@@ -1,25 +1,33 @@
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
-import { NextAuthOptions, SessionStrategy, DefaultSession } from 'next-auth';
+import { DefaultUser, NextAuthOptions, SessionStrategy, User } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { prisma } from './prisma';
 import { compare } from 'bcryptjs';
-import { UserRole } from '@/types/auth';
 
-// Extend the built-in session and user types
+type UserRole = 'USER' | 'EDITOR' | 'ADMIN' | 'BUILDER' | 'INVESTOR' | 'PENDING' | 'REJECTED';
+
+// Extend the User type to include role
+interface UserWithRole extends User {
+  id: string;
+  role: UserRole;
+  name: string | null;
+  email: string | null;
+  image?: string | null;
+}
+
 declare module 'next-auth' {
   interface User {
-    id: string;
-    name?: string | null;
-    email?: string | null;
-    image?: string | null;
     role: UserRole;
   }
-
+  
   interface Session {
     user: {
       id: string;
       role: UserRole;
-    } & DefaultSession['user'];
+      name?: string | null;
+      email?: string | null;
+      image?: string | null;
+    };
   }
 }
 
@@ -32,7 +40,7 @@ declare module 'next-auth/jwt' {
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma as any),
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET || '',
   session: {
     strategy: 'jwt' as SessionStrategy,
   },
@@ -53,21 +61,6 @@ export const authOptions: NextAuthOptions = {
           throw new Error('Please enter your email and password');
         }
 
-        // Check for admin user first
-        const adminEmail = process.env.NEXT_PUBLIC_ADMIN_EMAIL;
-        const adminPassword = process.env.NEXT_PUBLIC_ADMIN_PASSWORD;
-        
-        if (credentials.email === adminEmail && credentials.password === adminPassword) {
-          // Return admin user
-          return {
-            id: 'admin',
-            name: 'Admin',
-            email: adminEmail,
-            role: 'ADMIN',
-          };
-        }
-
-        // Check database users
         try {
           const user = await prisma.user.findUnique({
             where: { email: credentials.email },
@@ -83,12 +76,16 @@ export const authOptions: NextAuthOptions = {
             throw new Error('Incorrect password');
           }
 
-          return {
+          // Return a user object that matches the UserWithRole interface
+          const userWithRole: UserWithRole = {
             id: user.id,
             name: user.name,
             email: user.email,
             role: user.role as UserRole,
+            image: user.image || null,
           };
+
+          return userWithRole;
         } catch (error) {
           console.error('Authentication error:', error);
           throw new Error('Authentication failed');
@@ -100,13 +97,13 @@ export const authOptions: NextAuthOptions = {
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
-        token.role = user.role;
+        token.role = (user as UserWithRole).role;
       }
       return token;
     },
     async session({ session, token }) {
       if (session.user) {
-        session.user.id = token.id;
+        session.user.id = token.id as string;
         session.user.role = token.role as UserRole;
       }
       return session;

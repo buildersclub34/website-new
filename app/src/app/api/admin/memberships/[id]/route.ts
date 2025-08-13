@@ -40,10 +40,10 @@ export async function PATCH(
     }
 
     const { status } = validation.data;
-    const membershipId = parseInt(params.id, 10);
-    if (isNaN(membershipId)) {
+    const membershipId = params.id;
+    if (!membershipId) {
       return new NextResponse(
-        JSON.stringify({ error: 'Invalid membership ID' }),
+        JSON.stringify({ error: 'Membership ID is required' }),
         { status: 400, headers: { 'Content-Type': 'application/json' } }
       );
     }
@@ -82,10 +82,10 @@ export async function GET(
       );
     }
 
-    const membershipId = parseInt(params.id, 10);
-    if (isNaN(membershipId)) {
+    const membershipId = params.id;
+    if (!membershipId) {
       return new NextResponse(
-        JSON.stringify({ error: 'Invalid membership ID' }),
+        JSON.stringify({ error: 'Membership ID is required' }),
         { status: 400, headers: { 'Content-Type': 'application/json' } }
       );
     }
