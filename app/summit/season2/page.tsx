@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
+import { cn } from "../../../components/ui/lib/utils";
 import { ChevronRight, Rocket, Zap, Users, Award, Mic2, Calendar, MapPin, Clock } from 'lucide-react';
 import NeoPopButton from "@/components/ui/NeoPopButton";
 import { SectionHeader } from '@/components/ui/SectionHeader';

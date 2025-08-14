@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { cn } from "@/lib/utils";
+import { cn } from "../../components/ui/lib/utils";
 
 // Partner Card Component
 interface PartnerCardProps {

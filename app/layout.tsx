@@ -1,10 +1,15 @@
 import './globals.css';
 import { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Poppins } from 'next/font/google';
 import { Providers } from '../components/providers';
 import ClientLayoutWrapper from '../components/ClientLayoutWrapper';
 
-const inter = Inter({ subsets: ['latin'] });
+const poppins = Poppins({ 
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  display: 'swap',
+  variable: '--font-poppins',
+});
 
 export const metadata: Metadata = {
   title: 'Builders Club - Venture Capital & Investment',
@@ -51,7 +56,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
       </head>
-      <body className={`${inter.className} antialiased`} suppressHydrationWarning>
+      <body className={`${poppins.className} flex min-h-full flex-col bg-white text-black antialiased dark:bg-black dark:text-white`}>
         <Providers>
           <ClientLayoutWrapper>
             {children}
