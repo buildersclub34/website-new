@@ -22,7 +22,7 @@
     "@radix-ui/react-tooltip": "^1.1.2",
     "@react-three/drei": "^9.94.0",
     "@react-three/fiber": "^8.15.16",
-    "@react-three/rapier": "^0.13.3",
+    "@react-three/rapier": "^0.12.2",
     "framer-motion": "^12.23.12",
     "gsap": "^3.13.0",
     "lucide-react": "^0.446.0",
