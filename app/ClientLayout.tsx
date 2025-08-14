@@ -2,11 +2,11 @@
 
 import React, { useEffect } from 'react';
 import dynamic from 'next/dynamic';
-import { Toaster } from '@/components/ui/toaster';
+import { Toaster } from '../components/ui/toaster';
 
 // Dynamically import Header and Footer with SSR disabled
-const Header = dynamic(() => import('@/components/Header'), { ssr: false });
-const Footer = dynamic(() => import('@/components/Footer'), { ssr: false });
+const Header = dynamic(() => import('../components/Header'), { ssr: false });
+const Footer = dynamic(() => import('../components/Footer'), { ssr: false });
 
 export default function ClientLayout({
   children,

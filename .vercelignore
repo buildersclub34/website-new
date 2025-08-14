@@ -3,6 +3,8 @@ node_modules/
 
 # Build output
 .next/
+out/
+build/
 
 # Environment files (except production)
 .env*.local
@@ -15,7 +17,46 @@ yarn-error.log*
 
 # Local development
 .vercel
+.idea
+.vscode
+*.sublime-*
+.DS_Store
 
 # Prisma
 prisma/migrations/
+prisma/*.db
+prisma/*.db-journal
 !prisma/schema.prisma
+
+# Test files
+**/*.test.*
+**/*.spec.*
+**/__tests__/
+
+# Misc
+.cache/
+.temp/
+.tmp/
+.vercel_build_output/
+.vercel_output/
+.vercel_build_output/
+
+# Sitemap (will be generated during build)
+public/sitemap.xml
+public/robots.txt
+
+# Local development files
+*.local
+
+# Logs
+logs
+*.log
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

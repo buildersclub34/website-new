@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://thebuildersclub.me/sitemap.xml
+Sitemap: https://thebuildersclub.me/server-sitemap.xml
