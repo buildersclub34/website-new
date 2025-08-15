@@ -4,6 +4,7 @@ import Link from "next/link";
 import { cn } from "../../../components/ui/lib/utils";
 import { ChevronRight, Rocket, Zap, Users, Award, Mic2, Calendar, MapPin, Clock } from 'lucide-react';
 import NeoPopButton from "@/components/ui/NeoPopButton";
+import NeoPopStickyButton from "@/components/ui/NeoPopStickyButton";
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { SpeakersSection } from '@/components/SpeakersSection';
 
@@ -384,7 +385,7 @@ export default function SummitSession2() {
                 className={`${
                   partner.invert 
                     ? 'bg-black border-gray-800' 
-                    : 'bg-gradient-to-br from-[#FFD700] to-[#FFA500] border-[#FFD700] shadow-[0_0_10px_rgba(255,215,0,0.2)]'
+                    : 'bg-gradient-to-br from-[#FFD700] to-[#FFA500] border-[#FFD700] shadow-[0_0_10px_rgba(255,215,0,0.2),6px_6px_0_0_rgba(255,215,0,0.3)]'
                 } border md:border-2 p-1 md:p-2 flex items-center justify-center transition-all duration-200 hover:scale-105 hover:shadow-neon-gold hover:z-10 relative`}
                 style={{ aspectRatio: '1/1' }}
               >
@@ -478,6 +479,13 @@ export default function SummitSession2() {
         </div>
       </section>
 
+      {/* Sticky Join Button */}
+      <NeoPopStickyButton 
+        href="/summit/season2/register"
+        label="Register Now"
+        showAfterScroll={300}
+        showNotificationDot={true}
+      />
     </div>
   );
 }

@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import SectionHeader from './SectionHeader';
+import NeoPopButton from './ui/NeoPopButton';
 
 export default function OurPerks() {
   const perks = [
@@ -119,11 +120,11 @@ export default function OurPerks() {
         </div>
 
         <div className="text-center">
-          <a
+          <NeoPopButton
+            as="link"
             href="/perks"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-[#FFD700] to-[#FFA500] text-black font-bold rounded-full hover:shadow-lg hover:shadow-yellow-500/30 transition-all duration-300 transform hover:-translate-y-1"
+            variant="primary"
+            className="px-8 py-4 text-lg font-bold"
           >
             Explore All Perks
             <svg
@@ -140,7 +141,7 @@ export default function OurPerks() {
                 d="M14 5l7 7m0 0l-7 7m7-7H3"
               ></path>
             </svg>
-          </a>
+          </NeoPopButton>
         </div>
       </div>
     </section>

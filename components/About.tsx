@@ -9,31 +9,31 @@ export default function About() {
     {
       icon: <Zap className="w-6 h-6 text-[#FFD700]" />,
       title: "The Builders Circle",
-      description: "An exclusive community of founders, operators, and investors building the future.",
+      description: "A peer driven community for founders & CXOs to help each other solve business problems and grow their businesses.",
       link: "https://thebuildersclub.me/circle"
     },
     {
       icon: <Target className="w-6 h-6 text-[#FFD700]" />,
-      title: "Fundraising Track",
-      description: "Helping startups raise capital from our network of 1000+ investors.",
-      link: "https://thebuildersclub.me/fundraising"
+      title: "Investments Track",
+      description: "Helping businesses scale through strategic investments and growth support.",
+      link: "#"
     },
     {
       icon: <Calendar className="w-6 h-6 text-[#FFD700]" />,
-      title: "Events",
-      description: "Join our exclusive events and networking opportunities.",
-      link: "https://thebuildersclub.me/events"
+      title: "Business Networking & Insight Events",
+      description: "High-value gatherings for business leaders to connect and gain insights.",
+      link: "#"
     },
     {
       icon: <Network className="w-6 h-6 text-[#FFD700]" />,
-      title: "Agency Network",
-      description: "Connect with top-tier agencies to scale your startup.",
+      title: "Strategic Partnerships & Services Network",
+      description: "Connection to agencies and service partners for enterprise scaling.",
       link: "#"
     },
     {
       icon: <Handshake className="w-6 h-6 text-[#FFD700]" />,
-      title: "Partner Initiatives",
-      description: "Collaborative programs with our trusted partners.",
+      title: "AI Tech Tuesdays",
+      description: "Online series to learn how to use AI in your business.",
       link: "#"
     }
   ];
@@ -55,7 +55,7 @@ export default function About() {
             <SectionHeader 
               title="Why Join"
               highlightedText="The Builders Club?"
-              description="We are one of the largest startup founder communities globally, helping startups in their growth journey with Community, Content and Capital."
+              description="We are one of the largest business communities globally—bringing together CXOs, working professionals, founders, and investors. We support business growth through Community, Content & Capital."
               badgeText="About Us"
               className="mb-10"
             />
@@ -157,23 +157,27 @@ export default function About() {
                    }}
               />
               
-              <div className="relative z-10">
-                <div className="w-14 h-14 bg-gradient-to-br from-[#FFD700]/10 to-[#FFA500]/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-gradient-to-br group-hover:from-[#FFD700]/30 group-hover:to-[#FFA500]/40 transition-all duration-300 border border-[#FFD700]/20 group-hover:border-[#FFD700]/40">
-                  {initiative.icon}
+              <div className="relative z-10 flex flex-col h-full">
+                <div className="flex-grow">
+                  <div className="w-14 h-14 bg-gradient-to-br from-[#FFD700]/10 to-[#FFA500]/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-gradient-to-br group-hover:from-[#FFD700]/30 group-hover:to-[#FFA500]/40 transition-all duration-300 border border-[#FFD700]/20 group-hover:border-[#FFD700]/40">
+                    {initiative.icon}
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-4 bg-gradient-to-r from-[#FFD700] to-[#FFA500] bg-clip-text text-transparent">
+                    {initiative.title}
+                  </h3>
+                  <p className="text-white/80 mb-6">{initiative.description}</p>
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4 bg-gradient-to-r from-[#FFD700] to-[#FFA500] bg-clip-text text-transparent">
-                  {initiative.title}
-                </h3>
-                <p className="text-white/80 mb-6">{initiative.description}</p>
-                <div className="inline-flex items-center text-[#FFD700] font-medium group-hover:underline">
-                  Learn more
-                  <svg className="w-4 h-4 ml-2 transition-all duration-300 group-hover:translate-x-1 group-hover:scale-110" 
-                       fill="none" 
-                       stroke="currentColor" 
-                       viewBox="0 0 24 24" 
-                       xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
+                <div className="mt-auto">
+                  <div className="inline-flex items-center text-[#FFD700] font-medium group-hover:underline pt-2">
+                    Learn more
+                    <svg className="w-4 h-4 ml-2 transition-all duration-300 group-hover:translate-x-1 group-hover:scale-110" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24" 
+                        xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </div>
                 </div>
               </div>
             </a>

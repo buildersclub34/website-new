@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { Rocket } from 'lucide-react';
+import { Rocket, ArrowRight } from 'lucide-react';
 import { SectionHeader } from './ui/SectionHeader';
+import NeoPopButton from './ui/NeoPopButton';
 
 // Partner data with logo URLs and names
 const partners = [
@@ -79,26 +80,16 @@ export default function OfficialPartners() {
 
         {/* CTA Button */}
         <div className="text-center mt-16">
-          <a
+          <NeoPopButton 
+            as="link"
             href="#contact"
-            className="inline-flex items-center px-8 py-4 bg-yellow-400 text-gray-900 font-semibold rounded-full hover:bg-yellow-300 transition-colors duration-300 group"
+            className="bg-yellow-400 text-gray-900 hover:bg-yellow-300 text-lg py-3 px-8 group"
           >
-            Become a Partner
-            <svg
-              className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform duration-300"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M14 5l7 7m0 0l-7 7m7-7H3"
-              />
-            </svg>
-          </a>
+            <span className="flex items-center">
+              Become a Partner
+              <ArrowRight className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" />
+            </span>
+          </NeoPopButton>
         </div>
       </div>
     </section>

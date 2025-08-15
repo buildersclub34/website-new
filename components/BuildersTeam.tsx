@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Linkedin, ArrowRight } from 'lucide-react';
 import SectionHeader from './SectionHeader';
+import NeoPopButton from './ui/NeoPopButton';
 
 interface TeamMember {
   id: string;
@@ -210,13 +211,14 @@ export default function BuildersTeam() {
         </div>
 
         <div className="mt-16 text-center">
-          <button className="group relative inline-flex items-center justify-center px-8 py-4 overflow-hidden font-medium text-black bg-yellow-400 rounded-full group-hover:bg-white transition-all duration-300 ease-out hover:ring-2 hover:ring-yellow-400 hover:ring-offset-2">
-            <span className="absolute inset-0 w-full h-full -mt-1 rounded-full opacity-30 bg-gradient-to-b from-transparent via-transparent to-yellow-200"></span>
-            <span className="relative flex items-center">
-              View All Members
-              <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
-            </span>
-          </button>
+          <NeoPopButton
+            as="button"
+            variant="primary"
+            className="px-8 py-4 text-lg font-bold"
+          >
+            View All Members
+            <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
+          </NeoPopButton>
         </div>
       </div>
     </section>

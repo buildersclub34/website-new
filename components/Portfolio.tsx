@@ -3,7 +3,9 @@
 import { useState } from 'react';
 import { ExternalLink, TrendingUp, Users, DollarSign, Zap, Star, Rocket } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import NeoPopButton from './ui/NeoPopButton';
 import { Button } from '@/components/ui/button';
+import Image from 'next/image';
 
 export default function Portfolio() {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -105,8 +107,8 @@ export default function Portfolio() {
               <span className="bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent"> the Making</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              Discover the revolutionary companies we've partnered with and the extraordinary growth 
-              they've achieved through our next-generation investment approach.
+              Discover the revolutionary companies we&apos;ve partnered with and the extraordinary growth 
+              they&apos;ve achieved through our next-generation investment approach.
             </p>
           </div>
 
@@ -133,11 +135,16 @@ export default function Portfolio() {
             {filteredItems.map((item) => (
               <Card key={item.id} className={`group hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:rotate-1 glass-morphism border-0 overflow-hidden ${item.featured ? 'lg:col-span-1 ring-2 ring-purple-500/20' : ''}`}>
                 <div className="relative overflow-hidden">
-                  <img 
-                    src={item.image} 
-                    alt={item.name}
-                    className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
+                  <div className="relative w-full h-56 overflow-hidden">
+                    <Image 
+                      src={item.image}
+                      alt={item.name}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      priority={item.featured}
+                    />
+                  </div>
                   {/* Overlay Gradient */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   
@@ -161,10 +168,13 @@ export default function Portfolio() {
 
                   {/* Hover Action */}
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <Button className="cyber-button">
+                    <NeoPopButton 
+                      className="text-sm px-4 py-2"
+                      onClick={() => window.open('#', '_blank')}
+                    >
                       <ExternalLink className="w-4 h-4 mr-2" />
                       View Details
-                    </Button>
+                    </NeoPopButton>
                   </div>
                 </div>
 
@@ -215,12 +225,15 @@ export default function Portfolio() {
             <div className="glass-morphism rounded-3xl p-12 max-w-4xl mx-auto">
               <h3 className="text-3xl font-bold text-gray-900 mb-6">Ready to Join Our Portfolio?</h3>
               <p className="text-xl text-gray-600 mb-8">
-                We're always looking for the next breakthrough company. If you're building something extraordinary, we want to hear from you.
+                We&apos;re always looking for the next breakthrough company. If you&apos;re building something extraordinary, we want to hear from you.
               </p>
-              <Button className="cyber-button text-lg px-10 py-4">
+              <NeoPopButton 
+                className="text-lg px-10 py-4"
+                onClick={() => window.open('/contact', '_self')}
+              >
                 <Rocket className="w-5 h-5 mr-2" />
                 Apply for Funding
-              </Button>
+              </NeoPopButton>
             </div>
           </div>
         </div>

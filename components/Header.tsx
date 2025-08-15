@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Menu, X, Zap, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import NeoPopButton from './ui/NeoPopButton';
 
@@ -52,10 +53,11 @@ export default function Header() {
     { name: 'Home', link: '/' },
     { name: 'The Builders Circle', link: '/circle' },
     { name: 'Summit', link: '/summit' },
+    { name: 'Events', link: '/events' },
     { name: 'Discovery Calls', link: '/discovery-calls' },
     { name: 'Fundraising', link: '/fundraising' },
-    { name: 'Events', link: '/events' },
-    { name: 'Content', link: '/content' }
+    { name: 'Content', link: '/content' },
+    { name: 'Partners', link: '/partners' }
   ];
 
   return (
@@ -72,7 +74,7 @@ export default function Header() {
           <nav className="hidden lg:flex items-center justify-between w-full gap-4">
             {/* Logo */}
             <div className="flex-shrink-0 relative w-36 xl:w-40 h-12 xl:h-14">
-              <a href="/" className="block relative w-full h-full" aria-label="The Builders Club">
+              <Link href="/" className="block relative w-full h-full" aria-label="The Builders Club">
                 <Image 
                   src="/images/builders-club-logo.png" 
                   alt="The Builders Club" 
@@ -81,7 +83,7 @@ export default function Header() {
                   className="object-contain object-left"
                   priority
                 />
-              </a>
+              </Link>
             </div>
             
             {/* Navigation items container */}
@@ -131,7 +133,7 @@ export default function Header() {
 
           {/* Mobile Menu Button */}
           <div className="flex items-center justify-between w-full lg:hidden">
-            <a href="/" className="block relative h-10 sm:h-12 w-32 sm:w-40" aria-label="The Builders Club">
+            <Link href="/" className="block relative h-10 sm:h-12 w-32 sm:w-40" aria-label="The Builders Club">
               <Image 
                 src="/images/builders-club-logo.png" 
                 alt="The Builders Club" 
@@ -140,7 +142,7 @@ export default function Header() {
                 className="object-contain object-left"
                 priority
               />
-            </a>
+            </Link>
             <div className="flex items-center space-x-2 sm:space-x-3">
               <div className="relative z-50">
                 <NeoPopButton

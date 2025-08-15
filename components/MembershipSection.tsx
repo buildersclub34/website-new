@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Check, ArrowRight } from 'lucide-react';
-import Link from 'next/link';
+import NeoPopButton from './ui/NeoPopButton';
 
 type MembershipTier = 'growth' | 'elite';
 
@@ -46,31 +46,29 @@ export default function MembershipSection() {
         {/* Toggle Switch */}
         <div className="flex justify-center mb-12">
           <div className="inline-flex p-1 bg-gray-900/50 rounded-full border border-gray-800">
-            <button
-              type="button"
+            <NeoPopButton
+              as="button"
               onClick={() => setActiveTier('growth')}
+              variant={activeTier === 'growth' ? 'primary' : 'secondary'}
               className={`relative px-8 py-3 rounded-full text-sm font-medium transition-all duration-200 ${
-                activeTier === 'growth'
-                  ? 'bg-gradient-to-r from-yellow-400 to-amber-500 text-gray-900 shadow-lg shadow-yellow-500/20'
-                  : 'text-gray-400 hover:text-white'
+                activeTier === 'growth' ? 'bg-gradient-to-r from-yellow-400 to-amber-500 text-gray-900' : 'bg-transparent text-gray-400 hover:text-white'
               }`}
             >
               Growth Circle
-            </button>
-            <button
-              type="button"
+            </NeoPopButton>
+            <NeoPopButton
+              as="button"
               onClick={() => setActiveTier('elite')}
+              variant={activeTier === 'elite' ? 'primary' : 'secondary'}
               className={`relative px-8 py-3 rounded-full text-sm font-medium transition-all duration-200 ${
-                activeTier === 'elite'
-                  ? 'bg-gradient-to-r from-yellow-400 to-amber-500 text-gray-900 shadow-lg shadow-yellow-500/20'
-                  : 'text-gray-400 hover:text-white'
+                activeTier === 'elite' ? 'bg-gradient-to-r from-yellow-400 to-amber-500 text-gray-900' : 'bg-transparent text-gray-400 hover:text-white'
               }`}
             >
               Elite Circle
               <span className="absolute -top-2 -right-2 bg-yellow-500 text-yellow-900 text-[10px] font-bold px-2 py-0.5 rounded-full">
                 POPULAR
               </span>
-            </button>
+            </NeoPopButton>
           </div>
         </div>
 
@@ -128,13 +126,16 @@ export default function MembershipSection() {
             </div>
             
             <div className="mt-auto pt-4">
-              <Link
+              <NeoPopButton
+                as="link"
                 href="/join/growth"
-                className="relative inline-flex items-center justify-center w-full px-6 py-4 text-lg font-bold text-center text-gray-900 uppercase transition-all duration-200 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-xl hover:shadow-lg hover:shadow-yellow-500/30 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-gray-900"
+                variant="primary"
+                size="lg"
+                className="w-full px-6 py-4 text-lg font-bold uppercase"
               >
                 Join Growth Circle
                 <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
-              </Link>
+              </NeoPopButton>
             </div>
           </div>
 
@@ -191,13 +192,16 @@ export default function MembershipSection() {
             </div>
             
             <div className="mt-auto pt-4">
-              <Link
+              <NeoPopButton
+                as="link"
                 href="/join/elite"
-                className="relative inline-flex items-center justify-center w-full px-6 py-4 text-lg font-bold text-center text-gray-900 uppercase transition-all duration-200 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-xl hover:shadow-lg hover:shadow-yellow-500/30 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-gray-900"
+                variant="primary"
+                size="lg"
+                className="w-full px-6 py-4 text-lg font-bold uppercase"
               >
                 Join Elite Circle
                 <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
-              </Link>
+              </NeoPopButton>
             </div>
 
             <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-yellow-500/10 rounded-full filter blur-3xl"></div>
@@ -206,13 +210,15 @@ export default function MembershipSection() {
 
         <div className="mt-12 text-center">
           <p className="text-gray-400 mb-4">Not sure which circle is right for you?</p>
-          <Link 
-            href="/contact" 
-            className="inline-flex items-center text-yellow-400 hover:text-yellow-300 font-medium transition-colors"
+          <NeoPopButton
+            as="link"
+            href="/contact"
+            variant="secondary"
+            className="text-yellow-400 hover:text-yellow-300 font-medium bg-transparent border-0 hover:bg-transparent hover:shadow-none"
           >
             Contact our team for guidance
             <ArrowRight className="w-4 h-4 ml-1" />
-          </Link>
+          </NeoPopButton>
         </div>
       </div>
     </section>

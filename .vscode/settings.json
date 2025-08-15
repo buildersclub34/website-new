@@ -6,5 +6,8 @@
   },
   "editor.codeActionsOnSave": {
     "source.fixAll.stylelint": "explicit"
-  }
+  },
+  "json.schemaDownload.enable": false,
+  "json.schemas": [],
+  "json.validate.enable": false
 }

@@ -279,10 +279,10 @@ export default function Hero() {
             {/* Main Heading */}
             <div className="text-center mb-8 sm:mb-12 max-w-5xl mx-auto">
               <h1 className="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight sm:leading-tight md:leading-none mb-4">
-                Enablers In Your <span className="text-yellow-400">Business Journey!</span>
+                Empowering Business Leaders, <span className="text-yellow-400">Everywhere!</span>
               </h1>
               <p className="text-sm xs:text-base sm:text-lg text-gray-300 max-w-2xl sm:max-w-3xl mx-auto px-2 sm:px-4">
-                Join a global network of ambitious founders and turn your vision into reality with the right support system.
+                Join a global network of CXOs, founders, working professionals, and investors shaping tomorrow&apos;s business
               </p>
             </div>
 
@@ -375,40 +375,44 @@ export default function Hero() {
           </div>
 
           {/* Animated Metrics */}
-          <div className="w-full max-w-5xl mx-auto mt-16">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-              <AnimatedCounter value={75} label="Builders" suffix="K+" />
+          <div className="w-full max-w-6xl mx-auto mt-16 px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-4 lg:gap-6">
+              <AnimatedCounter value={75} label="Business Leaders" suffix="K+" />
               <AnimatedCounter value={250} label="Events" suffix="+" />
-              <AnimatedCounter value={20} label="Enablers" suffix="+" />
+              <AnimatedCounter value={20} label="Industry Experts" suffix="+" />
               <AnimatedCounter value={100} label="Investors" suffix="+" />
+              <AnimatedCounter value={500} label="Businesses Empowered" suffix="+" />
             </div>
           </div>
 
           {/* Stats */}
           <div 
             ref={statsRef}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 max-w-4xl mx-auto opacity-0"
+            className="w-full max-w-6xl mx-auto mt-12 px-4 sm:px-6 lg:px-8 opacity-0"
           >
-            {[
-              { value: "10K+", label: "Community Members" },
-              { value: "500+", label: "Startups Helped" },
-              { value: "$100M+", label: "Funding Raised" },
-              { value: "50+", label: "Countries" }
-            ].map((stat, index) => (
-              <div 
-                key={index} 
-                className="text-center group"
-                data-aos="fade-up"
-                data-aos-delay={`${index * 100}`}
-              >
-                <div className="text-4xl md:text-5xl font-black bg-gradient-to-r from-[#FFD700] to-[#FFA500] bg-clip-text text-transparent mb-2 transition-all duration-300 group-hover:scale-105">
-                  {stat.value}
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-4 lg:gap-6">
+              {[
+                { value: "75K+", label: "Business Leaders" },
+                { value: "250+", label: "Events" },
+                { value: "20+", label: "Industry Experts" },
+                { value: "100+", label: "Investors" },
+                { value: "500+", label: "Businesses Empowered" }
+              ].map((stat, index) => (
+                <div 
+                  key={index} 
+                  className="text-center group px-2 py-4 bg-black/20 rounded-lg hover:bg-black/30 transition-all duration-300"
+                  data-aos="fade-up"
+                  data-aos-delay={`${index * 100}`}
+                >
+                  <div className="text-4xl md:text-5xl lg:text-6xl font-black bg-gradient-to-r from-[#FFD700] to-[#FFA500] bg-clip-text text-transparent mb-2 transition-all duration-300 group-hover:scale-105">
+                    {stat.value}
+                  </div>
+                  <div className="text-white/80 text-xs sm:text-sm md:text-base font-medium uppercase tracking-wider px-1">
+                    {stat.label}
+                  </div>
                 </div>
-                <div className="text-white/80 text-sm md:text-base font-medium uppercase tracking-wider">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
 
