@@ -15,8 +15,11 @@ import {
   Play, 
   Sparkles,
   Linkedin,
-  Twitter
+  Twitter,
+  ExternalLink
 } from 'lucide-react';
+import { featuredBuilders } from '@/data/builders';
+import VideoSection from '../../components/VideoSection';
 import Link from 'next/link';
 import Image from 'next/image';
 import ClientLayout from '../ClientLayout';
@@ -324,6 +327,9 @@ function ContentPage() {
         </div>
       </section>
 
+      {/* Video Section */}
+      <VideoSection />
+
       {/* Main Content */}
       <div className="container mx-auto px-4 py-16">
         {/* Featured Content Grid */}
@@ -332,7 +338,7 @@ function ContentPage() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20"
+          className="grid grid-cols-1 gap-8 mb-20"
         >
           {/* Podcasts Card */}
           <motion.div 
@@ -388,55 +394,10 @@ function ContentPage() {
             </Link>
           </motion.div>
 
-          {/* Builders Card */}
-          <motion.div 
-            variants={fadeInUp}
-            className="relative group bg-gradient-to-br from-gray-900/50 to-black/50 rounded-2xl border border-gray-800 hover:border-yellow-400/30 transition-all duration-300 p-6 hover:shadow-lg hover:shadow-yellow-400/5"
-          >
-            <div className="absolute top-6 right-6 w-12 h-12 rounded-lg bg-yellow-400/10 flex items-center justify-center text-yellow-400">
-              <Users size={24} />
-            </div>
-            <h3 className="text-2xl font-bold mb-3">Builder Profiles</h3>
-            <p className="text-gray-400 mb-6">Meet the brilliant minds behind successful startups in our community and learn from their experiences.</p>
-            
-            <div className="grid grid-cols-3 gap-3 mb-6">
-              {[
-                { name: 'AI/ML', count: 24 },
-                { name: 'SaaS', count: 42 },
-                { name: 'Web3', count: 18 },
-                { name: 'FinTech', count: 31 },
-                { name: 'HealthTech', count: 27 },
-                { name: 'EduTech', count: 15 }
-              ].map((tag, i) => (
-                <div 
-                  key={i}
-                  className="relative group/tag text-center"
-                >
-                  <span className="absolute -top-2 -right-2 bg-yellow-400 text-black text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center transform group-hover/tag:scale-110 transition-transform">
-                    {tag.count}
-                  </span>
-                  <span 
-                    className="inline-block w-full text-xs px-3 py-2 bg-gray-800/50 text-gray-300 rounded-lg text-center border border-gray-700 hover:border-yellow-400/50 hover:bg-yellow-400/10 hover:text-yellow-400 transition-colors cursor-pointer"
-                  >
-                    {tag.name}
-                  </span>
-                </div>
-              ))}
-            </div>
-            
-            <Link 
-              href="/content/builders"
-              className="inline-flex items-center text-yellow-400 hover:text-yellow-300 font-medium group"
-            >
-              View All Builders
-              <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </motion.div>
-
           {/* Resources Card */}
           <motion.div 
             variants={fadeInUp}
-            className="lg:col-span-1 md:col-span-2 relative group bg-gradient-to-br from-gray-900/50 to-black/50 rounded-2xl border border-gray-800 hover:border-yellow-400/30 transition-all duration-300 p-6 hover:shadow-lg hover:shadow-yellow-400/5"
+            className="relative group bg-gradient-to-br from-gray-900/50 to-black/50 rounded-2xl border border-gray-800 hover:border-yellow-400/30 transition-all duration-300 p-6 hover:shadow-lg hover:shadow-yellow-400/5"
           >
             <div className="absolute top-6 right-6 w-12 h-12 rounded-lg bg-yellow-400/10 flex items-center justify-center text-yellow-400">
               <FileText size={24} />
@@ -496,118 +457,6 @@ function ContentPage() {
             </Link>
           </motion.div>
         </motion.div>
-
-        {/* Builders Spotlight */}
-        <motion.section 
-          id="builders"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
-          className="py-20 bg-gradient-to-b from-gray-900/50 to-black/50 relative overflow-hidden"
-        >
-          <div className="absolute inset-0 opacity-5">
-            <div className="absolute inset-0 bg-[url('/images/patterns/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white_10%,transparent_80%)]"></div>
-          </div>
-          
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="text-center mb-12">
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-                className="inline-block"
-              >
-                <div className="px-4 py-1.5 rounded-full bg-yellow-400/10 text-yellow-400 text-sm font-medium mb-4 inline-flex items-center">
-                  <Sparkles className="w-4 h-4 mr-2" />
-                  Featured Builders
-                </div>
-              </motion.div>
-              
-              <motion.h2 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 }}
-                className="text-3xl md:text-4xl font-bold mb-4"
-              >
-                Meet Our <span className="text-yellow-400">Featured Builders</span>
-              </motion.h2>
-              
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4 }}
-                className="text-gray-400 max-w-3xl mx-auto text-lg"
-              >
-                Connect with visionary founders and industry leaders who are shaping the future of technology and business.
-              </motion.p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[
-                {
-                  name: "Alex Johnson",
-                  role: "Founder & CEO",
-                  company: "Nexus AI",
-                  image: "/images/builders/alex-johnson.jpg"
-                },
-                {
-                  name: "Sarah Chen",
-                  role: "CTO",
-                  company: "BlockForge",
-                  image: "/images/builders/sarah-chen.jpg"
-                },
-                {
-                  name: "Marcus Rivera",
-                  role: "CEO",
-                  company: "HealthFlow",
-                  image: "/images/builders/marcus-rivera.jpg"
-                },
-                {
-                  name: "Priya Patel",
-                  role: "Founder",
-                  company: "EduVantage",
-                  image: "/images/builders/priya-patel.jpg"
-                }
-              ].map((builder, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ delay: 0.1 * i, duration: 0.5 }}
-                >
-                  <ProfileCard 
-                    name={builder.name}
-                    role={builder.role}
-                    company={builder.company}
-                    image={builder.image}
-                    showDetails={true}
-                  />
-                </motion.div>
-              ))}
-            </div>
-
-            <motion.div 
-              className="mt-12 text-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5 }}
-            >
-              <Link 
-                href="/content/builders"
-                className="inline-flex items-center justify-center px-6 py-3 border border-yellow-400 text-yellow-400 rounded-full font-medium hover:bg-yellow-400/10 transition-colors group"
-              >
-                View All Builders
-                <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </motion.div>
-          </div>
-        </motion.section>
 
         {/* Latest Podcasts Section */}
         <motion.section 
@@ -678,162 +527,6 @@ function ContentPage() {
         </motion.section>
 
 
-        {/* Builders Spotlight */}
-        <motion.section 
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
-          className="mb-20 pt-10 scroll-mt-20"
-        >
-          <div className="container mx-auto px-4">
-            <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-8">
-              <div className="max-w-2xl">
-                <div className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-400/10 text-yellow-400 mb-3">
-                  <Sparkles className="mr-2 w-4 h-4" />
-                  Featured Builders
-                </div>
-                <h2 className="text-3xl md:text-4xl font-bold mb-3">
-                  Meet Our <span className="text-yellow-400">Community Leaders</span>
-                </h2>
-                <p className="text-gray-400">Discover the brilliant minds and innovative builders who are shaping the future of technology and entrepreneurship.</p>
-              </div>
-              <Link 
-                href="/content/builders"
-                className="inline-flex items-center px-5 py-2.5 mt-6 md:mt-0 rounded-lg bg-yellow-400/10 border border-yellow-400/20 text-yellow-400 hover:bg-yellow-400/20 transition-colors group"
-              >
-                View All Builders
-                <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </div>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[
-                {
-                  name: "Alex Johnson",
-                  role: "Founder & CEO",
-                  company: "Nexus AI",
-                  image: "/images/avatars/avatar-1.jpg",
-                  tags: ["AI/ML", "SaaS"],
-                  description: "Built a $50M ARR AI platform for enterprise automation.",
-                  social: { twitter: "#", linkedin: "#" }
-                },
-                {
-                  name: "Sarah Chen",
-                  role: "CTO",
-                  company: "BlockForge",
-                  image: "/images/avatars/avatar-2.jpg",
-                  tags: ["Web3", "Blockchain"],
-                  description: "Leading blockchain infrastructure for the next web.",
-                  social: { twitter: "#", linkedin: "#" }
-                },
-                {
-                  name: "Marcus Rivera",
-                  role: "Founder",
-                  company: "HealthPulse",
-                  image: "/images/avatars/avatar-3.jpg",
-                  tags: ["HealthTech", "AI"],
-                  description: "Revolutionizing healthcare with AI diagnostics.",
-                  social: { twitter: "#", linkedin: "#" }
-                },
-                {
-                  name: "Priya Patel",
-                  role: "CEO",
-                  company: "EduFlow",
-                  image: "/images/avatars/avatar-4.jpg",
-                  tags: ["EdTech", "SaaS"],
-                  description: "Making quality education accessible globally.",
-                  social: { twitter: "#", linkedin: "#" }
-                },
-                {
-                  name: "David Kim",
-                  role: "Founder",
-                  company: "GreenVest",
-                  image: "/images/avatars/avatar-5.jpg",
-                  tags: ["FinTech", "Sustainability"],
-                  description: "Connecting investors with sustainable opportunities.",
-                  social: { twitter: "#", linkedin: "#" }
-                },
-                {
-                  name: "Elena Rodriguez",
-                  role: "CEO",
-                  company: "CodeHaven",
-                  image: "/images/avatars/avatar-6.jpg",
-                  tags: ["DevTools", "Open Source"],
-                  description: "Building tools for the next generation of developers.",
-                  social: { twitter: "#", linkedin: "#" }
-                }
-              ].map((builder, i) => (
-                <motion.div 
-                  key={i}
-                  className="group relative bg-gradient-to-br from-gray-900/50 to-black/50 rounded-2xl border border-gray-800 hover:border-yellow-400/30 transition-colors group"
-                  whileHover={{ y: -5 }}
-                >
-                  <div className="flex items-start space-x-4">
-                    <div className="relative">
-                      <div className="w-16 h-16 rounded-xl bg-gray-800 overflow-hidden">
-                        {builder.image ? (
-                          <Image 
-                            src={builder.image} 
-                            alt={builder.name}
-                            width={64}
-                            height={64}
-                            className="w-full h-full object-cover"
-                          />
-                        ) : (
-                          <div className="w-full h-full bg-yellow-400/10 flex items-center justify-center text-yellow-400 text-xl font-bold">
-                            {builder.name.split(' ').map(n => n[0]).join('')}
-                          </div>
-                        )}
-                      </div>
-                      <div className="absolute -bottom-2 -right-2 bg-yellow-400 text-black text-xs font-bold px-2 py-0.5 rounded-full">
-                        {i + 1}
-                      </div>
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-lg font-bold text-white group-hover:text-yellow-400 transition-colors">
-                        {builder.name}
-                      </h3>
-                      <p className="text-sm text-gray-300">{builder.role}, {builder.company}</p>
-                      <p className="text-sm text-gray-400 mt-2 line-clamp-2">{builder.description}</p>
-                      <div className="flex flex-wrap gap-2 mt-3">
-                        {builder.tags.map((tag, i) => (
-                          <span 
-                            key={i}
-                            className="text-xs px-2 py-0.5 bg-gray-800/50 text-gray-300 rounded-full border border-gray-700"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="mt-4 pt-4 border-t border-gray-800 flex justify-between items-center">
-                    <div className="flex items-center space-x-1 text-xs text-gray-500">
-                      <span>Featured</span>
-                      <span>•</span>
-                      <span>5 min read</span>
-                    </div>
-                    <div className="flex space-x-2">
-                      <a href={builder.social.twitter} className="text-gray-400 hover:text-yellow-400 transition-colors">
-                        <Twitter size={16} />
-                      </a>
-                      <a href={builder.social.linkedin} className="text-gray-400 hover:text-yellow-400 transition-colors">
-                        <Linkedin size={16} />
-                      </a>
-                    </div>
-                  </div>
-                  <Link 
-                    href={`/content/builders/${builder.name.toLowerCase().replace(/\s+/g, '-')}`}
-                    className="absolute inset-0 z-10"
-                    aria-label={`View ${builder.name}'s profile`}
-                  />
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.section>
-
         {/* Events Section */}
         <motion.section 
           id="events"
@@ -844,7 +537,7 @@ function ContentPage() {
           className="py-20 bg-gradient-to-b from-black/50 to-gray-900/50 relative overflow-hidden"
         >
           <div className="absolute inset-0 opacity-5">
-            <div className="absolute inset-0 bg-[url('/images/patterns/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white_10%,transparent_80%)]"></div>
+            <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white_10%,transparent_80%)]"></div>
           </div>
           
           <div className="container mx-auto px-4 relative z-10">

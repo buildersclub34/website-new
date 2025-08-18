@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { Linkedin, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
+import NeoPopButton from '@/components/ui/NeoPopButton';
 import Image from 'next/image';
 import type { Advisor } from '@/data/advisors';
 
@@ -129,6 +130,67 @@ export default function AdvisorClient({ advisorId, initialData }: AdvisorClientP
                     ))}
                   </div>
                 </div>
+              </div>
+            </div>
+
+            {/* CTA Section */}
+            <div className="text-center mt-16 px-4">
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">Ready to Build Something Extraordinary?</h3>
+              <p className="text-gray-300 mb-8 max-w-2xl mx-auto text-lg">
+                Connect with our network of industry experts and get the guidance you need to take your venture to the next level.
+              </p>
+              <div className="flex flex-col sm:flex-row justify-center gap-6">
+                <NeoPopButton
+                  as="link"
+                  href="/advisors/"
+                  variant="secondary"
+                  size="lg"
+                  className="group"
+                >
+                  <div className="flex items-center gap-2">
+                    <span>Explore All Advisors</span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1"
+                    >
+                      <path d="m9 18 6-6-6-6"></path>
+                    </svg>
+                  </div>
+                </NeoPopButton>
+
+                <NeoPopButton
+                  as="link"
+                  href="/circle/#join"
+                  variant="primary"
+                  size="lg"
+                  className="group"
+                >
+                  <div className="flex items-center gap-2">
+                    <span>Become an Advisor</span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1"
+                    >
+                      <path d="m9 18 6-6-6-6"></path>
+                    </svg>
+                  </div>
+                </NeoPopButton>
               </div>
             </div>
           </div>

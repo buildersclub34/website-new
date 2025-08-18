@@ -14,8 +14,12 @@ import {
   TrendingUp,
   Zap,
   Sparkles,
-  ArrowRight
+  ArrowRight,
+  MessageSquareText,
+  UserPlus,
+  MessageCircle
 } from 'lucide-react';
+import { ProductsSection } from '@/components/products/ProductsSection';
 import { useState } from 'react';
 
 // Types
@@ -429,33 +433,6 @@ export default function PartnersPage() {
         </div>
       </section>
 
-      {/* Our Perks Section */}
-      <section className="py-20 bg-gradient-to-b from-black to-gray-900">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {partnerPerks.filter(p => p.featured).map((perk) => (
-            <div key={perk.id} className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-              <div className="h-12 w-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
-                <Image 
-                  src={perk.image} 
-                  alt={perk.title} 
-                  width={32} 
-                  height={32}
-                  className="object-contain"
-                />
-              </div>
-              <h3 className="text-lg font-medium text-gray-900 mb-2">{perk.title}</h3>
-              <p className="text-gray-600 mb-4">{perk.description}</p>
-              <a 
-                href={perk.link}
-                className="text-yellow-600 hover:text-yellow-700 font-medium text-sm flex items-center"
-              >
-                {perk.cta}
-                <ChevronRight className="w-4 h-4 ml-1" />
-              </a>
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* Partners Showcase */}
       <section className="py-20 bg-black">
@@ -524,74 +501,163 @@ export default function PartnersPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-black relative overflow-hidden">
+      {/* CTA Section with NeoPop Theme */}
+      <section className="py-24 bg-black relative overflow-hidden">
+        {/* Background Elements */}
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-5"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/5 via-transparent to-yellow-500/5"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-yellow-500/10 via-transparent to-transparent"></div>
         
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center bg-gradient-to-br from-gray-900 to-black p-8 md:p-12 rounded-2xl border border-gray-800">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Ready to Become a Partner?
-            </h2>
-            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-              Join our network of industry leaders and unlock exclusive benefits designed to help your business grow.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link 
-                href="/partner-registration"
-                className="px-8 py-4 bg-yellow-500 hover:bg-yellow-600 text-black font-bold rounded-full transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
-              >
-                Apply Now
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-              <a 
-                href="#contact"
-                className="px-8 py-4 border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500/10 font-bold rounded-full transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
-              >
-                Contact Sales
-              </a>
+          <div className="max-w-5xl mx-auto text-center bg-gradient-to-br from-black to-gray-900 p-8 md:p-12 rounded-3xl border-2 border-yellow-400/30 shadow-[0_0_30px_rgba(234,179,8,0.2)]">
+            {/* Main CTA */}
+            <div className="mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 font-heading">
+                Ready to <span className="text-yellow-400">Become a Partner?</span>
+              </h2>
+              <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+                Join our exclusive network of industry leaders and unlock powerful benefits to accelerate your business growth.
+              </p>
+              <div className="flex flex-col sm:flex-row justify-center gap-6 max-w-xl mx-auto">
+                <Link 
+                  href="/partner-registration"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-yellow-400 hover:bg-yellow-500 text-black font-bold rounded-lg transition-colors duration-200 w-full sm:w-auto"
+                >
+                  <span>Apply Now</span>
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+                
+                <a 
+                  href="#contact"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-3 border-2 border-yellow-400 text-yellow-400 hover:bg-yellow-400/10 font-bold rounded-lg transition-colors duration-200 w-full sm:w-auto"
+                >
+                  <span>Contact Sales</span>
+                  <MessageSquareText className="w-5 h-5" />
+                </a>
+              </div>
             </div>
             
+            {/* Divider */}
+            <div className="h-px bg-gradient-to-r from-transparent via-yellow-400/30 to-transparent my-12"></div>
+            
+            {/* Secondary CTA */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="mt-12"
             >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Join Our Partner Network?</h2>
+              <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-yellow-400/10 text-yellow-400 text-sm font-medium mb-4">
+                <Zap className="w-4 h-4 mr-2" />
+                Limited Spots Available
+              </div>
+              
+              <h3 className="text-3xl md:text-4xl font-bold text-white mb-6 font-heading">
+                Join Our <span className="text-yellow-400">Elite Partner Network</span>
+              </h3>
+              
               <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
-                Partner with Builders Club and unlock exclusive benefits, resources, and opportunities to grow your business.
+                Partner with Builders Club and gain access to exclusive resources, growth opportunities, and a community of top industry leaders.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button 
-                  className="w-full px-6 py-3 bg-yellow-500 text-black font-medium rounded-lg hover:bg-yellow-600 transition-colors duration-200"
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-2xl mx-auto">
+                <button
+                  onClick={() => {
+                    // Handle waitlist signup
+                    window.location.href = '#waitlist';
+                  }}
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-yellow-400 text-yellow-400 hover:bg-yellow-400/10 font-medium rounded-lg transition-colors duration-200 w-full"
                 >
-                  Join the waitlist
+                  <span>Join Waitlist</span>
+                  <UserPlus className="w-5 h-5" />
                 </button>
-                <a
+                
+                <Link 
                   href="/partner-registration"
-                  className="inline-flex items-center px-8 py-3 text-lg font-medium text-black bg-yellow-500 rounded-lg hover:bg-yellow-600 transition-colors duration-200"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-yellow-400 hover:bg-yellow-500 text-black font-medium rounded-lg transition-colors duration-200 w-full"
                 >
-                  Become a Partner
-                  <Zap className="w-5 h-5 ml-2" />
-                </a>
-                <a 
-                  href="/contact" 
-                  className="inline-flex items-center justify-center px-8 py-3 text-lg font-medium text-white hover:text-yellow-400 transition-colors"
+                  <span>Become a Partner</span>
+                  <Zap className="w-5 h-5" />
+                </Link>
+                
+                <Link 
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 text-white hover:text-yellow-400 font-medium rounded-lg transition-colors duration-200 w-full"
                 >
-                  Contact Our Team
-                </a>
+                  <span>Contact Team</span>
+                  <MessageCircle className="w-5 h-5" />
+                </Link>
               </div>
             </motion.div>
+            
+            {/* Trust Badges */}
+            <div className="mt-16 pt-8 border-t border-yellow-400/10">
+              <p className="text-sm text-gray-400 mb-6">TRUSTED BY INDUSTRY LEADERS</p>
+              <div className="flex flex-wrap justify-center items-center gap-8 opacity-70">
+                <div className="h-8">
+                  <Image 
+                    src="/images/partners/aws-logo.png" 
+                    alt="AWS" 
+                    width={80} 
+                    height={32} 
+                    className="h-full w-auto object-contain"
+                  />
+                </div>
+                <div className="h-8">
+                  <Image 
+                    src="/images/partners/stripe-logo.png" 
+                    alt="Stripe" 
+                    width={80} 
+                    height={32} 
+                    className="h-full w-auto object-contain"
+                  />
+                </div>
+                <div className="h-8">
+                  <Image 
+                    src="/images/partners/vercel-logo.png" 
+                    alt="Vercel" 
+                    width={80} 
+                    height={32} 
+                    className="h-full w-auto object-contain"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+        
+        {/* Decorative Elements */}
+        <div className="absolute -top-20 -right-20 w-64 h-64 bg-yellow-400/5 rounded-full filter blur-3xl"></div>
+        <div className="absolute -bottom-32 -left-32 w-80 h-80 bg-yellow-400/5 rounded-full filter blur-3xl"></div>
       </section>
       
-      {/* Rest of the content */}
-      <div className="relative z-20">
-        {/* Other sections will go here */}
-      </div>
+      {/* Exclusive Deals Section */}
+      <section className="py-20 bg-black relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/images/patterns/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0.1))] opacity-10"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center px-4 py-1.5 rounded-full text-sm font-medium bg-yellow-500/10 text-yellow-400 mb-4">
+              <Sparkles className="w-4 h-4 mr-2" />
+              Exclusive Offers
+            </div>
+            <h2 className="text-4xl font-bold text-white sm:text-5xl">
+              <span className="block bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">Partner Deals</span>
+            </h2>
+            <p className="mt-4 max-w-2xl mx-auto text-lg text-gray-400">
+              Special offers and discounts from our partners to help you build and grow your startup.
+            </p>
+          </div>
+          
+          <div className="relative z-10">
+            <ProductsSection />
+          </div>
+        </div>
+        
+        {/* Decorative Elements */}
+        <div className="absolute -top-20 -right-20 w-96 h-96 bg-yellow-500/5 rounded-full filter blur-3xl"></div>
+        <div className="absolute -bottom-32 -left-32 w-[40rem] h-[40rem] bg-yellow-500/5 rounded-full filter blur-3xl"></div>
+        <div className="absolute top-1/2 -right-20 w-72 h-72 bg-purple-500/5 rounded-full filter blur-3xl"></div>
+      </section>
     </div>
   );
 }

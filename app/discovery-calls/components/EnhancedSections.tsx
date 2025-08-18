@@ -1,4 +1,5 @@
 import { Zap, Users, BarChart2, Target, Lightbulb, Check, ChevronRight, Play, MessageSquare, ArrowRight } from 'lucide-react';
+import Image from 'next/image';
 import { useState } from 'react';
 import NeoPopButton from '../../../components/ui/NeoPopButton';
 import SectionHeader from '../../../components/SectionHeader';
@@ -74,19 +75,25 @@ export const VideoTestimonial = () => {
     {
       id: 'F0hIWT5HNsY',
       title: 'Founder Success Story',
-      description: 'How our discovery calls helped shape their product'
+      description: 'How our discovery calls helped shape their product',
+      thumbnail: '/images/discovery/founder-story.jpg'
     },
     {
       id: '6J_o7rbTVmA',
       title: 'Product Validation',
-      description: 'Real feedback from real users'
+      description: 'Real feedback from real users',
+      thumbnail: '/images/discovery/product-feedback.jpg'
     },
     {
       id: 'DUmuQi95KM0',
       title: 'The Process',
-      description: 'See how our discovery calls work'
+      description: 'See how our discovery calls work',
+      thumbnail: '/images/discovery/process.jpg'
     }
   ];
+  
+  // Fallback background colors for each card
+  const cardColors = ['bg-purple-900', 'bg-blue-900', 'bg-amber-900'];
 
   return (
     <section className="py-20 bg-black">
@@ -118,10 +125,25 @@ export const VideoTestimonial = () => {
                 </div>
               ) : (
                 <div className="relative">
-                  <div className="aspect-video bg-gray-900 flex items-center justify-center">
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-70 group-hover:opacity-50 transition-opacity"></div>
-                    <div className="w-16 h-16 md:w-20 md:h-20 bg-yellow-500 rounded-full flex items-center justify-center z-10 transform transition-transform group-hover:scale-110">
-                      <Play className="w-6 h-6 text-black" />
+                  <div className={`aspect-video ${cardColors[index % cardColors.length]} flex items-center justify-center relative overflow-hidden`}>
+                    {/* Thumbnail Image */}
+                    <div className="absolute inset-0 w-full h-full">
+                      <Image
+                        src={video.thumbnail}
+                        alt={video.title}
+                        fill
+                        className="object-cover"
+                        onError={(e) => {
+                          // Hide the image on error to show the fallback background color
+                          const target = e.target as HTMLElement;
+                          target.style.display = 'none';
+                        }}
+                        unoptimized={process.env.NODE_ENV !== 'production'} // Only optimize in production
+                      />
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-90 group-hover:opacity-70 transition-opacity"></div>
+                    <div className="w-16 h-16 md:w-20 md:h-20 bg-yellow-500 rounded-full flex items-center justify-center z-10 transform transition-all group-hover:scale-110 shadow-lg">
+                      <Play className="w-6 h-6 text-black fill-current" />
                     </div>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
