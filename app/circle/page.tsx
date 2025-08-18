@@ -275,13 +275,12 @@ function BuildersCircle() {
               <div className="inline-flex items-center px-4 py-1.5 bg-yellow-500/10 border border-yellow-500/20 rounded-full text-yellow-400 text-xs font-bold uppercase tracking-wider mb-6 z-20">
                 A TBC INITIATIVE
               </div>
-              <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-                <span className="text-yellow-400">THE</span> <br />
-                <span className="text-yellow-400">BUILDERS</span> <br />
-                <span className="text-yellow-400">CIRCLE</span>
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 text-center">
+                <span className="text-yellow-400">The Builders Circle</span> <br />
+                <span className="text-xl md:text-2xl font-normal text-gray-300 mt-4 block">Where Leaders Build Together</span>
               </h1>
               <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-                An offline network of funded and growth stage founders dedicated to scaling their business enabled by advisors, partners and investors.
+                A peer-driven business community for founders and senior professionals to connect, exchange opportunities, and solve real business challenges — enabled by expert advisors and strategic partners.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-6">
                 <NeoPopButton
@@ -292,7 +291,7 @@ function BuildersCircle() {
                   variant="primary"
                   size="lg"
                 >
-                  Register for Trial Session
+                  Register for The Circle
                 </NeoPopButton>
                 <Link href="/advisors" className="block">
                   <NeoPopButton
@@ -305,6 +304,78 @@ function BuildersCircle() {
                     <ChevronRight className="w-5 h-5" />
                   </NeoPopButton>
                 </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* About The Circle Section */}
+        <section className="py-20 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-black via-black to-gray-900/80"></div>
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="max-w-4xl mx-auto">
+              <div className="mb-16 text-center">
+                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                  About <span className="text-yellow-400">the Circle</span>
+                </h2>
+                <p className="text-xl text-gray-300 mb-8">
+                  The Builders Circle is not just networking — it&apos;s a high-trust space where decision-makers collaborate to accelerate each other&apos;s growth.
+                </p>
+                <p className="text-xl text-gray-300">
+                  Through curated sessions, direct access to advisors, and exclusive events, members gain insights, opportunities, and connections that move businesses forward.
+                </p>
+              </div>
+
+              <div className="bg-gray-900/50 border border-gray-800 rounded-2xl p-8 md:p-12 backdrop-blur-sm">
+                <h3 className="text-3xl font-bold text-white mb-8 text-center">
+                  What You Get as a <span className="text-yellow-400">Member</span>
+                </h3>
+                
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div className="bg-gray-800/50 p-6 rounded-xl border border-gray-700/50">
+                    <h4 className="text-xl font-semibold text-yellow-400 mb-3">1. Monthly Give & Take Sessions</h4>
+                    <p className="text-gray-300">Exchange opportunities, leads, and strategic introductions with fellow members.</p>
+                  </div>
+                  
+                  <div className="bg-gray-800/50 p-6 rounded-xl border border-gray-700/50">
+                    <h4 className="text-xl font-semibold text-yellow-400 mb-3">2. Monthly Breakfast with Advisors</h4>
+                    <p className="text-gray-300">Engage with seasoned CXOs and industry experts over curated, topic-led discussions.</p>
+                  </div>
+                  
+                  <div className="bg-gray-800/50 p-6 rounded-xl border border-gray-700/50">
+                    <h4 className="text-xl font-semibold text-yellow-400 mb-3">3. One Review Call with TBC Team</h4>
+                    <p className="text-gray-300">Track your business needs and close gaps with personalized follow-up.</p>
+                  </div>
+                  
+                  <div className="bg-gray-800/50 p-6 rounded-xl border border-gray-700/50">
+                    <h4 className="text-xl font-semibold text-yellow-400 mb-3">4. Free Access to All TBC Events</h4>
+                    <p className="text-gray-300">Attend high-impact summits, roundtables, and masterclasses at no additional cost.</p>
+                  </div>
+                  
+                  <div className="bg-gray-800/50 p-6 rounded-xl border border-gray-700/50">
+                    <h4 className="text-xl font-semibold text-yellow-400 mb-3">5. CXO Advisory Panel Access</h4>
+                    <p className="text-gray-300">Get feedback on your challenges from an experienced panel of executives.</p>
+                  </div>
+                  
+                  <div className="bg-gray-800/50 p-6 rounded-xl border border-gray-700/50">
+                    <h4 className="text-xl font-semibold text-yellow-400 mb-3">6. Partner Perks</h4>
+                    <p className="text-gray-300">Enjoy exclusive business tools, software credits, and service discounts worth over $100K.</p>
+                  </div>
+                </div>
+                
+                <div className="mt-12 text-center">
+                  <NeoPopButton
+                    as="link"
+                    href="https://nas.io/tbc"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    variant="primary"
+                    size="lg"
+                    className="mx-auto"
+                  >
+                    Join The Circle Now
+                  </NeoPopButton>
+                </div>
               </div>
             </div>
           </div>
@@ -443,46 +514,6 @@ function BuildersCircle() {
 
         {/* Membership Section */}
         <MembershipSection />
-
-        {/* Why Join Us Section */}
-        <section className="py-20 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-black via-black to-gray-900/80"></div>
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="mb-12">
-              <SectionHeader
-                title="Everything You Need to"
-                highlightedText="Succeed"
-                badgeText="Why Join Us"
-                align="center"
-                titleClassName="text-3xl md:text-4xl lg:text-5xl"
-              />
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {features.map((feature, index) => (
-                <div
-                  key={index}
-                  className={`relative group bg-gradient-to-br ${feature.gradient} backdrop-blur-sm border ${feature.borderColor} rounded-2xl p-6`}
-                >
-                  <div className="relative z-10">
-                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-yellow-500/20 to-amber-500/10 flex items-center justify-center mb-5 shadow-lg shadow-yellow-500/10">
-                      {feature.icon}
-                    </div>
-                    <h3 className="text-xl font-bold text-white mb-3 bg-gradient-to-r from-yellow-400 to-amber-300 bg-clip-text text-transparent">
-                      {feature.title}
-                    </h3>
-                    <p className="text-gray-300 leading-relaxed">
-                      {feature.description}
-                    </p>
-                    <div className="mt-4 inline-flex items-center text-yellow-400 font-medium text-sm">
-                      Learn more
-                      <ArrowRight className="ml-1 w-4 h-4" />
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* Advisors Section */}
         <AdvisorsSection />

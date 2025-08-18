@@ -4,7 +4,7 @@ import { Rocket, ArrowRight, ChevronRight } from 'lucide-react';
 import ClientLayout from '../ClientLayout';
 import NeoPopButton from '../../components/ui/NeoPopButton';
 import SectionHeader from '../../components/SectionHeader';
-import { WhyFundWithUs, FundraisingProcess, SuccessStories, FAQSection, FinalCTA } from './components/EnhancedSections';
+import { WhyFundWithUs, FundraisingProcess, SuccessStories, FAQSection } from './components/EnhancedSections';
 
 function FundraisingPage() {
   return (
@@ -110,9 +110,6 @@ function FundraisingPage() {
       
       {/* FAQ Section */}
       <FAQSection />
-      
-      {/* Final CTA */}
-      <FinalCTA />
     </div>
   );
 }

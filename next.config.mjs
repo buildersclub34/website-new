@@ -1,7 +1,24 @@
 /** @type {import('next').NextConfig} */
+import { fileURLToPath } from 'url';
+import path from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const nextConfig = {
-  // Enable static HTML export
-  output: 'export',
+  // Configure path aliases
+  webpack: (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': __dirname,
+      '@/components': path.join(__dirname, 'components'),
+      '@/data': path.join(__dirname, 'data'),
+      '@/app': path.join(__dirname, 'app')
+    };
+    return config;
+  },
+  // Disable static HTML export temporarily
+  // output: 'export',
   
   // Enable React Strict Mode
   reactStrictMode: true,

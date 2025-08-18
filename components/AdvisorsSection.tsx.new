@@ -11,21 +11,6 @@ const getExpertiseArray = (expertise: string): string[] => {
   return expertise.split(',').map(item => item.trim());
 };
 
-// Get default avatar image URL based on advisor name
-const getDefaultAvatar = (name: string): string => {
-  const names = name.split(' ');
-  const firstName = names[0].toLowerCase();
-  const lastName = names[names.length - 1].toLowerCase();
-  return `https://ui-avatars.com/api/?name=${firstName}+${lastName}&background=111827&color=F59E0B&size=300`;
-};
-
-// Get company logo URL based on company name
-const getCompanyLogo = (company: string): string => {
-  if (!company) return '';
-  const domain = company.toLowerCase().replace(/\s+/g, '');
-  return `https://logo.clearbit.com/${domain}.com?size=128`;
-};
-
 export default function AdvisorsSection() {
   // Filter to show only the first 8 advisors for the section
   const featuredAdvisors = advisors.slice(0, 8);
@@ -52,8 +37,7 @@ export default function AdvisorsSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {featuredAdvisors.map((advisor) => {
             const expertiseArray = getExpertiseArray(advisor.expertise);
-            const imageUrl = advisor.image || getDefaultAvatar(advisor.name);
-            const companyLogoUrl = advisor.companyLogo || getCompanyLogo(advisor.company);
+            const imageUrl = advisor.image || `https://ui-avatars.com/api/?name=${encodeURIComponent(advisor.name)}&background=111827&color=F59E0B&size=300`;
             
             return (
               <div 
@@ -80,25 +64,15 @@ export default function AdvisorsSection() {
                 </div>
                 
                 {/* Company Logo */}
-                {companyLogoUrl && (
+                {advisor.companyLogo && (
                   <div className="absolute top-4 right-4 w-12 h-12 rounded-lg bg-gray-800 p-2 flex items-center justify-center border border-gray-700">
                     <Image
-                      src={companyLogoUrl}
+                      src={advisor.companyLogo}
                       alt={advisor.company}
                       width={40}
                       height={40}
                       className="object-contain h-6 w-auto filter grayscale group-hover:grayscale-0 transition-all duration-500"
                       loading="lazy"
-                      onError={(e) => {
-                        // Fallback to first letter of company if logo fails to load
-                        const target = e.target as HTMLImageElement;
-                        target.src = `data:image/svg+xml,${encodeURIComponent(
-                          `<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
-                            <rect width="40" height="40" rx="8" fill="#1F2937"/>
-                            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#F59E0B" font-family="sans-serif" font-size="16" font-weight="bold">${advisor.company ? advisor.company.charAt(0).toUpperCase() : 'C'}</text>
-                          </svg>`
-                        )}`;
-                      }}
                     />
                   </div>
                 )}

@@ -669,60 +669,72 @@ const EventsPage = () => {
       <section className="py-16 bg-gray-900 relative overflow-hidden">
         <div className="absolute inset-0 bg-grid-white/[0.05]" />
         <div className="container mx-auto px-4 relative z-10">
-          <h2 className="text-3xl font-bold text-center mb-12 text-yellow-400">
-            Past Event Highlights
-          </h2>
+          <SectionHeader
+            title="Past Event"
+            highlightedText="Highlights"
+            badgeText="Gallery"
+            description="Relive our most memorable moments from previous events"
+            className="mb-12 text-center"
+          />
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {displayedPastEvents.map((event, index) => {
-              const { rotation, color } = getRandomStyle(index);
-              
-              return (
-                <div 
-                  key={`past-${event.id}`}
-                  className={`relative p-6 rounded-lg border-2 ${color} transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${rotation} hover:rotate-0 h-full flex flex-col`}
-                >
-                  <div className="relative h-56 w-full mb-4 overflow-hidden rounded-md flex-shrink-0">
-                    <Image
-                      src={event.image}
-                      alt={event.title}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      priority={index < 6} // Only preload first 6 images
-                    />
-                    {event.isSoldOut && (
-                      <div className="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
-                        SOLD OUT
-                      </div>
-                    )}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {displayedPastEvents.map((event) => (
+              <div 
+                key={`past-${event.id}`}
+                className="bg-gray-800 rounded-xl overflow-hidden border border-gray-700 hover:border-yellow-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-yellow-500/10 flex flex-col h-full"
+              >
+                <div className="relative h-48 w-full overflow-hidden">
+                  <Image
+                    src={event.image}
+                    alt={event.title}
+                    fill
+                    className="object-cover hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                  {event.isSoldOut && (
+                    <div className="absolute top-2 right-2 bg-red-500/90 text-white text-xs font-bold px-2 py-1 rounded">
+                      SOLD OUT
+                    </div>
+                  )}
+                  {event.isFree && (
+                    <div className="absolute top-2 left-2 bg-green-500/90 text-white text-xs font-bold px-2 py-1 rounded">
+                      FREE
+                    </div>
+                  )}
+                </div>
+                
+                <div className="p-5 flex-1 flex flex-col">
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="px-3 py-1 bg-yellow-400/10 text-yellow-400 text-xs font-medium rounded-full">
+                      {event.type.charAt(0).toUpperCase() + event.type.slice(1)}
+                    </span>
                     {event.isFree && (
-                      <div className="absolute top-2 left-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">
-                        FREE
-                      </div>
+                      <span className="px-2 py-1 bg-green-500/10 text-green-400 text-xs font-medium rounded-full">
+                        Free Entry
+                      </span>
                     )}
                   </div>
                   
-                  <h3 className="text-xl font-bold mb-2 line-clamp-2 text-gray-800">
+                  <h3 className="text-lg font-bold text-white mb-2 line-clamp-2">
                     {event.title}
                   </h3>
                   
-                  <div className="flex items-center text-sm text-gray-600 mb-2">
-                    <Calendar className="w-4 h-4 mr-1 flex-shrink-0" />
+                  <div className="flex items-center text-sm text-gray-400 mb-3">
+                    <Calendar className="w-4 h-4 mr-1.5 text-yellow-400" />
                     <span>{formatDisplayDate(event.date)} • {event.time}</span>
                   </div>
                   
-                  <div className="flex items-center text-sm text-gray-600 mb-3">
-                    <MapPin className="w-4 h-4 mr-1 flex-shrink-0" />
+                  <div className="flex items-center text-sm text-gray-400 mb-4">
+                    <MapPin className="w-4 h-4 mr-1.5 text-yellow-400" />
                     <span className="line-clamp-1">{event.location}, {event.city}</span>
                   </div>
                   
-                  <p className="text-gray-600 text-sm mb-4 line-clamp-2 flex-grow">
+                  <p className="text-gray-300 text-sm mb-4 line-clamp-2">
                     {event.description}
                   </p>
                   
-                  <div className="flex items-center pt-3 border-t border-gray-200 mt-auto">
-                    <div className="relative w-8 h-8 rounded-full overflow-hidden mr-2 flex-shrink-0">
+                  <div className="flex items-center pt-3 mt-auto border-t border-gray-700">
+                    <div className="relative w-8 h-8 rounded-full overflow-hidden mr-3 flex-shrink-0 border-2 border-yellow-400/50">
                       <Image
                         src={event.host.avatar}
                         alt={event.host.name}
@@ -731,20 +743,21 @@ const EventsPage = () => {
                         className="object-cover"
                       />
                     </div>
-                    <span className="text-sm text-gray-700 line-clamp-1">
-                      Hosted by {event.host.name}
-                    </span>
+                    <div>
+                      <p className="text-xs text-gray-400">Hosted by</p>
+                      <p className="text-sm text-white font-medium">{event.host.name}</p>
+                    </div>
                   </div>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
           
           {visiblePastEvents < pastEventsFiltered.length && (
             <div className="text-center mt-12">
               <button 
                 onClick={() => setVisiblePastEvents(prev => Math.min(prev + 6, pastEventsFiltered.length))}
-                className="px-6 py-2 bg-yellow-400 hover:bg-yellow-300 text-black font-medium rounded-full transition-colors duration-200 flex items-center mx-auto"
+                className="px-6 py-3 bg-yellow-400 hover:bg-yellow-300 text-black font-medium rounded-lg transition-colors duration-200 flex items-center mx-auto"
               >
                 Load More Events
                 <ArrowDown className="ml-2 w-4 h-4" />
