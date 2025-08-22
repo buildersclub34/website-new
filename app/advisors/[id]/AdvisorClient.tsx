@@ -5,6 +5,7 @@ import { Linkedin, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import NeoPopButton from '@/components/ui/NeoPopButton';
 import Image from 'next/image';
+import { getAdvisorColor } from '@/components/ui/AdvisorCard';
 import type { Advisor } from '@/data/advisors';
 
 interface AdvisorClientProps {
@@ -52,19 +53,29 @@ export default function AdvisorClient({ advisorId, initialData }: AdvisorClientP
             <div className="flex flex-col md:flex-row gap-8">
               {/* Left Column - Profile */}
               <div className="md:w-1/3 flex flex-col items-center">
-                <div className="relative w-48 h-48 rounded-full overflow-hidden border-2 border-yellow-400/30 mb-6">
-                  {advisor.image ? (
-                    <Image 
-                      src={advisor.image}
-                      alt={advisor.name}
-                      fill
-                      className="object-cover"
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-gray-800 flex items-center justify-center text-4xl font-bold">
-                      {advisor.name.split(' ').map((n: string) => n[0]).join('')}
-                    </div>
-                  )}
+                <div className="relative w-48 h-48 rounded-2xl overflow-hidden border-2 border-yellow-400/30 mb-6">
+                  <Image 
+                    src={advisor.image || '/default-avatar.png'}
+                    alt={advisor.name}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                      const fallback = target.nextElementSibling as HTMLDivElement;
+                      if (fallback) fallback.style.display = 'flex';
+                    }}
+                  />
+                  <div 
+                    className="w-full h-full bg-gray-800 flex items-center justify-center text-4xl font-bold"
+                    style={{
+                      backgroundColor: getAdvisorColor(advisor.id),
+                      display: 'none' // Will be shown if image fails to load
+                    }}
+                  >
+                    {advisor.name.split(' ').map((n: string) => n[0]).join('')}
+                  </div>
                 </div>
                 
                 <h1 className="text-2xl font-bold text-center mb-1">{advisor.name}</h1>

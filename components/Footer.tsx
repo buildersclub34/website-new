@@ -158,6 +158,7 @@ export default function Footer() {
                 {[
                   { name: 'Home', link: '/' },
                   { name: 'The Builders Circle', link: '/circle' },
+                  { name: 'For Corporates', link: '/corporates' },
                   { name: 'Discovery Calls', link: '/discovery-calls' },
                   { name: 'Fundraising', link: '/fundraising' },
                   { name: 'Events', link: '/events' },

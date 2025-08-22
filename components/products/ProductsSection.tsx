@@ -96,15 +96,8 @@ export function ProductsSection({ initialProducts = [] }: ProductsSectionProps) 
     <div className="relative">
       <div className="absolute inset-0 bg-gradient-to-b from-black/80 to-gray-900/80 rounded-2xl -m-4 z-0" />
       <div className="relative z-10">
-        <div className="mb-12 text-center">
-          <h1 className="text-4xl font-bold text-white mb-4">Exclusive <span className="text-yellow-400">Deals</span> for Builders</h1>
-          <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-            Access special offers and discounts on the best tools and services to help you build and grow your startup.
-          </p>
-        </div>
-
-      <div className="mb-8 bg-gray-900/50 backdrop-blur-sm p-4 rounded-xl border border-gray-800/50 shadow-2xl shadow-black/30">
-        <div className="flex flex-wrap items-center justify-between gap-4">
+        <div className="mb-8 bg-gray-900/50 backdrop-blur-sm p-4 rounded-xl border border-gray-800/50 shadow-2xl shadow-black/30">
+          <div className="flex flex-wrap items-center justify-between gap-4">
           <div className="flex-1 max-w-md">
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -155,37 +148,37 @@ export function ProductsSection({ initialProducts = [] }: ProductsSectionProps) 
               </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div className="relative">
-        <div className="absolute -inset-4 -m-2 bg-gradient-to-r from-yellow-500/5 to-purple-500/5 rounded-2xl blur-xl opacity-30"></div>
-        <div className="relative bg-gray-900/50 backdrop-blur-sm p-6 rounded-xl border border-gray-800/50 shadow-2xl shadow-black/30">
-          <ProductsGrid>
-            {products.map((product) => (
-              <ProductCard key={product.id} {...product} />
-            ))}
-          </ProductsGrid>
-
-        {hasMore && (
-          <div className="mt-12 text-center">
-            <button 
-              onClick={() => fetchProducts()}
-              disabled={loading}
-              className="inline-flex items-center px-6 py-3 border-2 border-yellow-500 text-base font-medium rounded-md shadow-sm text-black bg-yellow-500 hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 transition-colors duration-200 disabled:opacity-50 hover:shadow-lg hover:shadow-yellow-500/20"
-            >
-              {loading ? 'Loading...' : 'Load More Deals'}
-              {!loading && (
-                <svg className="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                  <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                </svg>
-              )}
-            </button>
           </div>
-        )}
+        </div>
+
+        <div className="relative mt-8">
+          <div className="absolute -inset-4 -m-2 bg-gradient-to-r from-yellow-500/5 to-purple-500/5 rounded-2xl blur-xl opacity-30"></div>
+          <div className="relative bg-gray-900/50 backdrop-blur-sm p-6 rounded-xl border border-gray-800/50 shadow-2xl shadow-black/30">
+            <ProductsGrid>
+              {products.map((product) => (
+                <ProductCard key={product.id} {...product} />
+              ))}
+            </ProductsGrid>
+
+            {hasMore && (
+              <div className="mt-12 text-center">
+                <button 
+                  onClick={() => fetchProducts()}
+                  disabled={loading}
+                  className="inline-flex items-center px-6 py-3 border-2 border-yellow-500 text-base font-medium rounded-md shadow-sm text-black bg-yellow-500 hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 transition-colors duration-200 disabled:opacity-50 hover:shadow-lg hover:shadow-yellow-500/20"
+                >
+                  {loading ? 'Loading...' : 'Load More Deals'}
+                  {!loading && (
+                    <svg className="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                      <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                    </svg>
+                  )}
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>
-  </div>
   );
 }

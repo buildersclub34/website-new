@@ -6,9 +6,10 @@ import { User, Linkedin, ArrowRight, ChevronRight, ChevronLeft, Search } from 'l
 import Link from 'next/link';
 import NeoPopButton from '../../components/ui/NeoPopButton';
 import ClientLayout from '../ClientLayout';
+import { newAdvisors } from '../../data/new-advisors';
 
 // Pagination settings
-const ITEMS_PER_PAGE = 9;
+const ITEMS_PER_PAGE = 12;
 
 interface Advisor {
   id: string;
@@ -23,6 +24,7 @@ interface Advisor {
 }
 
 const advisors: Advisor[] = [
+  ...newAdvisors,
   {
     id: '1',
     name: 'Aakash Sinha',
@@ -31,7 +33,8 @@ const advisors: Advisor[] = [
     expertise: 'GTM – US Market, B2B Marketing',
     linkedin: 'https://www.linkedin.com/in/aakash-sinha-34331a66/',
     website: 'https://clazar.io',
-    companyLogo: 'https://logo.clearbit.com/clazar.io'
+    companyLogo: 'https://logo.clearbit.com/clazar.io',
+    image: '/Speakers-Advisors-Circle Members/Advisor - Clazar - Aakash.png'
   },
   {
     id: '2',
@@ -41,7 +44,8 @@ const advisors: Advisor[] = [
     expertise: 'Growth Marketing',
     linkedin: 'https://www.linkedin.com/in/akshaypohekar/',
     website: 'https://swiggy.com',
-    companyLogo: 'https://logo.clearbit.com/swiggy.com'
+    companyLogo: 'https://logo.clearbit.com/swiggy.com',
+    image: '/Speakers-Advisors-Circle Members/default-avatar.png'
   },
   {
     id: '3',
@@ -51,7 +55,8 @@ const advisors: Advisor[] = [
     expertise: 'Debt Fundraise, D2C, Capital Stack Planning, GTM',
     linkedin: 'https://www.linkedin.com/in/amar-a-ummat-8092006b/',
     website: 'https://recurclub.com',
-    companyLogo: 'https://logo.clearbit.com/recurclub.com'
+    companyLogo: 'https://logo.clearbit.com/recurclub.com',
+    image: '/Speakers-Advisors-Circle Members/Advisor - Amar Ummat  - Recur.png'
   },
   {
     id: '4',
@@ -61,7 +66,8 @@ const advisors: Advisor[] = [
     expertise: 'Finance & Legal',
     linkedin: 'https://www.linkedin.com/in/itsamitsjain/',
     website: 'https://bridgegateadvisory.com',
-    companyLogo: 'https://logo.clearbit.com/bridgegateadvisory.com'
+    companyLogo: 'https://logo.clearbit.com/bridgegateadvisory.com',
+    image: '/Speakers-Advisors-Circle Members/default-avatar.png'
   },
   {
     id: '5',
@@ -71,7 +77,8 @@ const advisors: Advisor[] = [
     expertise: 'Fundraising',
     linkedin: 'https://www.linkedin.com/in/amit-d-kumar-30436a10/',
     website: 'https://ahventures.in',
-    companyLogo: 'https://logo.clearbit.com/ahventures.in'
+    companyLogo: 'https://logo.clearbit.com/ahventures.in',
+    image: '/Speakers-Advisors-Circle Members/Advisor - Amit Ah ventures.png'
   },
   {
     id: '6',
@@ -81,7 +88,8 @@ const advisors: Advisor[] = [
     expertise: 'Fintech, D2C, SaaS, EV, Mobility, Data, Fundraising',
     linkedin: 'https://www.linkedin.com/in/amit6060/',
     website: 'https://dazeinfo.com',
-    companyLogo: 'https://logo.clearbit.com/dazeinfo.com'
+    companyLogo: 'https://logo.clearbit.com/dazeinfo.com',
+    image: '/Speakers-Advisors-Circle Members/Advisor - Amit.png'
   },
   {
     id: '7',
@@ -91,13 +99,15 @@ const advisors: Advisor[] = [
     expertise: 'D2C, Whatsapp Automation, B2C Marketing',
     linkedin: 'https://www.linkedin.com/in/aniket-bajpai/',
     website: 'https://limechat.ai',
-    companyLogo: 'https://logo.clearbit.com/limechat.ai'
+    companyLogo: 'https://logo.clearbit.com/limechat.ai',
+    image: '/Speakers-Advisors-Circle Members/Advisor - Aniket - Limechat.png'
   },
   {
     id: '8',
     name: 'Ankita Bansal',
     company: 'Inkle',
     role: 'Product & Engineering',
+    image: '/Speakers-Advisors-Circle Members/Advisor - Ankita Bansal-Inkle.png',
     expertise: 'Tech, Product, Fintech, US GTM',
     linkedin: 'https://www.linkedin.com/in/ankita-bansal/',
     website: 'https://www.inklive.ai',
@@ -111,7 +121,8 @@ const advisors: Advisor[] = [
     expertise: 'Fundraising, D2C, Consumer Brands',
     linkedin: 'https://www.linkedin.com/in/arjunvaidya/',
     website: 'https://v3ventures.com',
-    companyLogo: 'https://logo.clearbit.com/v3ventures.com'
+    companyLogo: 'https://logo.clearbit.com/v3ventures.com',
+    image: '/Speakers-Advisors-Circle Members/Advisor - Arjun Vaidya - V3 Ventures.png'
   },
   {
     id: '10',
@@ -121,7 +132,8 @@ const advisors: Advisor[] = [
     expertise: 'Investment, Fundraising',
     linkedin: 'https://www.linkedin.com/in/ashima-setia-37a3b444/',
     website: 'https://sorininvestments.com',
-    companyLogo: 'https://logo.clearbit.com/sorininvestments.com'
+    companyLogo: 'https://logo.clearbit.com/sorininvestments.com',
+    image: '/Speakers-Advisors-Circle Members/Advisor - Ashima Setia.png'
   },
   {
     id: '11',
@@ -131,57 +143,63 @@ const advisors: Advisor[] = [
     expertise: 'Product, SaaS, GTM, US Market',
     linkedin: 'https://www.linkedin.com/in/ashishtulsian/',
     website: 'https://posist.com',
-    companyLogo: 'https://logo.clearbit.com/posist.com'
+    companyLogo: 'https://logo.clearbit.com/posist.com',
+    image: '/Speakers-Advisors-Circle Members/default-avatar.png'
   },
   {
     id: '12',
-    name: 'Bhavik Vasa',
-    company: 'GetVantage',
-    role: 'Founder & CEO',
-    expertise: 'Fintech, Lending, Fundraising',
-    linkedin: 'https://www.linkedin.com/in/bhavikvasa/',
-    website: 'https://getvantage.tech',
-    companyLogo: 'https://logo.clearbit.com/getvantage.tech'
+    name: 'Atul Aggarwal',
+    company: 'Aditya Birla Fashion & Retail',
+    role: 'Head - Digital & E-commerce',
+    expertise: 'E-commerce, D2C, Growth',
+    linkedin: 'https://www.linkedin.com/in/atul-aggarwal-7a9b2a4/',
+    website: 'https://www.adityabirla.com',
+    companyLogo: 'https://logo.clearbit.com/adityabirla.com',
+    image: '/Speakers-Advisors-Circle Members/Advisor - Atul Aggarwal-Aditya Birla Fashion & Retail.png'
   },
   {
     id: '13',
-    name: 'Bipin Preet Singh',
-    company: 'MobiKwik',
+    name: 'Balaram',
+    company: 'Yogabar',
     role: 'CoFounder',
-    expertise: 'Fintech, Payments, Lending',
-    linkedin: 'https://www.linkedin.com/in/bipinpreetsingh/',
-    website: 'https://mobikwik.com',
-    companyLogo: 'https://logo.clearbit.com/mobikwik.com'
+    expertise: 'D2C, Brand Building, Fundraising',
+    linkedin: 'https://www.linkedin.com/in/balaram-s-1a5a2b2b/',
+    website: 'https://yogabarfoods.com',
+    companyLogo: 'https://logo.clearbit.com/yogabarfoods.com',
+    image: '/Speakers-Advisors-Circle Members/Advisor - Balaram_Yogabar.png'
   },
   {
     id: '14',
-    name: 'Gaurav Munjal',
-    company: 'Unacademy',
-    role: 'CoFounder & CEO',
-    expertise: 'EdTech, Growth, Fundraising',
-    linkedin: 'https://www.linkedin.com/in/gauravmunjal1/',
-    website: 'https://unacademy.com',
-    companyLogo: 'https://logo.clearbit.com/unacademy.com'
+    name: 'Chaitra Chidanand',
+    company: 'Rakuten',
+    role: 'SVP - Global Partnerships',
+    expertise: 'Partnerships, Business Development',
+    linkedin: 'https://www.linkedin.com/in/chaitrachidanand/',
+    website: 'https://rakuten.com',
+    companyLogo: 'https://logo.clearbit.com/rakuten.com',
+    image: '/Speakers-Advisors-Circle Members/Advisor - Rakuten - Chaitra.png'
   },
   {
     id: '15',
-    name: 'Ghazal Alagh',
-    company: 'Mamaearth',
+    name: 'Chand Tiwari',
+    company: 'Happilo',
     role: 'CoFounder',
-    expertise: 'D2C, E-commerce, Brand Building',
-    linkedin: 'https://www.linkedin.com/in/ghazalalagh/',
-    website: 'https://mamaearth.in',
-    companyLogo: 'https://logo.clearbit.com/mamaearth.in'
+    expertise: 'D2C, E-commerce, Growth',
+    linkedin: 'https://www.linkedin.com/in/chand-tiwari-6a9b5a1a/',
+    website: 'https://happilo.com',
+    companyLogo: 'https://logo.clearbit.com/happilo.com',
+    image: '/Speakers-Advisors-Circle Members/Advisor - Chand Tiwari - Happilo.png'
   },
   {
     id: '16',
-    name: 'Harshil Mathur',
-    company: 'Razorpay',
-    role: 'CoFounder & CEO',
-    expertise: 'Fintech, Payments, B2B SaaS',
-    linkedin: 'https://www.linkedin.com/in/hm2000/',
-    website: 'https://razorpay.com',
-    companyLogo: 'https://logo.clearbit.com/razorpay.com'
+    name: 'Dhruvin Mehta',
+    company: 'Pravega Ventures',
+    role: 'Investor',
+    expertise: 'Early Stage Investing, Fintech, SaaS',
+    linkedin: 'https://www.linkedin.com/in/dhruvinmehta/',
+    website: 'https://pravega.vc',
+    companyLogo: 'https://logo.clearbit.com/pravega.vc',
+    image: '/Speakers-Advisors-Circle Members/Advisor - Dhruvin mehta - Pravega Ventures.png'
   },
   {
     id: '17',
@@ -191,17 +209,19 @@ const advisors: Advisor[] = [
     expertise: 'Hyperlocal, Logistics, E-commerce',
     linkedin: 'https://www.linkedin.com/in/kabeer-biswas-7a2a4b1b/',
     website: 'https://dunzo.com',
-    companyLogo: 'https://logo.clearbit.com/dunzo.com'
+    companyLogo: 'https://logo.clearbit.com/dunzo.com',
+    image: '/Speakers-Advisors-Circle Members/Advisor - Kabeer Biswas - Dunzo.png'
   },
   {
     id: '18',
-    name: 'Kunal Bahl',
-    company: 'Titan Capital',
-    role: 'CoFounder',
-    expertise: 'E-commerce, Investments, Startups',
-    linkedin: 'https://www.linkedin.com/in/kunalbahl/',
-    website: 'https://titan-capital.com',
-    companyLogo: 'https://logo.clearbit.com/titan-capital.com'
+    name: 'Karan Punjabi',
+    company: 'Maple Capital',
+    role: 'Founder',
+    expertise: 'Investment Banking, Fundraising',
+    linkedin: 'https://www.linkedin.com/in/karan-punjabi-5b5b0b1b/',
+    website: 'https://maplecapitaladvisors.com',
+    companyLogo: 'https://logo.clearbit.com/maplecapitaladvisors.com',
+    image: '/Speakers-Advisors-Circle Members/Advisor - Karan Punjabi.png'
   },
   {
     id: '19',
@@ -211,57 +231,63 @@ const advisors: Advisor[] = [
     expertise: 'Fintech, Investment, Product',
     linkedin: 'https://www.linkedin.com/in/lalitkeshre/',
     website: 'https://groww.in',
-    companyLogo: 'https://logo.clearbit.com/groww.in'
+    companyLogo: 'https://logo.clearbit.com/groww.in',
+    image: '/Speakers-Advisors-Circle Members/Advisor - Lalit Keshre - Groww.png'
   },
   {
     id: '20',
+    name: 'Manish Johari',
+    company: 'Maple Advisors',
+    role: 'Founder',
+    expertise: 'Investment Banking, M&A',
+    linkedin: 'https://www.linkedin.com/in/manish-johari-5b5b0b1b/',
+    website: 'https://mapleadvisors.com',
+    companyLogo: 'https://logo.clearbit.com/mapleadvisors.com',
+    image: '/Speakers-Advisors-Circle Members/Advisor - Manish Johari - Maple Advisors.png'
+  },
+  {
+    id: '21',
     name: 'Nikhil Kamath',
     company: 'Zerodha',
     role: 'CoFounder',
     expertise: 'Fintech, Trading, Investments',
     linkedin: 'https://www.linkedin.com/in/nikhilkamathcio/',
     website: 'https://zerodha.com',
-    companyLogo: 'https://logo.clearbit.com/zerodha.com'
+    companyLogo: 'https://logo.clearbit.com/zerodha.com',
+    image: '/Speakers-Advisors-Circle Members/Advisor - Nikhil Kamath - Zerodha.png'
   },
   {
-    id: '21',
+    id: '22',
     name: 'Nithin Kamath',
     company: 'Zerodha',
     role: 'CoFounder & CEO',
     expertise: 'Fintech, Stock Trading, Zerodha',
     linkedin: 'https://www.linkedin.com/in/nithinkamath/',
     website: 'https://zerodha.com',
-    companyLogo: 'https://logo.clearbit.com/zerodha.com'
+    companyLogo: 'https://logo.clearbit.com/zerodha.com',
+    image: '/Speakers-Advisors-Circle Members/Advisor - Nithin Kamath - Zerodha.png'
   },
   {
-    id: '22',
+    id: '23',
     name: 'Pranay Chulet',
     company: 'Quikr',
     role: 'Founder & CEO',
     expertise: 'Classifieds, Marketplaces',
     linkedin: 'https://www.linkedin.com/in/pranay-chulet-7a2a4b1b/',
     website: 'https://quikr.com',
-    companyLogo: 'https://logo.clearbit.com/quikr.com'
+    companyLogo: 'https://logo.clearbit.com/quikr.com',
+    image: '/Speakers-Advisors-Circle Members/Advisor - Pranay Chulet - Quikr.png'
   },
   {
-    id: '23',
+    id: '24',
     name: 'Prateek Sharma',
     company: 'Zomato',
     role: 'Head of Growth',
     expertise: 'Growth, Marketing, Consumer Tech',
     linkedin: 'https://www.linkedin.com/in/prateek-sharma-0a9b0a1b/',
     website: 'https://zomato.com',
-    companyLogo: 'https://logo.clearbit.com/zomato.com'
-  },
-  {
-    id: '24',
-    name: 'Rahul Dalmia',
-    company: 'Aroa Ventures',
-    role: 'Founder',
-    expertise: 'Early Stage Investing, Fintech, SaaS',
-    linkedin: 'https://www.linkedin.com/in/rahuldalmia/',
-    website: 'https://aroa.vc',
-    companyLogo: 'https://logo.clearbit.com/aroa.vc'
+    companyLogo: 'https://logo.clearbit.com/zomato.com',
+    image: '/Speakers-Advisors-Circle Members/Advisor - Prateek Sharma - Zomato.png'
   },
   {
     id: '25',
@@ -271,7 +297,8 @@ const advisors: Advisor[] = [
     expertise: 'B2B E-commerce, Manufacturing, Supply Chain',
     linkedin: 'https://www.linkedin.com/in/rahulgargmoglix/',
     website: 'https://moglix.com',
-    companyLogo: 'https://logo.clearbit.com/moglix.com'
+    companyLogo: 'https://logo.clearbit.com/moglix.com',
+    image: '/Speakers-Advisors-Circle Members/default-avatar.png'
   },
   {
     id: '26',
@@ -281,37 +308,19 @@ const advisors: Advisor[] = [
     expertise: 'Startup Ecosystem, Investments',
     linkedin: 'https://www.linkedin.com/in/rajeshsawhney/',
     website: 'https://gsfaccelerator.com',
-    companyLogo: 'https://logo.clearbit.com/gsfaccelerator.com'
+    companyLogo: 'https://logo.clearbit.com/gsfaccelerator.com',
+    image: '/Speakers-Advisors-Circle Members/default-avatar.png'
   },
   {
-    id: '25',
+    id: '27',
     name: 'Ritesh Malik',
     company: 'Innov8',
     role: 'Founder',
     expertise: 'Coworking, Real Estate, Startups',
     linkedin: 'https://www.linkedin.com/in/riteshmalik/',
     website: 'https://innov8.work',
-    companyLogo: 'https://logo.clearbit.com/innov8.work'
-  },
-  {
-    id: '26',
-    name: 'Ritesh Agarwal',
-    company: 'OYO',
-    role: 'Founder & CEO',
-    expertise: 'Hospitality, Real Estate, Growth',
-    linkedin: 'https://www.linkedin.com/in/riteshagar/',
-    website: 'https://oyorooms.com',
-    companyLogo: 'https://logo.clearbit.com/oyorooms.com'
-  },
-  {
-    id: '27',
-    name: 'Sachin Bansal',
-    company: 'Navii',
-    role: 'CoFounder',
-    expertise: 'E-commerce, Fintech, Investments',
-    linkedin: 'https://www.linkedin.com/in/sachin-bansal-1a0b1a1/',
-    website: 'https://navi.com',
-    companyLogo: 'https://logo.clearbit.com/navi.com'
+    companyLogo: 'https://logo.clearbit.com/innov8.work',
+    image: '/Speakers-Advisors-Circle Members/default-avatar.png'
   },
   {
     id: '28',
@@ -1033,146 +1042,123 @@ export default function AdvisorsPage() {
           </div>
         </section>
 
-        {/* Advisors Grid */}
-        <section className="py-12 bg-gradient-to-b from-black to-gray-900">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Advisors Grid - Updated to match summit page style */}
+        <section className="py-16 relative overflow-hidden bg-gradient-to-b from-black to-gray-900">
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {paginatedAdvisors.map((advisor) => {
                 const advisorColor = getAdvisorColor(advisor.id);
                 return (
-                  <div key={advisor.id} className="group relative bg-gradient-to-br from-gray-900/80 to-gray-900/50 rounded-xl p-6 border-2 border-gray-800 hover:border-yellow-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-yellow-500/10 transform hover:-translate-y-2 overflow-hidden h-full">
-                    <div className="relative block h-full group cursor-pointer">
-                      <Link 
-                        href={`/advisors/${advisor.id}`}
-                        className="absolute inset-0 z-10 w-full h-full"
-                        prefetch={true}
+                  <div key={advisor.id} className="group relative aspect-square rounded-2xl overflow-hidden border-2 border-yellow-500/20 hover:border-yellow-400 transition-all duration-500 hover:shadow-2xl hover:shadow-yellow-500/10 bg-gradient-to-br from-gray-900/80 to-gray-900/50 p-0.5">
+                    <div className="relative w-full h-full rounded-xl overflow-hidden">
+                    <Link 
+                      href={`/advisors/${advisor.id}`}
+                      className="absolute inset-0 z-10 w-full h-full"
+                      prefetch={true}
+                    >
+                      <span className="sr-only">View {advisor.name}&apos;s profile</span>
+                    </Link>
+                    
+                    {/* Main Image */}
+                    <div className="relative w-full h-full">
+                      {advisor.image ? (
+                        <Image
+                          src={advisor.image}
+                          alt={advisor.name}
+                          fill
+                          className="object-cover transition-transform duration-700 group-hover:scale-110"
+                          sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.style.display = 'none';
+                            const fallback = target.nextElementSibling as HTMLDivElement;
+                            if (fallback) fallback.style.display = 'flex';
+                          }}
+                        />
+                      ) : null}
+                      <div 
+                        className={`w-full h-full bg-gray-800 flex items-center justify-center text-3xl font-bold text-white ${advisor.image ? 'hidden' : 'flex'}`}
+                        style={{ backgroundColor: advisorColor }}
                       >
-                        <span className="sr-only">View {advisor.name}&apos;s profile</span>
-                      </Link>
-                      <div className="flex-1 flex flex-col h-full">
-                        {/* Company Logo */}
-                        <div className="absolute top-4 right-4 w-12 h-12 rounded-lg bg-gray-800 p-2 flex items-center justify-center border border-gray-700 overflow-hidden">
-                          {advisor.companyLogo ? (
-                            <div className="relative w-full h-full">
-                              <Image
-                                src={advisor.companyLogo} 
-                                alt={advisor.company}
-                                fill
-                                className="object-contain"
-                                onError={(e) => {
-                                  const target = e.target as HTMLImageElement;
-                                  target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(advisor.company)}&background=1f2937&color=fff&size=128`;
-                                }}
-                              />
-                            </div>
+                        {advisor.name.split(' ').map(n => n[0]).join('')}
+                      </div>
+                    </div>
+                    
+                    {/* Hover Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
+                      <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                        <h3 className="text-xl font-bold text-white mb-1">{advisor.name}</h3>
+                        <p className="text-yellow-400 text-sm mb-2">{advisor.role}</p>
+                        
+                        {/* Company */}
+                        <div className="mb-4">
+                          {advisor.website ? (
+                            <a 
+                              href={advisor.website.startsWith('http') ? advisor.website : `https://${advisor.website}`} 
+                              target="_blank" 
+                              rel="noopener noreferrer nofollow"
+                              className="text-gray-300 hover:text-yellow-400 transition-colors text-sm flex items-center gap-1"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              {advisor.company}
+                              <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+                                <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+                              </svg>
+                            </a>
                           ) : (
-                            <div className="text-yellow-400 font-bold text-lg">
-                              {advisor.company.split(' ').map(n => n[0]).join('')}
-                            </div>
+                            <span className="text-gray-300 text-sm">{advisor.company}</span>
                           )}
                         </div>
                         
-                        {/* Advisor Initials Avatar */}
-                        <div className="relative w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-2 border-yellow-400/30 group-hover:border-yellow-400 transition-all duration-300">
-                          <div className="w-full h-full bg-gray-800 flex items-center justify-center text-2xl font-bold text-white">
-                            {advisor.name.split(' ').map(n => n[0]).join('')}
-                          </div>
-                        </div>
-                        
-                        {/* Advisor Info */}
-                        <div className="text-center mb-4">
-                          <h3 className="text-xl font-bold text-white group-hover:text-yellow-400 transition-colors">
-                            {advisor.name}
-                          </h3>
-                          <p className="text-yellow-400 font-medium">{advisor.role}</p>
-                          <p className="text-sm text-gray-400">
-                            {advisor.website ? (
-                              <a 
-                                href={advisor.website.startsWith('http') ? advisor.website : `https://${advisor.website}`} 
-                                target="_blank" 
-                                rel="noopener noreferrer"
-                                className="hover:text-yellow-400 transition-colors flex items-center justify-center gap-1"
-                                onClick={(e) => e.stopPropagation()}
-                              >
-                                {advisor.company}
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5 inline ml-0.5" viewBox="0 0 20 20" fill="currentColor">
-                                  <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
-                                  <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
-                                </svg>
-                              </a>
-                            ) : (
-                              advisor.company
-                            )}
-                          </p>
-                        </div>
-                        
                         {/* Expertise Tags */}
-                        <div className="flex flex-wrap justify-center gap-2 mb-4">
+                        <div className="flex flex-wrap gap-2 mb-4">
                           {(
                             typeof advisor.expertise === 'string' 
                               ? advisor.expertise.split(',').map(e => e.trim())
                               : (Array.isArray(advisor.expertise) ? advisor.expertise : [])
-                          ).slice(0, 3).map((exp: string, i: number) => (
+                          ).slice(0, 2).map((exp: string, i: number) => (
                             <span 
                               key={i}
-                              className="inline-block px-2 py-1 text-xs font-medium bg-yellow-500/10 text-yellow-400 rounded-full border border-yellow-500/20 group-hover:bg-yellow-500/20 transition-colors"
+                              className="inline-block px-2 py-1 text-xs font-medium bg-yellow-500/20 text-yellow-300 rounded-full"
                             >
                               {exp}
                             </span>
                           ))}
                         </div>
                         
-                        {/* Additional details */}
-                        <div className="mt-auto">
-                          <div className="pt-4 border-t border-gray-800">
-                            <div className="flex items-center text-xs text-gray-400 min-h-[24px]">
-                              <svg className="w-4 h-4 mr-1.5 text-yellow-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                        {/* Social Links */}
+                        <div className="flex gap-3 pt-3 border-t border-gray-700">
+                          <a 
+                            href={advisor.linkedin.startsWith('http') ? advisor.linkedin : `https://${advisor.linkedin}`}
+                            target="_blank"
+                            rel="noopener noreferrer nofollow"
+                            className="w-8 h-8 rounded-full bg-gray-700/80 flex items-center justify-center text-gray-300 hover:bg-yellow-500 hover:text-black transition-all duration-300"
+                            aria-label={`Connect with ${advisor.name} on LinkedIn`}
+                            title="LinkedIn Profile"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <Linkedin className="w-3.5 h-3.5" />
+                          </a>
+                          
+                          {advisor.website && (
+                            <a
+                              href={advisor.website.startsWith('http') ? advisor.website : `https://${advisor.website}`}
+                              target="_blank"
+                              rel="noopener noreferrer nofollow"
+                              className="w-8 h-8 rounded-full bg-gray-700/80 flex items-center justify-center text-gray-300 hover:bg-yellow-500 hover:text-black transition-all duration-300"
+                              aria-label={`Visit ${advisor.company} website`}
+                              title="Company Website"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 015.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
                               </svg>
-                              <span className="line-clamp-1">Available for 1:1 sessions</span>
-                            </div>
-                            <div className="mt-2 flex items-center text-xs text-gray-400 min-h-[24px]">
-                              <svg className="w-4 h-4 mr-1.5 text-yellow-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                              </svg>
-                              <span className="line-clamp-1">Response time: 48 hours</span>
-                            </div>
-                          </div>
+                            </a>
+                          )}
                         </div>
                       </div>
-                      
-                      {/* Hover effect background */}
-                      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-yellow-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
                     </div>
-                    
-                    {/* Social Links */}
-                    <div className="relative z-20 flex justify-center space-x-3 mt-4 pt-4 border-t border-gray-800" onClick={(e) => e.stopPropagation()}>
-                      <a 
-                        href={advisor.linkedin} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-yellow-500 hover:text-black transition-all duration-300 border border-gray-700 hover:border-yellow-400"
-                        aria-label={`${advisor.name}'s LinkedIn`}
-                        title="LinkedIn Profile"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <Linkedin className="w-5 h-5" />
-                      </a>
-                      {advisor.website && (
-                        <a
-                          href={advisor.website.startsWith('http') ? advisor.website : `https://${advisor.website}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-yellow-500 hover:text-black transition-all duration-300 border border-gray-700 hover:border-yellow-400"
-                          aria-label={`${advisor.company} website`}
-                          onClick={(e) => e.stopPropagation()}
-                          title="Company Website"
-                        >
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-                          </svg>
-                        </a>
-                      )}
                     </div>
                   </div>
                 );

@@ -1,30 +1,186 @@
 'use client';
 
-import Image from 'next/image';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { ExternalLink, Linkedin, ArrowRight } from 'lucide-react';
+import { ArrowRight, ChevronRight, ChevronLeft } from 'lucide-react';
 import SectionHeader from './SectionHeader';
 import { advisors } from '@/data/advisors';
+import AdvisorCard, { getAdvisorColor } from './ui/AdvisorCard';
 
-// Convert expertise string to array for the card display
-const getExpertiseArray = (expertise: string): string[] => {
-  return expertise.split(',').map(item => item.trim());
+// Import the Advisor type from the data file
+import type { Advisor } from '@/data/advisors';
+
+// Define the advisor data with proper type
+const advisorData: Advisor[] = [...advisors];
+
+// Auto-scrolling animation component
+const AutoScrollAdvisors = ({ advisors: advisorList }: { advisors: Advisor[] }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isPaused, setIsPaused] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+  const [showLeftButton, setShowLeftButton] = useState(false);
+  const [showRightButton, setShowRightButton] = useState(true);
+
+  // Auto-scroll effect
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const checkScrollPosition = () => {
+      if (!container) return;
+      setShowLeftButton(container.scrollLeft > 0);
+      setShowRightButton(
+        container.scrollLeft < container.scrollWidth - container.clientWidth - 10
+      );
+    };
+
+    // Initial check
+    checkScrollPosition();
+
+    // Auto-scroll
+    const autoScroll = () => {
+      if (isPaused || isDragging) return;
+      
+      const container = containerRef.current;
+      if (!container) return;
+
+      const maxScroll = container.scrollWidth / 2; // Only scroll through half since we duplicate the items
+      const scrollSpeed = 0.3; // Slower scroll speed
+      
+      if (container.scrollLeft >= maxScroll - 1) {
+        // Reset to start if we've reached the end
+        container.scrollTo({
+          left: 0,
+          behavior: 'auto',
+        });
+      } else {
+        // Otherwise, keep scrolling
+        container.scrollBy({
+          left: scrollSpeed,
+          behavior: 'auto',
+        });
+      }
+      
+      requestAnimationFrame(autoScroll);
+    };
+
+    // Start auto-scrolling
+    let animationFrameId = requestAnimationFrame(autoScroll);
+
+    // Add event listeners
+    container.addEventListener('scroll', checkScrollPosition);
+    container.addEventListener('mouseenter', () => setIsPaused(true));
+    container.addEventListener('mouseleave', () => setIsPaused(false));
+
+    // Cleanup
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      container.removeEventListener('scroll', checkScrollPosition);
+      container.removeEventListener('mouseenter', () => setIsPaused(true));
+      container.removeEventListener('mouseleave', () => setIsPaused(false));
+    };
+  }, [isPaused, isDragging]);
+
+  // Handle drag to scroll
+  const handleMouseDown = (e: React.MouseEvent) => {
+    const container = containerRef.current;
+    if (!container) return;
+    
+    setIsDragging(true);
+    setStartX(e.pageX - container.offsetLeft);
+    setScrollLeft(container.scrollLeft);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    
+    const container = containerRef.current;
+    if (!container) return;
+    
+    const x = e.pageX - container.offsetLeft;
+    const walk = (x - startX) * 2;
+    container.scrollLeft = scrollLeft - walk;
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseLeave = () => {
+    setIsDragging(false);
+  };
+
+  // Manual scroll buttons
+  const scroll = (direction: 'left' | 'right') => {
+    const container = containerRef.current;
+    if (!container) return;
+    
+    const scrollAmount = direction === 'left' ? -400 : 400;
+    container.scrollBy({
+      left: scrollAmount,
+      behavior: 'smooth',
+    });
+  };
+
+  return (
+    <div className="relative">
+      <div 
+        ref={containerRef}
+        className="flex overflow-x-auto pb-6 -mx-4 px-4 scrollbar-hide snap-x snap-mandatory"
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseLeave}
+        style={{
+          cursor: isDragging ? 'grabbing' : 'grab',
+          scrollSnapType: 'x mandatory',
+          scrollBehavior: 'smooth',
+        }}
+      >
+        <div className="flex space-x-6">
+          {advisorList.map((advisor) => (
+            <AdvisorCardWrapper key={advisor.id} advisor={advisor} />
+          ))}
+          {/* Duplicate items for infinite scroll effect */}
+          {advisorList.map((advisor) => (
+            <AdvisorCardWrapper key={`duplicate-${advisor.id}`} advisor={advisor} />
+          ))}
+        </div>
+      </div>
+      
+      {/* Navigation buttons */}
+      <button 
+        onClick={() => scroll('left')}
+        className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 w-10 h-10 rounded-full bg-black/80 backdrop-blur-sm border border-gray-800 flex items-center justify-center text-white hover:bg-yellow-500 hover:text-black transition-all duration-300 z-20 ${
+          !showLeftButton ? 'opacity-0 pointer-events-none' : 'opacity-100'
+        }`}
+        aria-label="Scroll left"
+      >
+        <ChevronLeft className="w-6 h-6" />
+      </button>
+      
+      <button 
+        onClick={() => scroll('right')}
+        className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 w-10 h-10 rounded-full bg-black/80 backdrop-blur-sm border border-gray-800 flex items-center justify-center text-white hover:bg-yellow-500 hover:text-black transition-all duration-300 z-20 ${
+          !showRightButton ? 'opacity-0 pointer-events-none' : 'opacity-100'
+        }`}
+        aria-label="Scroll right"
+      >
+        <ChevronRight className="w-6 h-6" />
+      </button>
+    </div>
+  );
 };
 
-// Get default avatar image URL based on advisor name
-const getDefaultAvatar = (name: string): string => {
-  const names = name.split(' ');
-  const firstName = names[0].toLowerCase();
-  const lastName = names[names.length - 1].toLowerCase();
-  return `https://ui-avatars.com/api/?name=${firstName}+${lastName}&background=111827&color=F59E0B&size=300`;
-};
-
-// Get company logo URL based on company name
-const getCompanyLogo = (company: string): string => {
-  if (!company) return '';
-  const domain = company.toLowerCase().replace(/\s+/g, '');
-  return `https://logo.clearbit.com/${domain}.com?size=128`;
-};
+// Individual Advisor Card Wrapper for AutoScroll
+const AdvisorCardWrapper = ({ advisor }: { advisor: Advisor }) => (
+  <div className="w-[300px] flex-shrink-0">
+    <AdvisorCard advisor={advisor} />
+  </div>
+);
 
 export default function AdvisorsSection() {
   // Filter to show only the first 8 advisors for the section
@@ -49,113 +205,8 @@ export default function AdvisorsSection() {
           />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          {featuredAdvisors.map((advisor) => {
-            const expertiseArray = getExpertiseArray(advisor.expertise);
-            const imageUrl = advisor.image || getDefaultAvatar(advisor.name);
-            const companyLogoUrl = advisor.companyLogo || getCompanyLogo(advisor.company);
-            
-            return (
-              <div 
-                key={advisor.id}
-                className="group relative bg-gradient-to-br from-gray-900/80 to-gray-900/50 rounded-xl p-6 border-2 border-gray-800 hover:border-yellow-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-yellow-500/10 transform hover:-translate-y-2 overflow-hidden cursor-pointer"
-              >
-                <Link 
-                  href={`/advisors/${advisor.id}`}
-                  className="absolute inset-0 z-10"
-                  aria-label={`View ${advisor.name}'s profile`}
-                  prefetch={false}
-                />
-                
-                {/* Advisor Image */}
-                <div className="relative w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-2 border-yellow-400/30 group-hover:border-yellow-400 transition-all duration-300">
-                  <Image
-                    src={imageUrl}
-                    alt={advisor.name}
-                    width={96}
-                    height={96}
-                    className="object-cover group-hover:scale-105 transition-transform duration-500 w-full h-full"
-                    loading="lazy"
-                  />
-                </div>
-                
-                {/* Company Logo */}
-                {companyLogoUrl && (
-                  <div className="absolute top-4 right-4 w-12 h-12 rounded-lg bg-gray-800 p-2 flex items-center justify-center border border-gray-700">
-                    <Image
-                      src={companyLogoUrl}
-                      alt={advisor.company}
-                      width={40}
-                      height={40}
-                      className="object-contain h-6 w-auto filter grayscale group-hover:grayscale-0 transition-all duration-500"
-                      loading="lazy"
-                      onError={(e) => {
-                        // Fallback to first letter of company if logo fails to load
-                        const target = e.target as HTMLImageElement;
-                        target.src = `data:image/svg+xml,${encodeURIComponent(
-                          `<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
-                            <rect width="40" height="40" rx="8" fill="#1F2937"/>
-                            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#F59E0B" font-family="sans-serif" font-size="16" font-weight="bold">${advisor.company ? advisor.company.charAt(0).toUpperCase() : 'C'}</text>
-                          </svg>`
-                        )}`;
-                      }}
-                    />
-                  </div>
-                )}
-                
-                {/* Advisor Info */}
-                <div className="text-center mb-4">
-                  <h3 className="text-xl font-bold text-white group-hover:text-yellow-400 transition-colors">
-                    {advisor.name}
-                  </h3>
-                  <p className="text-yellow-400 font-medium">{advisor.role}</p>
-                  <p className="text-sm text-gray-400">{advisor.company}</p>
-                </div>
-                
-                {/* Expertise Tags */}
-                <div className="flex flex-wrap justify-center gap-2 mb-4">
-                  {expertiseArray.slice(0, 3).map((skill, i) => (
-                    <span 
-                      key={i}
-                      className="inline-block px-2 py-1 text-xs font-medium bg-yellow-500/10 text-yellow-400 rounded-full border border-yellow-500/20 group-hover:bg-yellow-500/20 transition-colors"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-                
-                {/* Social Links */}
-                <div className="relative z-20 flex justify-center space-x-3 mt-4 pt-4 border-t border-gray-800" onClick={(e) => e.stopPropagation()}>
-                  {advisor.linkedin && (
-                    <a 
-                      href={advisor.linkedin} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-yellow-500 hover:text-black transition-all duration-300 border border-gray-700 hover:border-yellow-400"
-                      aria-label={`${advisor.name}'s LinkedIn`}
-                    >
-                      <Linkedin className="w-5 h-5" />
-                    </a>
-                  )}
-                  {advisor.website && (
-                    <a 
-                      href={advisor.website} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-yellow-500 hover:text-black transition-all duration-300 border border-gray-700 hover:border-yellow-400"
-                      aria-label={`${advisor.company} website`}
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                    </a>
-                  )}
-                </div>
-                
-                {/* Hover effect background */}
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-yellow-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
-              </div>
-            );
-          })}
-        </div>
+        {/* Auto-scrolling advisors section */}
+        <AutoScrollAdvisors advisors={featuredAdvisors} />
 
         <div className="text-center mt-16">
           <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">Ready to Build Something Extraordinary?</h3>

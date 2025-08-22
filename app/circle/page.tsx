@@ -11,8 +11,7 @@ import NeoPopButton from '../../components/ui/NeoPopButton';
 import ClientLayout from '../ClientLayout';
 import BuildersTeam from '../../components/BuildersTeam';
 
-// Dynamically import AdvisorsSection with no SSR to avoid window is not defined errors
-const AdvisorsSection = dynamic(() => import('../../components/AdvisorsSection'), {
+const AdvisorsGrid = dynamic(() => import('../../components/AdvisorsGrid'), {
   ssr: false,
 });
 
@@ -516,7 +515,23 @@ function BuildersCircle() {
         <MembershipSection />
 
         {/* Advisors Section */}
-        <AdvisorsSection />
+        <section className="py-16 md:py-24 bg-gradient-to-b from-black to-gray-900 relative overflow-hidden">
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="mb-16">
+              <SectionHeader
+                title="Meet Our Esteemed"
+                highlightedText="Advisors"
+                description="Learn from and connect with industry leaders and domain experts from top companies"
+                badgeText="Expert Network"
+                align="center"
+                titleClassName="text-3xl md:text-4xl lg:text-5xl"
+              />
+            </div>
+            <div className="relative">
+              <AdvisorsGrid />
+            </div>
+          </div>
+        </section>
 
         {/* Testimonials */}
         <section className="py-20 relative overflow-hidden">

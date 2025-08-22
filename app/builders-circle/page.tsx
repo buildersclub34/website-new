@@ -1,6 +1,12 @@
 import ClientLayout from '../ClientLayout';
 import NeoPopButton from '../../components/ui/NeoPopButton';
 import SectionHeader from '../../components/SectionHeader';
+import dynamic from 'next/dynamic';
+
+// Dynamically import the AdvisorsSection component with SSR disabled
+const AdvisorsSection = dynamic(() => import('../../components/AdvisorsSection'), {
+  ssr: false,
+});
 
 const TrustedByLeaders = () => (
   <section className="w-full py-20 bg-black">
@@ -62,6 +68,7 @@ function BuildersCircle() {
         </div>
       </section>
       <TrustedByLeaders />
+      <AdvisorsSection />
     </div>
   );
 }

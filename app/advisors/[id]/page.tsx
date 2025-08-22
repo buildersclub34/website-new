@@ -4,7 +4,11 @@ import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
 import type { Advisor } from '@/data/advisors';
-import { advisors } from '@/data/advisors';
+import { advisors as existingAdvisors } from '@/data/advisors';
+import { newAdvisors } from '@/data/new-advisors';
+
+// Combine both advisor lists
+const advisors = [...existingAdvisors, ...newAdvisors];
 import AdvisorClient from './AdvisorClient';
 
 export default function AdvisorPage() {

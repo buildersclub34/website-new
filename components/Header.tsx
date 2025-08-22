@@ -54,10 +54,9 @@ export default function Header() {
     { name: 'The Builders Circle', link: '/circle' },
     { name: 'Summit', link: '/summit' },
     { name: 'Events', link: '/events' },
-    { name: 'Discovery Calls', link: '/discovery-calls' },
-    { name: 'Fundraising', link: '/fundraising' },
     { name: 'Content', link: '/content' },
-    { name: 'Partners', link: '/partners' }
+    { name: 'Partners', link: '/partners' },
+    { name: 'For Corporates', link: '/corporates' }
   ];
 
   return (

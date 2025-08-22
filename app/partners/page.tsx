@@ -20,6 +20,8 @@ import {
   MessageCircle
 } from 'lucide-react';
 import { ProductsSection } from '@/components/products/ProductsSection';
+import NeoPopButton from '@/components/ui/NeoPopButton';
+import { SectionHeader } from '@/components/SectionHeader';
 import { useState } from 'react';
 
 // Types
@@ -50,12 +52,6 @@ type Benefit = {
 // Define OurPerks as a component type
 declare const OurPerks: React.FC;
 
-// Define NeoPopButton as a component type
-declare const NeoPopButton: React.FC<{
-  className?: string;
-  children: React.ReactNode;
-  [key: string]: any;
-}>;
 
 type MenuItem = {
   id: string;
@@ -350,155 +346,67 @@ const partnerPerks = [
 export default function PartnersPage() {
   return (
     <div className="bg-black">
-      {/* Hero Section - Fixed 1440x1024 */}
-      <div className="relative w-full overflow-hidden" style={{ height: '1024px', maxWidth: '1440px', margin: '0 auto' }}>
-        {/* Background Elements */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/10 via-black to-black"></div>
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-yellow-500/5 via-transparent to-transparent"></div>
-          <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-5"></div>
-        </div>
-        
-        {/* Content Container - Adjusted to position content higher */}
-        <div className="relative z-10 h-full w-full flex items-start pt-32 justify-center px-4">
-          <div className="w-full max-w-4xl text-center">
-            {/* Badge */}
-            <div className="inline-flex items-center px-6 py-3 bg-yellow-500/10 border border-yellow-500/30 rounded-full text-yellow-400 text-sm font-medium mb-6 backdrop-blur-sm">
+      {/* Hero Section */}
+      <section className="min-h-[calc(100vh-6rem)] flex items-center justify-center bg-black">
+        <div className="container mx-auto px-4 py-16 flex flex-col items-center justify-center">
+          <div className="text-center max-w-3xl">
+            <div className="inline-flex items-center px-6 py-3 bg-yellow-500/10 border border-yellow-500/30 rounded-full text-yellow-400 text-sm font-medium mb-8">
               <Sparkles className="w-5 h-5 mr-2" />
               PARTNER PROGRAM
             </div>
-            
-            {/* Main Heading */}
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-              <span className="text-yellow-400">POWERING</span> <br />
-              <span className="text-yellow-400">THE NEXT</span> <br />
-              <span className="text-yellow-400">GENERATION</span>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              <span className="text-yellow-400">POWERING THE NEXT</span> GENERATION OF BUILDERS
             </h1>
-            
-            {/* Description */}
-            <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
               Join forces with industry leaders and gain access to exclusive benefits, 
               resources, and opportunities to accelerate your growth and reach new heights.
             </p>
-            
-            {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row justify-center gap-6">
-              <a 
-                href="#benefits" 
-                className="px-8 py-4 bg-yellow-500 hover:bg-yellow-600 text-black font-bold rounded-full transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
+              <NeoPopButton
+                as="link"
+                href="#benefits"
+                variant="primary"
+                size="lg"
+                className="w-full sm:w-auto"
               >
                 Learn About Benefits
-              </a>
-              <Link 
+              </NeoPopButton>
+              <NeoPopButton
+                as="link"
                 href="/partner-registration"
-                className="px-8 py-4 border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500/10 font-bold rounded-full transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
+                variant="secondary"
+                size="lg"
+                className="w-full sm:w-auto"
               >
                 Become a Partner
-              </Link>
+              </NeoPopButton>
             </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Benefits Section */}
-      <section id="benefits" className="py-20 bg-black">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Why <span className="text-yellow-400">Partner With Us?</span>
-            </h2>
-            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-              Join our network of industry leaders and unlock exclusive benefits designed to help your business thrive.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {benefits.map((benefit: Benefit, index: number) => (
-              <motion.div 
-                key={index}
-                className="bg-gradient-to-br from-gray-900 to-black p-6 rounded-xl border border-gray-800 hover:border-yellow-500/30 transition-all duration-300 hover:-translate-y-1"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <div className="w-12 h-12 rounded-lg bg-yellow-500/10 flex items-center justify-center mb-4">
-                  {benefit.icon}
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">{benefit.title}</h3>
-                <p className="text-gray-400">{benefit.description}</p>
-              </motion.div>
-            ))}
           </div>
         </div>
       </section>
 
-
-      {/* Partners Showcase */}
-      <section className="py-20 bg-black">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Our <span className="text-yellow-400">Partners</span>
-            </h2>
-            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-              We&apos;re proud to collaborate with industry leaders who share our vision for innovation and excellence.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {partners.map((partner) => (
-              <motion.div 
-                key={partner.id}
-                className="bg-gradient-to-br from-gray-900 to-black rounded-xl border border-gray-800 overflow-hidden hover:border-yellow-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-yellow-500/5"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-              >
-                <div className="p-6">
-                  <div className="flex items-center mb-4">
-                    <div className="w-16 h-16 bg-gray-800 rounded-lg flex items-center justify-center overflow-hidden border border-gray-700/50">
-                      <Image 
-                        src={partner.logo} 
-                        alt={`${partner.name} logo`} 
-                        width={64} 
-                        height={64} 
-                        className="object-contain p-2"
-                      />
-                    </div>
-                    <div className="ml-4">
-                      <h3 className="text-xl font-bold text-white">{partner.name}</h3>
-                      <span className="inline-block px-2 py-1 text-xs font-medium bg-yellow-500/10 text-yellow-400 rounded-full mt-1">
-                        {partner.type || 'Premium'} Partner
-                      </span>
-                    </div>
-                  </div>
-                  <p className="text-gray-400 text-sm mb-4 line-clamp-3">
-                    {partner.description}
-                  </p>
-                  <a 
-                    href={partner.website} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center text-yellow-400 hover:text-yellow-300 text-sm font-medium"
-                  >
-                    Visit Website <ArrowRight className="w-3 h-3 ml-1" />
-                  </a>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="mt-16 text-center">
-            <Link 
-              href="/partners/all"
-              className="inline-flex items-center px-6 py-3 border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500/10 font-bold rounded-full transition-all duration-300 transform hover:scale-105"
-            >
-              View All Partners
-            </Link>
+      {/* Exclusive Deals Section */}
+      <section className="py-20 bg-black relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/images/patterns/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0.1))] opacity-10"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeader
+            title="Partner"
+            highlightedText="Deals"
+            description="Special offers and discounts from our partners to help you build and grow your startup."
+            badgeText="Exclusive Offers"
+            align="center"
+            className="mb-16"
+          />
+          
+          <div className="relative z-10">
+            <ProductsSection />
           </div>
         </div>
+        
+        {/* Decorative Elements */}
+        <div className="absolute -top-20 -right-20 w-96 h-96 bg-yellow-500/5 rounded-full filter blur-3xl"></div>
+        <div className="absolute -bottom-32 -left-32 w-[40rem] h-[40rem] bg-yellow-500/5 rounded-full filter blur-3xl"></div>
+        <div className="absolute top-1/2 -right-20 w-72 h-72 bg-purple-500/5 rounded-full filter blur-3xl"></div>
       </section>
 
       {/* CTA Section with NeoPop Theme */}
@@ -536,127 +444,12 @@ export default function PartnersPage() {
               </div>
             </div>
             
-            {/* Divider */}
-            <div className="h-px bg-gradient-to-r from-transparent via-yellow-400/30 to-transparent my-12"></div>
-            
-            {/* Secondary CTA */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="mt-12"
-            >
-              <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-yellow-400/10 text-yellow-400 text-sm font-medium mb-4">
-                <Zap className="w-4 h-4 mr-2" />
-                Limited Spots Available
-              </div>
-              
-              <h3 className="text-3xl md:text-4xl font-bold text-white mb-6 font-heading">
-                Join Our <span className="text-yellow-400">Elite Partner Network</span>
-              </h3>
-              
-              <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
-                Partner with Builders Club and gain access to exclusive resources, growth opportunities, and a community of top industry leaders.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-2xl mx-auto">
-                <button
-                  onClick={() => {
-                    // Handle waitlist signup
-                    window.location.href = '#waitlist';
-                  }}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-yellow-400 text-yellow-400 hover:bg-yellow-400/10 font-medium rounded-lg transition-colors duration-200 w-full"
-                >
-                  <span>Join Waitlist</span>
-                  <UserPlus className="w-5 h-5" />
-                </button>
-                
-                <Link 
-                  href="/partner-registration"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-yellow-400 hover:bg-yellow-500 text-black font-medium rounded-lg transition-colors duration-200 w-full"
-                >
-                  <span>Become a Partner</span>
-                  <Zap className="w-5 h-5" />
-                </Link>
-                
-                <Link 
-                  href="/contact"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 text-white hover:text-yellow-400 font-medium rounded-lg transition-colors duration-200 w-full"
-                >
-                  <span>Contact Team</span>
-                  <MessageCircle className="w-5 h-5" />
-                </Link>
-              </div>
-            </motion.div>
-            
-            {/* Trust Badges */}
-            <div className="mt-16 pt-8 border-t border-yellow-400/10">
-              <p className="text-sm text-gray-400 mb-6">TRUSTED BY INDUSTRY LEADERS</p>
-              <div className="flex flex-wrap justify-center items-center gap-8 opacity-70">
-                <div className="h-8">
-                  <Image 
-                    src="/images/partners/aws-logo.png" 
-                    alt="AWS" 
-                    width={80} 
-                    height={32} 
-                    className="h-full w-auto object-contain"
-                  />
-                </div>
-                <div className="h-8">
-                  <Image 
-                    src="/images/partners/stripe-logo.png" 
-                    alt="Stripe" 
-                    width={80} 
-                    height={32} 
-                    className="h-full w-auto object-contain"
-                  />
-                </div>
-                <div className="h-8">
-                  <Image 
-                    src="/images/partners/vercel-logo.png" 
-                    alt="Vercel" 
-                    width={80} 
-                    height={32} 
-                    className="h-full w-auto object-contain"
-                  />
-                </div>
-              </div>
-            </div>
           </div>
         </div>
         
         {/* Decorative Elements */}
         <div className="absolute -top-20 -right-20 w-64 h-64 bg-yellow-400/5 rounded-full filter blur-3xl"></div>
         <div className="absolute -bottom-32 -left-32 w-80 h-80 bg-yellow-400/5 rounded-full filter blur-3xl"></div>
-      </section>
-      
-      {/* Exclusive Deals Section */}
-      <section className="py-20 bg-black relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/images/patterns/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0.1))] opacity-10"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center px-4 py-1.5 rounded-full text-sm font-medium bg-yellow-500/10 text-yellow-400 mb-4">
-              <Sparkles className="w-4 h-4 mr-2" />
-              Exclusive Offers
-            </div>
-            <h2 className="text-4xl font-bold text-white sm:text-5xl">
-              <span className="block bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">Partner Deals</span>
-            </h2>
-            <p className="mt-4 max-w-2xl mx-auto text-lg text-gray-400">
-              Special offers and discounts from our partners to help you build and grow your startup.
-            </p>
-          </div>
-          
-          <div className="relative z-10">
-            <ProductsSection />
-          </div>
-        </div>
-        
-        {/* Decorative Elements */}
-        <div className="absolute -top-20 -right-20 w-96 h-96 bg-yellow-500/5 rounded-full filter blur-3xl"></div>
-        <div className="absolute -bottom-32 -left-32 w-[40rem] h-[40rem] bg-yellow-500/5 rounded-full filter blur-3xl"></div>
-        <div className="absolute top-1/2 -right-20 w-72 h-72 bg-purple-500/5 rounded-full filter blur-3xl"></div>
       </section>
     </div>
   );
